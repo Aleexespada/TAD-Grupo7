@@ -28,7 +28,14 @@ Este proyecto despliega con docker compose. Se levantarán 3 contenedores:
 
 Laravel quedará levantado por defecto al arrancar el su contenedor.  
   
-
+  
+  
+#### Actualizar credenciales para la MySQL
+Los valores por defecto de las credenciales para la base de datos han sido cambiados, esto se podrá ver en el fichero yaml de docker compose, por ello tendremos que actualizar las credenciales para Lareval.
+1. Abrimos el fichero '.env' en la carpeta 'my-proyect'
+2. Buscamosla variable 'DB_DATABASE' y le damos el valor 'laravel'
+3. Buscamosla variable 'DB_USERNAME' y le damos el valor 'laravel'
+4. Buscamosla variable 'DB_PASSWORD' y le damos el valor 'laravel'
 
 #### Creación de ficheros PHP en Laravel con php artisan
 
