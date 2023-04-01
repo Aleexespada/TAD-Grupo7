@@ -14,8 +14,35 @@ Integrantes:
 En primer lugar, tendrás que abrir una consola situada en esta carpeta .
 
 Una vez situado en dicha carpeta podrás empezar a lanzar comandos para levantar el proyecto en local.  
-  
 
+#### Crear contenedores
+
+Creamos y construimos las imagenes de Docker para los servicios especificados en el archivo '**docker-compose.yml**'
+
+```
+docker-compose up
+```
+
+###### ACLARACIÓN
+Es posible que el contenedor de laravel no se levante debido a que en windows puede que tengamos que ejecutar ciertos comandos antes.
+
+Pararemos el resto de contenedores y desde la carpeta '**my-project**' ejecutaremos:
+```
+composer install
+```
+Con esto instalaremos las dependencias definidas en el archivo **composer.json** y se debe crear una carpeta llamada **vendor**.
+
+También debemos instalar las dependencias de NPM definidas en el archivo **package.json** con:
+
+```
+npm install
+```
+Y en esta ocasión vemos cómo se crea la carpeta node_modules.
+
+También debemos de generar el fichero .env, que por seguridad está excluido del repositorio, se toma como plantilla el archivo **.env.example**, podemos lanzar este comando:
+```
+cp .env.example .env
+```
 
 #### Levantamos todos los contenedores de docker
 ```
@@ -37,6 +64,26 @@ Los valores por defecto de las credenciales para la base de datos han sido cambi
 3. Buscamosla variable 'DB_USERNAME' y le damos el valor 'laravel'
 4. Buscamosla variable 'DB_PASSWORD' y le damos el valor 'laravel'
 
+
+### Generación de la key 
+La clave de aplicación es una cadena aleatoria almacenada en la clave APP_KEY dentro del archivo .env. Notarás que también falta.
+
+Para crear la nueva clave e insertarla automáticamente en el .env:
+
+1. Lanza el siguiente comando en la consola abierta
+```
+docker ps
+```
+2. Copia el 'container id' situado en la columna de la izquierda del contendedor de laravel 9
+3. Entra en el contenedor y lanza una consola bash con el siguiente comando
+```
+docker exec -i -t <container id copiado> /bin/bash
+```
+4. Lanzamos el comando:
+```
+php artisan key:generate
+```
+
 #### Creación de ficheros PHP en Laravel con php artisan
 
 Para esto tendremos que entrar dentro del contenedor que contiene Laravel. Los pasos a seguir serán los siguientes:
@@ -55,8 +102,6 @@ docker exec -i -t <container id copiado> /bin/bash
 ```
 exit
 ```
-  
-    
 
 #### Lanzamos el entorno de desarrollo
 Con el uso de Bootstrap y Vite en las vistas de Laravel, es posible que el proyecto requiera lanzar un entorno de desarrollo, para ello lanzaremos el siguiente comando situandonos dentro dedel contenedor de Laravel 9 en la consola, como hemos explicado antes
@@ -64,9 +109,6 @@ Con el uso de Bootstrap y Vite en las vistas de Laravel, es posible que el proye
 npm run dev
 ```
 Si es necesario lanzar este comando, el propio Laravel lo indicarán con un error muy explícito en la vista principal al visualizarse en el navegador.
-
-  
-  
 
 ##### Comandos de php artisan
 - Crear modelo: sudo php artisan make:model EjemploModelo -m
