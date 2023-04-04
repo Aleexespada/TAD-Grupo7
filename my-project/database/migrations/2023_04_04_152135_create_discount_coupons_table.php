@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->unsignedSmallInteger('percentage');
+            $table->unsignedSmallInteger('uses_limit')->default(1);
             $table->timestamps();
         });
     }

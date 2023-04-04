@@ -13,18 +13,17 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function address()
     {
         return $this->belongsTo(Address::class);
     }
+    
     public function creditCard()
     {
         return $this->belongsTo(CreditCard::class);
     }
-    public function orderStatus()
-    {
-        return $this->belongsTo(OrderStatus::class);
-    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class);

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('address_id')->constrained();
             $table->foreignId('credit_card_id')->constrained();
-            $table->foreignId('order_status_id')->constrained();
+            $table->enum('status', ['pendiente', 'en proceso', 'entregado', 'cancelado']);
             $table->unsignedDouble('total_price');
             $table->date('order_date');
             $table->text('comments')->nullable();
