@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('description_id')->constrained()->onDelete('cascade');
+            $table->foreignId('description_id')->constrained();
             $table->unsignedDecimal('price');
             $table->unsignedInteger('stock');
             $table->unsignedSmallInteger('discount')->nullable();
