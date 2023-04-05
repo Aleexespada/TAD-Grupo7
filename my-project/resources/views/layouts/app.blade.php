@@ -10,8 +10,6 @@
     <script defer src="https://kit.fontawesome.com/d0c6ffa552.js" crossorigin="anonymous"></script>
 
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
-
-    
 </head>
 
 <body>
@@ -19,7 +17,7 @@
     @include('partials.header')
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="container-fluid">
+    <main class="container">
         @yield('content')
     </main>
 

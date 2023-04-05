@@ -18,6 +18,11 @@ select {
     box-shadow: none !important;
 }
 
+input:focus,
+select:focus {
+    border-color: black !important;
+}
+
 /*
 * HEADER
 */

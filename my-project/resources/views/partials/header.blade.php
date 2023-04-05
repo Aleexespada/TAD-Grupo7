@@ -51,10 +51,11 @@
                     </a>
                 </li>
 
+                @guest
                 <!-- INICIAR SESIÓN / REGISTRARSE -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi cuenta">
-                        <span class="me-2">
+                    <a class="nav-link" href="{{ route('login') }}">
+                        <span class="me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi cuenta">
                             <i class="fa-solid fa-user" style="font-size: 16pt;"></i>
                         </span>
                         <span class="icon-text">
@@ -62,10 +63,10 @@
                         </span>
                     </a>
                 </li>
-
+                @else
                 <!-- PERFIL -->
-                <!-- <button id="profileNavbarToggler" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProfile" aria-controls="offcanvasProfile" aria-label="Toggle navigation">
-                    Antonio Manuel
+                <button id="profileNavbarToggler" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProfile" aria-controls="offcanvasProfile" aria-label="Toggle navigation">
+                    {{ Auth::user()->name }}
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasProfile" aria-labelledby="offcanvasProfileLabel">
                     <div class="offcanvas-header">
@@ -118,15 +119,19 @@
                             </div>
                             <div class="accordion-item border-0">
                                 <h2 class="accordion-header">
-                                    <a href="#" class="accordion-button collapsed text-decoration-none" id="signout-link" type="button">
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="accordion-button collapsed text-decoration-none" id="signout-link" type="button">
                                         <i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>
                                         Cerrar sesión
                                     </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </h2>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                @endguest
             </ul>
         </div>
     </nav>
