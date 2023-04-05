@@ -7,7 +7,11 @@
 
     <title>Laravel</title>
 
+    <script defer src="https://kit.fontawesome.com/d0c6ffa552.js" crossorigin="anonymous"></script>
+
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
+
+    
 </head>
 
 <body>
