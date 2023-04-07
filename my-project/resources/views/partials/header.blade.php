@@ -1,5 +1,5 @@
-<header>
-    <nav class="navbar sticky-top navbar-light bg-light p-sm-3 py-4">
+<header class="sticky-top">
+    <nav class="navbar navbar-light bg-light p-sm-3 py-4">
         <div class="container-fluid justify-content-between p-0">
             <!-- LEFT ELEMENTS -->
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -54,8 +54,8 @@
                 @guest
                 <!-- INICIAR SESIÓN / REGISTRARSE -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="{{ route('login') }}">
-                        <span class="me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi cuenta">
+                    <a class="nav-link" href="{{ route('login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi cuenta">
+                        <span class="me-2">
                             <i class="fa-solid fa-user" style="font-size: 16pt;"></i>
                         </span>
                         <span class="icon-text">
