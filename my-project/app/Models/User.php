@@ -80,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
     
     public function discountCoupons() 
     {
-        return $this->belongsToMany(DiscountCoupon::class);
+        return $this->belongsToMany(DiscountCoupon::class, 'user_discount_coupon');
     }
 
 }

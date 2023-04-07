@@ -37,11 +37,11 @@
                 </li>
                 <!-- CESTA -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver cesta">
+                    <a class="nav-link" href="{{ route('cart.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver cesta">
                         <span class="me-2">
                             <i class="fa-solid fa-cart-shopping position-relative" style="font-size: 16pt;">
                                 <span class="items-cart badge position-absolute top-0 start-100 translate-middle bg-danger border border-light rounded-pill" style="font-size: 8pt;">
-                                    1
+                                    @guest 0 @else {{ Auth::user()->cartItems->count() }} @endguest
                                 </span>
                             </i>
                         </span>
