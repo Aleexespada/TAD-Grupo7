@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderMail;
 use App\Models\Address;
 use App\Models\CartItem;
 use App\Models\CreditCard;
@@ -12,6 +13,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -194,6 +196,9 @@ class CartController extends Controller
             CartItem::where('user_id', $user->id)->delete();
             // Se borran los atributos de sesión que se establecieron
             session()->forget(['total_price_cart', 'address']);
+
+            $order = Order::with('products')->find($order->id);
+            Mail::to(auth()->user()->email)->send(new OrderMail($order));
 
             DB::commit();
             // Guardamos el pedido en sesión para poder acceder en la siguiente vista
