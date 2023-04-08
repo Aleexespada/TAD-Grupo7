@@ -7,6 +7,7 @@ use App\Models\DiscountCoupon;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -76,7 +77,74 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function deleteItemCart($id) {
+    public function createItemCart(Request $request)
+    {
+        // Validación
+        $request->validate([
+            'product_id' => 'required|integer|exists:products,id',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $user = auth()->user();
+
+        // Comprobar que el usuario tiene sesión iniciada
+        if (!$user) {
+            return back()->with('warning', 'Inicia sesión para añadir productos a la cesta');
+        }
+
+        // Obtención del producto
+        $product = Product::findOrFail($request->product_id);
+
+        // Si no hay stock suficiente del producto disponible
+        if ($product->stock < $request->quantity) {
+            return back()->with('error', 'No hay stock suficiente del producto');
+        }
+
+        // Obtención de los productos del carro del usuario
+        $cartItems = $user->cartItems;
+
+        // Comprobación de si el producto está ya en la cesta
+        $existingCartItem = $cartItems->firstWhere('product_id', $product->id);
+        
+        // Si existe el producto en la cesta y al añadir la nueva cantidad supera el stock
+        if ($existingCartItem) {
+            $newQuantity = $existingCartItem->quantity + $request->quantity;
+
+            if ($product->stock < $newQuantity) {
+                return back()->with('error', 'No hay stock suficiente del producto');
+            }
+        }
+
+        try {
+            DB::beginTransaction();
+            if ($existingCartItem) {
+                // Si el producto ya está en el carrito, actualiza su cantidad   
+                $existingCartItem->update([
+                    'quantity' => $newQuantity,
+                    'subtotal' => $newQuantity * $existingCartItem->unity_price,
+                ]);
+            } else {
+                // Si el producto no está en el carrito, crea un nuevo elemento
+                CartItem::create([
+                    'user_id' => $user->id,
+                    'product_id' => $product->id,
+                    'quantity' => $request->quantity,
+                    'unity_price' => $product->price,
+                    'subtotal' => $product->price * $request->quantity,
+                ]);
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('error', 'Error al añadir el producto a la cesta');
+        }
+
+        return back()->with('message', 'Producto añadido a la cesta correctamente');
+    }
+
+    public function deleteItemCart($id)
+    {
         $user = auth()->user();
         $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->first();
         
