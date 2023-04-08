@@ -16,16 +16,16 @@
 
                             <!-- ERRORS -->
                             @if ($errors->any() > 0)
-                                <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
-                                    @foreach ($errors->all() as $error)
-                                    <strong>{{ $error }}</strong>
-                                    @endforeach
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
+                            <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                                @foreach ($errors->all() as $error)
+                                <strong>{{ $error }}</strong>
+                                @endforeach
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                             @endif
 
                             <hr class="my-4">
-                            
+
                             <!-- ITEM STRUCTURE -->
                             @guest
                             <p>Inicia sesión para comenzar a comprar.</p>
@@ -42,7 +42,7 @@
                                 <!-- NAME -->
                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                     <h6 class="text-muted">
-                                        {{ $item->product->name }}
+                                        <a href="{{ route('products.show', $item->product->id) }}" class="link-dark">{{ $item->product->name }}</a>
                                     </h6>
                                 </div>
                                 <!-- QUANTITY -->
@@ -109,6 +109,7 @@
                                 <h5 class="text-uppercase num-articles">{{ count($cart_items) }} artículos</h5>
                             </div>
 
+                            @if (count($cart_items) > 0)
                             <!-- SHIPMENT -->
                             <h5 class="text-uppercase mb-3">Envío</h5>
                             <div class="mb-4 pb-2">
@@ -124,7 +125,7 @@
                                     <label class="form-label" for="discount-code">Ingresa tu código</label>
                                     <input type="text" id="discount-code" name="discount_code" class="form-control form-control-lg" />
 
-                                    <button type="submit" class="btn btn-dark mt-2 w-100">Aplicar</button>
+                                    <button type="submit" class="btn btn-outline-dark mt-2 w-100">Aplicar</button>
                                 </form>
                             </div>
 
@@ -136,9 +137,16 @@
                                 <h5 class="total-price-final">@if ($total_cart > 24.90) {{ $total_cart }} @else {{ $total_cart + 2.90 }} @endif €</h5>
                             </div>
 
-                            <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#payment-modal">
-                                Comprar
-                            </button>
+                            <form action="{{ route('cart.buy_proccess') }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <input type="hidden" name="total_price_cart" value="{{ $total_cart }}">
+
+                                <button type="submit" class="btn btn-dark btn-block btn-lg w-100" data-mdb-ripple-color="dark" data-bs-toggle="modal" data-bs-target="#payment-modal">
+                                    Comprar
+                                </button>
+                            </form>
+                            @endif
                         </div>
                     </div>
                     @endguest
@@ -148,4 +156,4 @@
         </div>
 
     </div>
-    @endsection
+@endsection
