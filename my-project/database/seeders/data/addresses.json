@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "country": "España",
+        "province": "Sevilla",
+        "postal_code": "41870",
+        "street": "Avenida de Andalucía",
+        "number": "12",
+        "floor": "2"
+    },
+    {
+        "id": 2,
+        "user_id": 7,
+        "country": "España",
+        "province": "Madrid",
+        "postal_code": "28001",
+        "street": "Calle de Alcalá",
+        "number": "100",
+        "floor": null
+    },
+    {
+        "id": 3,
+        "user_id": 3,
+        "country": "España",
+        "province": "Barcelona",
+        "postal_code": "08001",
+        "street": "La Rambla",
+        "number": "1",
+        "floor": "4C"
+    },
+    {
+        "id": 4,
+        "user_id": 4,
+        "country": "España",
+        "province": "Valencia",
+        "postal_code": "46001",
+        "street": "Calle de la Paz",
+        "number": "5",
+        "floor": null
+    },
+    {
+        "id": 5,
+        "user_id": 6,
+        "country": "España",
+        "province": "Málaga",
+        "postal_code": "29001",
+        "street": "Calle Larios",
+        "number": "20",
+        "floor": "2A"
+    }
+]

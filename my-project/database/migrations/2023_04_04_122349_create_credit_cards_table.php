@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('card_number')->unique();
             $table->string('cardholder_name');
             $table->string('cvv');
-            $table->date('expiration_date');
+            $table->string('expiration_month');
+            $table->string('expiration_year');
             $table->timestamps();
         });
     }

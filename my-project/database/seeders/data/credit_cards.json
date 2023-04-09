@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "card_number": "4916780086547392",
+        "cardholder_name": "Antonio Manuel Mérida Borrero",
+        "cvv": "123",
+        "expiration_month": "06",
+        "expiration_year": "2023"
+    },
+    {
+        "id": 2,
+        "user_id": 3,
+        "card_number": "4539767445309478",
+        "cardholder_name": "Ana García",
+        "cvv": "567",
+        "expiration_month": "09",
+        "expiration_year": "2024"
+    },
+    {
+        "id": 3,
+        "user_id": 3,
+        "card_number": "4929401551091348",
+        "cardholder_name": "Ana García",
+        "cvv": "234",
+        "expiration_month": "11",
+        "expiration_year": "2023"
+    },
+    {
+        "id": 4,
+        "user_id": 5,
+        "card_number": "4716067086225628",
+        "cardholder_name": "Lucía Martínez",
+        "cvv": "789",
+        "expiration_month": "03",
+        "expiration_year": "2025"
+    },
+    {
+        "id": 5,
+        "user_id": 6,
+        "card_number": "4556008183292460",
+        "cardholder_name": "Pablo González",
+        "cvv": "345",
+        "expiration_month": "07",
+        "expiration_year": "2024"
+    },
+    {
+        "id": 6,
+        "user_id": 7,
+        "card_number": "4024007165383692",
+        "cardholder_name": "Marina Rodríguez",
+        "cvv": "901",
+        "expiration_month": "02",
+        "expiration_year": "2026"
+    }
+]

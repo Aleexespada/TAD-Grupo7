@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "name": "Camisas"
+    },
+    {
+        "id": 2,
+        "name": "Jerséis"
+    },
+    {
+        "id": 3,
+        "name": "Polos"
+    },
+    {
+        "id": 4,
+        "name": "Camisetas"
+    },
+    {
+        "id": 5,
+        "name": "Americanas"
+    },
+    {
+        "id": 6,
+        "name": "Pantalones"
+    },
+    {
+        "id": 7,
+        "name": "Chinos"
+    },
+    {
+        "id": 8,
+        "name": "Trajes"
+    },
+    {
+        "id": 9,
+        "name": "Zapatos"
+    },
+    {
+        "id": 10,
+        "name": "Relojes"
+    },
+    {
+        "id": 11,
+        "name": "Bolsos"
+    }
+]
