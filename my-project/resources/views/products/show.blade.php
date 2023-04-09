@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@vite(['resources/css/product.scss'])
+<link rel="stylesheet" href="{{ asset('css/product.scss') }}">
 <script defer src="{{ asset('js/quantityProduct.js') }}"></script>
+<script defer src="{{ asset('js/productImageModal.js') }}"></script>
 
 @section('content')
 <div class="row product-container pt-5">
@@ -9,26 +10,13 @@
     <div class="col-12 col-md-7 order-last order-md-first">
         <!-- IMAGENES -->
         <div class="row row-cols-1 row-cols-md-2 g-2 d-none d-md-flex">
+            @foreach($product->images as $image)
             <div class="col">
-                <figcaption class="h-100">
-                    <img class="w-100" src="{{ asset('img/traje.png') }}" alt="">
+                <figcaption class="product-img h-100" data-bs-toggle="modal" data-bs-target="#product-img-modal">
+                    <img class="w-100" src="{{ asset('img/' . $image->url ) }}" alt="Imagen {{ $product->name }}">
                 </figcaption>
             </div>
-            <div class="col">
-                <figcaption class="h-100">
-                    <img class="w-100" src="{{ asset('img/traje.png') }}" alt="">
-                </figcaption>
-            </div>
-            <div class="col">
-                <figcaption class="h-100">
-                    <img class="w-100" src="{{ asset('img/traje.png') }}" alt="">
-                </figcaption>
-            </div>
-            <div class="col">
-                <figcaption class="h-100">
-                    <img class="w-100" src="{{ asset('img/traje.png') }}" alt="">
-                </figcaption>
-            </div>
+            @endforeach
         </div>
 
         <!-- SHIPPING TABLE -->
@@ -383,6 +371,20 @@
                 *Envío gratuito en gran parte de nuestra selección en pedidos a partir de 24,90 €. En compras de valor inferior se aplica una tarifa de envío de 2,90 €.
             </div>
             <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- img modal -->
+<div id="product-img-modal" type="button" class="modal fade img-modal" tabindex="-1" aria-labelledby="img-modal-label" aria-hidden="true" data-bs-dismiss="modal">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <figcaption>
+                    <img id="product-img-modal-img" src="{{ asset('img/traje.png') }}" alt="Imagen {{ $product->name }}">
+                </figcaption>
             </div>
         </div>
     </div>
