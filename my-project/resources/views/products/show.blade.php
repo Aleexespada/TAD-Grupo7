@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<link rel="stylesheet" href="{{ asset('css/product.scss') }}">
+@vite(['resources/css/product.scss'])
 <script defer src="{{ asset('js/quantityProduct.js') }}"></script>
 
 @section('content')
