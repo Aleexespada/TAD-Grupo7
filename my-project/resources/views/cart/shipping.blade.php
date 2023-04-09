@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Dirección de envío - Mr Penguin')
+
 @section('content')
 
 <div class="row cart-container pt-5">

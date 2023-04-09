@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $product->name . ' - Mr Penguin')
+
 @vite(['resources/css/product.scss'])
 <script defer src="{{ asset('js/quantityProduct.js') }}"></script>
 <script defer src="{{ asset('js/productImageModal.js') }}"></script>

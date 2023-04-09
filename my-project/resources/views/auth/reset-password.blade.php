@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Resetear contraseña - Mr Penguin')
+
 <script defer src="{{ asset('js/showPassword.js') }}"></script>    
 
 @section('content')

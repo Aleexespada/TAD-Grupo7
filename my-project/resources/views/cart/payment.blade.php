@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Método de pago - Mr Penguin')
+
 @section('content')
 <div class="row cart-container pt-5">
     <div class="col-12">

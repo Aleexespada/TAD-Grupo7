@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>@yield('title', 'Mr Penguin')</title>
 
     <script defer src="https://kit.fontawesome.com/d0c6ffa552.js" crossorigin="anonymous"></script>
 

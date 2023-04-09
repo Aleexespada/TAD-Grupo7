@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Mi cesta - Mr Penguin')
+
 @section('content')
 <div class="row cart-container pt-5">
     <div class="col-12">
