@@ -1,5 +1,5 @@
 <header class="sticky-top">
-    <nav class="navbar navbar-light bg-light p-sm-3 py-4">
+    <nav class="navbar navbar-dark bg-dark p-sm-3 py-4">
         <div class="container-fluid justify-content-between p-0">
             <!-- LEFT ELEMENTS -->
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
                     <a class="nav-link" href="{{ route('cart.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver cesta">
                         <span class="me-2">
                             <i class="fa-solid fa-cart-shopping position-relative" style="font-size: 16pt;">
-                                <span class="items-cart badge position-absolute top-0 start-100 translate-middle bg-danger border border-light rounded-pill" style="font-size: 8pt;">
+                                <span class="items-cart badge position-absolute top-0 start-100 translate-middle bg-danger border border-danger rounded-pill" style="font-size: 8pt;">
                                     @guest 0 @else {{ Auth::user()->cartItems->count() }} @endguest
                                 </span>
                             </i>
@@ -85,7 +85,7 @@
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
                                         <a href="#" class="list-group-item list-group-item-action border-0">Mis datos</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Métodos de pago</a>
+                                        <a href="#" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
                                         <a href="#" class="list-group-item list-group-item-action border-0">Opiniones</a>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="accordion-item border-0">
                                 <h2 class="accordion-header">
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="accordion-button collapsed text-decoration-none" id="signout-link" type="button">
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="accordion-button collapsed text-decoration-none text-dark" id="signout-link" type="button">
                                         <i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>
                                         Cerrar sesión
                                     </a>

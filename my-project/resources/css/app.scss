@@ -50,6 +50,12 @@ textarea:focus {
     }
 }
 
+/*
+* FOOTER
+*/
+i.fab::after {
+    content: none;
+}
 
 /*
 * RESPONSIVE

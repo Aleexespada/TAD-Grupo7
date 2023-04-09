@@ -1,63 +1,86 @@
-<footer class="container py-5">
-    <div class="row">
-        <div class="col-6 col-md-2 mb-3">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-            </ul>
-        </div>
+<div class="container-fluid mt-5 px-0">
+    <footer class="text-center text-white bg-dark">
+        <!-- GRID CONTAINER -->
+        <div class="container-fluid">
+            <!-- SECTION: SOCIAL -->
+            <section class="mt-5 py-3">
+                <a href="#" class="text-white text-decoration-none me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-white text-decoration-none me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-white text-decoration-none me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="text-white text-decoration-none me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-white text-decoration-none me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="text-white text-decoration-none me-4">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+            <!-- SECTION: SOCIAL -->
 
-        <div class="col-6 col-md-2 mb-3">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-            </ul>
-        </div>
+            <hr class="my-0" />
 
-        <div class="col-6 col-md-2 mb-3">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-            </ul>
-        </div>
+            <!-- SECTION: LINKS -->
+            <section class="text-center">
+                <!-- GRID ROW-->
+                <div class="row text-center d-flex justify-content-center py-3 py-md-5">
+                    <!-- GRID COLUMN -->
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold mb-0">
+                            <a href="#!" class="text-white text-decoration-none">Sobre nosotros</a>
+                        </h6>
+                    </div>
+                    <!-- GRID COLUMN -->
 
-        <div class="col-md-5 offset-md-1 mb-3">
-            <form>
-                <h5>Subscribe to our newsletter</h5>
-                <p>Monthly digest of what's new and exciting from us.</p>
-                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                    <label for="newsletter1" class="visually-hidden">Email address</label>
-                    <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                    <button class="btn btn-primary" type="button">Subscribe</button>
+                    <!-- GRID COLUMN -->
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold mb-0">
+                            <a href="#!" class="text-white text-decoration-none">Productos</a>
+                        </h6>
+                    </div>
+                    <!-- GRID COLUMN -->
+
+                    <!-- GRID COLUMN -->
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold mb-0">
+                            <a href="#!" class="text-white text-decoration-none">Cookies</a>
+                        </h6>
+                    </div>
+                    <!-- GRID COLUMN -->
+
+                    <!-- GRID COLUMN -->
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold mb-0">
+                            <a href="#!" class="text-white text-decoration-none">Envío</a>
+                        </h6>
+                    </div>
+                    <!-- GRID COLUMN -->
+
+                    <!-- GRID COLUMN -->
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold mb-0">
+                            <a href="#!" class="text-white text-decoration-none">Contacto</a>
+                        </h6>
+                    </div>
+                    <!-- GRID COLUMN -->
                 </div>
-            </form>
+                <!-- GRID ROW-->
+            </section>
+            <!-- SECTION: LINKS -->
         </div>
-    </div>
+        <!-- GRID CONTAINER -->
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p>© 2023 Company, Inc. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-            <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
-                        <use xlink:href="#twitter"></use>
-                    </svg></a></li>
-            <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
-                        <use xlink:href="#instagram"></use>
-                    </svg></a></li>
-            <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24">
-                        <use xlink:href="#facebook"></use>
-                    </svg></a></li>
-        </ul>
-    </div>
-</footer>
+        <!-- COPYRIGHT -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2023 Copyright:
+            <a class="text-white" href="https://github.com/Aleexespada/TAD-Grupo7">Grupo 7 - TAD</a>
+        </div>
+    </footer>
+</div>
