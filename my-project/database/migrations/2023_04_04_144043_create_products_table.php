@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedDecimal('price');
-            $table->unsignedInteger('stock');
             $table->unsignedSmallInteger('discount')->nullable();
             $table->foreignId('brand_id')->constrained();
             $table->timestamps();

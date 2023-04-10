@@ -24,6 +24,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Cantidad</th>
+                <th>Talla</th>
                 <th>Precio</th>
                 <th>Precio Total</th>
             </tr>
@@ -33,6 +34,7 @@
             <tr>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->pivot->product_quantity }}</td>
+                <td>{{ $product->pivot->product_size }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->price * $product->pivot->product_quantity }}</td>
             </tr>

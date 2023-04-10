@@ -15,7 +15,7 @@
             @foreach($product->images as $image)
             <div class="col">
                 <figcaption class="product-img h-100" data-bs-toggle="modal" data-bs-target="#product-img-modal">
-                    <img class="w-100" src="{{ asset('img/' . $image->url ) }}" alt="Imagen {{ $product->name }}">
+                    <img class="w-100" src="{{ asset('img/' . $image->url ) }}" alt="Imagen de {{ $product->name }}">
                 </figcaption>
             </div>
             @endforeach
@@ -176,7 +176,7 @@
         <!-- IMAGE FOR SCREENS SMALLER THAN MD -->
         <div class="row mb-4 d-md-none">
             <figcaption class="text-center" style="height: 450px;">
-                <img class="w-auto h-100" src="{{ asset('img/traje.png') }}" alt="">
+                <img class="w-auto h-100" src="{{ asset('img/' . $product->images->first()->url ) }}" alt="Imagen de {{ $product->name }}">
             </figcaption>
         </div>
 
@@ -251,36 +251,39 @@
         </div>
         @endif
 
-        <!-- PRODUCT SIZE -->
-        @if ($product->description->size)
-        <div class="row mt-3">
-            <label for="productSize" class="form-label col-sm-2 col-form-label">Talla: </label>
-            <div class="col-sm-8 col-md-5 col-lg-3">
-                <select id="productSize" class="form-select">
-                    <option selected>{{ $product->description->size }}</option>
-                </select>
-            </div>
-        </div>
-        @endif
-
-        <!-- PRODUCT STOCK -->
-        <div class="row mt-5">
-            <div class="col-12 col-lg-6 text-center product-stock">
-                @if ($product->stock == 0)
-                <p id="out-of-stock-alert" class="alert alert-danger w-100" role="alert">¡Agotado!</p>
-                @elseif ($product->stock <= 8) <p id="low-stock-alert" class="alert alert-warning w-100" role="alert">¡Quedan pocas unidades!</p>
-                    @else
-                    <p id="stock-alert" class="alert alert-success w-100" role="alert">¡En stock! ¡Recibelo mañana!</p>
-                    @endif
-            </div>
-        </div>
-
-        <!-- QUANTITY -->
         <form action="{{ route('cart.add') }}" method="POST">
             @csrf
             @method('POST')
             <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <!-- PRODUCT SIZE -->
             <div class="row mt-3">
+                <label for="productSize" class="form-label col-sm-2 col-form-label">Talla: </label>
+                <div class="col-sm-8 col-md-5 col-lg-3">
+                    <select id="productSize" class="form-select" name="size">
+                        <option selected disabled>--</option>
+                        @foreach ($product->description->sizes as $size)
+                        <option value="{{ $size->size }}" @if($size->pivot->stock <= 0) disabled @endif>{{ $size->size }}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+            </div>
+
+
+            <!-- PRODUCT STOCK -->
+            <!-- <div class="row mt-5">
+                <div class="col-12 col-lg-6 text-center product-stock">
+                    @if ($product->stock == 0)
+                    <p id="out-of-stock-alert" class="alert alert-danger w-100" role="alert">¡Agotado!</p>
+                    @elseif ($product->stock <= 8) <p id="low-stock-alert" class="alert alert-warning w-100" role="alert">¡Quedan pocas unidades!</p>
+                        @else
+                        <p id="stock-alert" class="alert alert-success w-100" role="alert">¡En stock! ¡Recibelo mañana!</p>
+                        @endif
+                </div>
+            </div> -->
+
+            <!-- QUANTITY -->
+            <div class="row mt-5">
                 <div class="col-12 col-md-6 product-quantity">
                     <div class="row h-100">
                         <button id="quantity-minus" type="button" class="col-4 btn border-0 h-100">
@@ -297,7 +300,7 @@
             <!-- BUY AND FAVORITE BUTTONS -->
             <div class="row justify-content-between mt-5">
                 <div class="col-12 col-lg-8 product-buy-button">
-                    <button type="submit" id="add-cart" class="btn btn-dark w-100" {{ $product->stock == 0  ? 'disabled' : '' }}>
+                    <button type="submit" id="add-cart" class="btn btn-dark w-100">
                         Añadir a la cesta
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
@@ -313,6 +316,15 @@
                 </div>
             </div>
         </form>
+
+        @error('size')
+        <div class="row">
+            <div class="col-12 alert alert-warning alert-dismissible fade show px-5 mt-4">
+                <span class="m-0">Debes seleccionar una talla</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        @enderror
 
         @if(session('message'))
         <div class="row">

@@ -25,7 +25,6 @@ class DescriptionsTableSeeder extends Seeder
                 'description' => $description->description,
                 'details' => $description->details,
                 'color' => $description->color,
-                'size' => $description->size,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

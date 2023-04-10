@@ -26,6 +26,25 @@
                             </div>
                             @endif
 
+                            <div class="item row mb-4 d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                    Nombre
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    Cantidad
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-size">
+                                    Talla
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-price">
+                                    Precio
+                                </div>
+                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                </div>
+                            </div>
+
                             <hr class="my-4">
 
                             <!-- ITEM STRUCTURE -->
@@ -49,18 +68,28 @@
                                 </div>
                                 <!-- QUANTITY -->
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                    <form action="{{ route('cart.decrease', $item->product->id) }}" method="GET">
+                                    <form action="{{ route('cart.decrease', $item->product->id) }}" method="POST">
                                         @csrf
+                                        @method('POST')
+                                        <input type="hidden" name="size" value="{{ $item->size }}">
                                         <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-minus"></i></button>
                                     </form>
                                     <input value="{{ $item->quantity }}" type="text" class="form-control form-control-sm text-center" readonly>
-                                    <form action="{{ route('cart.increase', $item->product->id) }}" method="GET">
+                                    <form action="{{ route('cart.increase', $item->product->id) }}" method="POST">
                                         @csrf
+                                        @method('POST')
+                                        <input type="hidden" name="size" value="{{ $item->size }}">
                                         <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-plus"></i></button>
                                     </form>
                                 </div>
+                                <!-- SIZE -->
+                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-size">
+                                    <h6 class="mb-0">
+                                        {{ $item->size }}
+                                    </h6>
+                                </div>
                                 <!-- PRICE -->
-                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1 item-price">
+                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-price">
                                     <h6 class="mb-0">
                                         {{ $item->unity_price }} €
                                     </h6>
@@ -70,6 +99,7 @@
                                     <form action="{{ route('cart.delete', $item->product->id) }}" method="POST" class="text-muted" style="cursor: pointer;">
                                         @csrf
                                         @method('DELETE')
+                                        <input type="hidden" name="size" value="{{ $item->size }}">
                                         <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-times"></i></button>
                                     </form>
                                 </div>

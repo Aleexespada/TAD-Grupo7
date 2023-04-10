@@ -19,7 +19,6 @@ return new class extends Migration
             $table->text('description');
             $table->text('details')->nullable();
             $table->string('color')->nullable();
-            $table->string('size')->nullable();
             $table->timestamps();
         });
     }

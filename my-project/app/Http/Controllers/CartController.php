@@ -70,7 +70,7 @@ class CartController extends Controller
     {
         // Comprobamos si obtenemos direccion, si no la creamos
         $shipping_address = $request->shipping_address;
-        if (!$shipping_address) {
+        if ($shipping_address == '--') {
             $validatedData = $request->validate([
                 'street' => 'required|string|max:255',
                 'number' => 'required|string|max:10',
@@ -121,7 +121,7 @@ class CartController extends Controller
     {
         // Comprobamos que hemos recibido un método de pago, sino, lo creamos
         $pay_method = $request->pay_method;
-        if (!$pay_method) {
+        if ($pay_method == '--') {
             $validatedData = $request->validate([
                 'cardholder' => 'required|string|max:255',
                 'card_number' => 'required|numeric|digits_between:13,19',
@@ -160,6 +160,7 @@ class CartController extends Controller
         $credit_card_id = $pay_method;
         $total_price_cart = session('total_price_cart');
 
+
         // Comienza transaccion
         try {
             DB::beginTransaction();
@@ -184,21 +185,24 @@ class CartController extends Controller
 
             // Creamos la relacion de productos con pedido (tabla intermedia)
             foreach ($cart_items as $item) {
+
                 $product = Product::findOrFail($item->product_id);
-                $order->products()->attach($product, ['product_quantity' => $item->quantity, 'created_at' => now(), 'updated_at' => now()]);
+                $order->products()->attach($product, ['product_quantity' => $item->quantity, 'product_size' => $item->size, 'created_at' => now(), 'updated_at' => now()]);
+
                 // Se actualiza el stock del producto
-                $product->update([
-                    'stock' => $product->stock - $item->quantity,
-                ]);
+                $product_size_stock = $product->description->sizes->firstWhere('size', $item->size)->pivot->stock;
+                
+                $product->description->sizes->firstWhere('size', $item->size)->pivot->stock = $product_size_stock - $item->quantity;
+                $product->description->sizes->firstWhere('size', $item->size)->pivot->save();
             }
+
+            $order = Order::with('products')->find($order->id);
+            Mail::to(auth()->user()->email)->send(new OrderMail($order));
 
             // Se borra el carrito del usuario
             CartItem::where('user_id', $user->id)->delete();
             // Se borran los atributos de sesión que se establecieron
             session()->forget(['total_price_cart', 'address']);
-
-            $order = Order::with('products')->find($order->id);
-            Mail::to(auth()->user()->email)->send(new OrderMail($order));
 
             DB::commit();
             // Guardamos el pedido en sesión para poder acceder en la siguiente vista
@@ -220,58 +224,12 @@ class CartController extends Controller
         return view('cart.finish', compact(['order']));
     }
 
-
-
-    public function payment(Request $request)
-    {
-        $shipping_address = $request->shipping_address;
-        if (!$shipping_address) {
-            // dd($request);
-            $validatedData = $request->validate([
-                'street' => 'required|string|max:255',
-                'number' => 'required|string|max:10',
-                'floor' => 'nullable|string|max:10',
-                'postal_code' => 'required|string|max:10',
-                'province' => 'required|string|max:255',
-                'country' => 'required|string|max:255',
-            ]);
-
-            // dd($validatedData);
-
-            try {
-                DB::beginTransaction();
-
-                $shipping_address = Address::create([
-                    'user_id' => auth()->user()->id,
-                    'country' => $validatedData['country'],
-                    'province' => $validatedData['province'],
-                    'postal_code' => $validatedData['postal_code'],
-                    'street' => $validatedData['street'],
-                    'number' => $validatedData['number'],
-                    'floor' => $validatedData['floor'],
-                ]);
-
-                DB::commit();
-            } catch (\Exception $e) {
-                DB::rollBack();
-                return back()->with('error', 'Error al crear la dirección');
-            }
-        }
-
-        dd($shipping_address);
-
-        $total_price_cart = $request->total_price_cart;
-        $credit_cards = auth()->user()->creditCards;
-
-
-        return view('cart.payment', compact(['total_price_cart', 'shipping_address', 'credit_cards']));
-    }
-
-    public function decreaseProduct($id)
+    public function decreaseProduct($id, Request $request)
     {
         $product = Product::findOrFail($id);
         $user = auth()->user();
-        $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->first();
+        $size = $request->size;
+        $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->where('size', $size)->first();
 
         if ($cart_item) {
             if ($cart_item->quantity > 1) {
@@ -286,16 +244,23 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function increaseProduct($id)
+    public function increaseProduct($id, Request $request)
     {
         $product = Product::findOrFail($id);
         $user = auth()->user();
-        $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->first();
+        $size = $request->size;
+        $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->where('size', $size)->first();
 
         if ($cart_item) {
-            $cart_item->quantity++;
-            $cart_item->subtotal = $cart_item->quantity * $product->price;
-            $cart_item->save();
+
+            $product_size_stock = $product->description->sizes->firstWhere('size', $size)->pivot->stock;
+
+            if ($cart_item->quantity + 1 <= $product_size_stock) {
+                $cart_item->quantity++;
+                $cart_item->subtotal = $cart_item->quantity * $product->price;
+                $cart_item->save();
+            } else {
+                return back()->withErrors(['No hay stock suficiente del producto']);            }
         }
 
         return redirect()->route('cart.index');
@@ -306,8 +271,12 @@ class CartController extends Controller
         // Validación
         $request->validate([
             'product_id' => 'required|integer|exists:products,id',
+            'size' => 'required|string',
             'quantity' => 'required|integer|min:1',
         ]);
+
+        $size = $request->size;
+        $quantity = $request->quantity;
 
         $user = auth()->user();
 
@@ -319,8 +288,10 @@ class CartController extends Controller
         // Obtención del producto
         $product = Product::findOrFail($request->product_id);
 
+        $product_size_stock = $product->description->sizes->firstWhere('size', $size)->pivot->stock;
+
         // Si no hay stock suficiente del producto disponible
-        if ($product->stock < $request->quantity) {
+        if ($product_size_stock < $quantity) {
             return back()->with('error', 'No hay stock suficiente del producto');
         }
 
@@ -328,13 +299,13 @@ class CartController extends Controller
         $cartItems = $user->cartItems;
 
         // Comprobación de si el producto está ya en la cesta
-        $existingCartItem = $cartItems->firstWhere('product_id', $product->id);
+        $existingCartItem = $cartItems->where('product_id', $product->id)->where('size', $size)->first();
 
         // Si existe el producto en la cesta y al añadir la nueva cantidad supera el stock
         if ($existingCartItem) {
             $newQuantity = $existingCartItem->quantity + $request->quantity;
 
-            if ($product->stock < $newQuantity) {
+            if ($product_size_stock < $newQuantity) {
                 return back()->with('error', 'No hay stock suficiente del producto');
             }
         }
@@ -348,11 +319,12 @@ class CartController extends Controller
                     'subtotal' => $newQuantity * $existingCartItem->unity_price,
                 ]);
             } else {
-                // Si el producto no está en el carrito, crea un nuevo elemento
+                // Si el producto no está en el carrito, crea un nuevo CartItem
                 CartItem::create([
                     'user_id' => $user->id,
                     'product_id' => $product->id,
-                    'quantity' => $request->quantity,
+                    'quantity' => $quantity,
+                    'size' => $size,
                     'unity_price' => $product->price,
                     'subtotal' => $product->price * $request->quantity,
                 ]);
@@ -367,10 +339,11 @@ class CartController extends Controller
         return back()->with('message', 'Producto añadido a la cesta correctamente');
     }
 
-    public function deleteItemCart($id)
+    public function deleteItemCart($id, Request $request)
     {
         $user = auth()->user();
-        $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->first();
+        $size = $request->size;
+        $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->where('size', $size)->first();
 
         if ($cart_item) {
             $cart_item->delete();

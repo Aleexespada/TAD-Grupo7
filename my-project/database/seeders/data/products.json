@@ -3,7 +3,6 @@
         "id": 1,
         "name": "Americana Traje Cuadro Ventana Azul Lana",
         "price": 199.00,
-        "stock": 48,
         "discount": null,
         "brand_id": 6
     },
@@ -11,7 +10,6 @@
         "id": 2,
         "name": "Pantalón Traje Cuadro Ventana Azul Lana",
         "price": 79.95,
-        "stock": 32,
         "discount": null,
         "brand_id": 6
     }

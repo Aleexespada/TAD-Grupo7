@@ -40,7 +40,7 @@
                                     <label class="form-label" for="shippingAddress">Direcciones de envío guardadas</label>
                                     <!-- <input type="text" name="name" autocomplete="given-name" class="form-control @error('name') is-invalid @enderror" id="nameRegister" value="{{ old('name') }}" required autofocus placeholder="Nombre" /> -->
                                     <select class="form-select" id="shippingAddress" name="shipping_address" aria-label="Seleccionar dirección de envío">
-                                        <option selected disabled>--</option>
+                                        <option selected>--</option>
                                         @foreach ($addresses as $address)
                                         <option value="{{ $address->id }}">{{ $address->street }}, {{ $address->number }} {{ $address->floor }}, ({{ $address->postal_code }}), {{ $address->province }} {{ $address->country }}</option>
                                         @endforeach

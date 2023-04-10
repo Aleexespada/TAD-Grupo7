@@ -38,7 +38,7 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="payMethod">Métodos de pago guardados</label>
                                     <select class="form-select" id="payMethod" name="pay_method" aria-label="Seleccionar método de pago">
-                                        <option selected disabled>--</option>
+                                        <option selected>--</option>
                                         @foreach ($creditCards as $creditCard)
                                         <option value="{{ $creditCard->id }}">{{ $creditCard->cardholder_name }} - {{ $creditCard->expiration_month }}/{{ $creditCard->expiration_year }}</option>
                                         @endforeach
