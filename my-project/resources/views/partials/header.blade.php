@@ -117,7 +117,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item border-0">
+
+                            @if (Auth::user()->roles->contains('name', 'admin'))
+                            <div class="accordion-item border-0 mt-3">
+                                <h2 class="accordion-header">
+                                    <a href="{{ route('dashboard.products') }}" class="accordion-button collapsed text-decoration-none text-dark" id="admin-link" type="button">
+                                    <i class="fa-solid fa-gear me-2"></i>
+                                        Panel de administrador
+                                    </a>
+                                </h2>
+                            </div>
+                            @endif
+
+                            <div class="accordion-item border-0 mt-3">
                                 <h2 class="accordion-header">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="accordion-button collapsed text-decoration-none text-dark" id="signout-link" type="button">
                                         <i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>

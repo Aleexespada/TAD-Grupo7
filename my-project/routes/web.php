@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AddressesController;
+use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.app');
 })->name('index');
+
+// Admin
+Route::get('/admin/productos', [AdminProductController::class, 'index'])->name('dashboard.products')->middleware('auth', 'admin');
+Route::get('/admin/pedidos', [AdminOrderController::class, 'index'])->name('dashboard.orders')->middleware('auth', 'admin');
 
 // Products
 Route::get('/productos/{id}', [ProductsController::class, 'show'])->name('products.show');
