@@ -36,3 +36,7 @@ Route::post('/cesta/incrementar/{id}', [CartController::class, 'increaseProduct'
 Route::post('/cesta', [CartController::class, 'createItemCart'])->name('cart.add')->middleware('auth');
 Route::delete('/cesta/eliminar/{id}', [CartController::class, 'deleteItemCart'])->name('cart.delete')->middleware('auth');
 Route::post('/cesta/discount', [CartController::class, 'applyDiscount'])->name('cart.apply_discount')->middleware('auth');
+
+
+// Profile
+Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.profile')->middleware('auth');
