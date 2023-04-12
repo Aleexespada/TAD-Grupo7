@@ -13,4 +13,9 @@ class Description extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function sizes()
+    {
+        return $this->belongsToMany(Size::class, 'description_size')->withPivot('stock');
+    }
 }

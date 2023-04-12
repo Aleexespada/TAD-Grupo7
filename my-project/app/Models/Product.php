@@ -9,6 +9,19 @@ class Product extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'price',
+        'stock',
+        'discount',
+        'brand_id',
+    ];
+
     public function description()
     {
         return $this->hasOne(Description::class);
@@ -41,7 +54,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class, 'order_product');
     }
     
     public function images()

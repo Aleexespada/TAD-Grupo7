@@ -1,1 +1,72 @@
 @import 'bootstrap/scss/bootstrap';
+
+/*
+* ESTILOS GENERALES
+*/
+.navbar-toggler {
+    border: none;
+}
+
+// Buttons, Inputs
+.btn:focus,
+a,
+input,
+textarea,
+button:focus,
+select {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: black !important;
+}
+
+.principal-container {
+    min-height: calc(100vh - 100px);
+}
+
+/*
+* HEADER
+*/
+// PROFILE NAVBAR
+#profileNavbarToggler {
+    font-size: var(--bs-nav-link-font-size);
+}
+
+#signout-link.accordion-button::after {
+    background-image: none;
+    background-color: transparent;
+}
+
+.accordion-button:not(.collapsed) {
+    color: inherit;
+    background-color: transparent;
+
+    &::after {
+        background-image: var(--bs-accordion-btn-icon);
+    }
+}
+
+/*
+* FOOTER
+*/
+i.fab::after {
+    content: none;
+}
+
+/*
+* RESPONSIVE
+*/
+@media only screen and (max-width: 768px) {
+
+    /*
+    * HEADER
+    */
+    .icon-text {
+        display: none;
+    }
+
+}

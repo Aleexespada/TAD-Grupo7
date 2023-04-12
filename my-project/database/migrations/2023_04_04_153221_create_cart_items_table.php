@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->unsignedInteger('quantity')->default(1);
+            $table->string('size');
             $table->unsignedDouble('unity_price');
             $table->unsignedDouble('subtotal');
             $table->timestamps();
