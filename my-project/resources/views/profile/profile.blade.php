@@ -19,7 +19,7 @@
                         <ul class="list-group list-group-flush rounded-3">
                             @foreach ($orders as $order)
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0">Pedido con id #{{$order->id}}</p>
 
                                 <div class="ms-auto my-auto col-auto row">
 
@@ -99,14 +99,14 @@
 
                                                     <!-- LISTA DE PRODUCTOS DEL PEDIDO -->
                                                     <ul class="list-group list-group-flush rounded-3">
-                                                        @foreach
+                                                        @foreach($order->products as $product)
                                                         <li class="list-group-item p-3">
                                                             <div class="row">
                                                             <div class="col-sm-9">
-                                                                <p class="mb-0">{{ $order->products->name }} x{{ cantidad }}</p>
+                                                                <p class="mb-0">{{ $product->name }} x {{ $product->pivot->product_quantity }}</p>
                                                             </div>
                                                             <div class="col-sm-3">
-                                                                <p class="mb-0">{{ $order->products->price }}€</p>
+                                                                <p class="mb-0">{{ $product->price * $product->pivot->product_quantity}}€</p>
                                                             </div>
                                                             </div>
                                                         </li>

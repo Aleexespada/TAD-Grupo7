@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressesController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +43,4 @@ Route::post('/cesta/discount', [CartController::class, 'applyDiscount'])->name('
 Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.profile')->middleware('auth');
 Route::delete('/perfil/eliminar-pedido/{id}', [ProfileController::class, 'deleteOrder'])->name('profile.delete.order')->middleware('auth');
 Route::get('/perfil/eliminar-direccion/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.delete.address')->middleware('auth');
-Route::get('/perfil/eliminar-tarjeta-credito/{id}', [ProfileController::class, 'deleteCreditCard'])->name('profile.credit_card')->middleware('auth');
+Route::get('/perfil/eliminar-tarjeta-credito/{id}', [ProfileController::class, 'deleteCreditCard'])->name('profile.delete.credit_card')->middleware('auth');
