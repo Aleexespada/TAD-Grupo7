@@ -124,7 +124,9 @@ class AdminProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -135,7 +137,12 @@ class AdminProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        $brands = Brand::all();
+        $sizes = Size::all();
+
+        return view('admin.products.edit', compact('product', 'categories', 'brands', 'sizes'));
     }
 
     /**
@@ -163,8 +170,14 @@ class AdminProductController extends Controller
 
             $description = Description::where('product_id', $id)->first();
             $product = Product::findOrFail($id);
+            $images = $product->images;
 
             if ($description && $product) {
+                if ($images->count() > 0) {
+                    foreach ($images as $image) {
+                        $image->delete();
+                    }
+                }
                 $description->delete();
                 $product->delete();
             }

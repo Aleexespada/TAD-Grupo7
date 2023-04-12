@@ -72,10 +72,10 @@ Productos
                 <td>{{ $product->created_at }}</td>
                 <td>
                     <div class="d-flex gap-3">
-                        <a href="" class="btn">
+                        <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="" class="btn">
+                        <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         <form action="{{ route('dashboard.products.delete', $product->id) }}" method="POST">

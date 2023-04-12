@@ -9,10 +9,12 @@ addButton.addEventListener('click', () => {
     const select = document.getElementById("size");
     const clonSelect = select.cloneNode(true);
     clonSelect.classList.add("mt-2");
+    clonSelect.selectedIndex = -1;
 
     const input = document.getElementById("stock");
     const clonInput = input.cloneNode(true);
     clonInput.classList.add("mt-2");
+    clonInput.value = '';
     
     selectContainer.appendChild(clonSelect);
     stockContainer.appendChild(clonInput);
