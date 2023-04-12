@@ -36,7 +36,8 @@ textarea:focus {
     font-size: var(--bs-nav-link-font-size);
 }
 
-#signout-link.accordion-button::after {
+#signout-link.accordion-button::after,
+#admin-link.accordion-button::after {
     background-image: none;
     background-color: transparent;
 }

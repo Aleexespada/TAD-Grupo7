@@ -26,6 +26,13 @@
                             </div>
                             @endif
 
+                            <!-- ITEM STRUCTURE -->
+                            @guest
+                            <p>Inicia sesión para comenzar a comprar.</p>
+                            @else
+                            @isset($cart_items)
+                            @if (count($cart_items) > 0)
+
                             <div class="item row mb-4 d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                 </div>
@@ -47,18 +54,12 @@
 
                             <hr class="my-4">
 
-                            <!-- ITEM STRUCTURE -->
-                            @guest
-                            <p>Inicia sesión para comenzar a comprar.</p>
-                            @else
-                            @isset($cart_items)
-                            @if (count($cart_items) > 0)
                             @foreach($cart_items as $item)
 
                             <div class="item row mb-4 d-flex justify-content-between align-items-center">
                                 <!-- IMAGE -->
                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <img @if($item->product->images->count() > 0) src="{{ asset('img/' . $item->product->images->first()->url) }}" @endif class="img-fluid rounded-3" alt="{{ $item->product->name }}">
+                                    <img @if($item->product->images->count() > 0) src="{{ asset($item->product->images->first()->url) }}" @endif class="img-fluid rounded-3" alt="{{ $item->product->name }}">
                                 </div>
                                 <!-- NAME -->
                                 <div class="col-md-3 col-lg-3 col-xl-3">
@@ -188,4 +189,4 @@
         </div>
 
     </div>
-@endsection
+    @endsection

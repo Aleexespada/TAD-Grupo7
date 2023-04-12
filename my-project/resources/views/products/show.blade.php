@@ -15,7 +15,7 @@
             @foreach($product->images as $image)
             <div class="col">
                 <figcaption class="product-img h-100" data-bs-toggle="modal" data-bs-target="#product-img-modal">
-                    <img class="w-100" src="{{ asset('img/' . $image->url ) }}" alt="Imagen de {{ $product->name }}">
+                    <img class="w-100" src="{{ asset($image->url) }}" alt="Imagen de {{ $product->name }}">
                 </figcaption>
             </div>
             @endforeach
@@ -176,7 +176,7 @@
         <!-- IMAGE FOR SCREENS SMALLER THAN MD -->
         <div class="row mb-4 d-md-none">
             <figcaption class="text-center" style="height: 450px;">
-                <img class="w-auto h-100" src="{{ asset('img/' . $product->images->first()->url ) }}" alt="Imagen de {{ $product->name }}">
+                <img class="w-auto h-100" src="{{ asset($product->images->first()->url ) }}" alt="Imagen de {{ $product->name }}">
             </figcaption>
         </div>
 

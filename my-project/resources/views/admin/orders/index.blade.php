@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Pedidos - Mr Penguin')
+@section('title', 'Pedidos | Admin - Mr Penguin')
 
 @section('section-title')
 Pedidos

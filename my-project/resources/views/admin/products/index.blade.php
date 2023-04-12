@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Productos - Mr Penguin')
+@section('title', 'Productos | Admin - Mr Penguin')
 
 @section('section-title')
 Productos
@@ -14,13 +14,26 @@ Productos
 @endsection
 
 @section('card-body')
+@if(session('message'))
+<div class="alert alert-success alert-dismissible fade show px-5">
+    <span class="m-0">{{ session('message') }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show px-5">
+    <span class="m-0">{{ session('error') }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="row mb-2">
     <div class="col-sm-8">
         <div class=" me-2 mb-2 d-inline-block">
-            <button type="button" class="btn btn-dark btn-rounded mb-2 me-2">
+            <a href="{{ route('dashboard.products.create') }}" type="button" class="btn btn-dark btn-rounded mb-2 me-2">
                 <i class="fa-solid fa-plus me-1"></i>
                 Añadir nuevo producto
-            </button>
+            </a>
         </div>
     </div>
     <div class="col-sm-4">
@@ -65,7 +78,7 @@ Productos
                         <a href="" class="btn">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <form action="">
+                        <form action="{{ route('dashboard.products.delete', $product->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn">
