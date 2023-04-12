@@ -40,3 +40,6 @@ Route::post('/cesta/discount', [CartController::class, 'applyDiscount'])->name('
 
 // Profile
 Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.profile')->middleware('auth');
+Route::delete('/perfil/eliminar-pedido/{id}', [ProfileController::class, 'deleteOrder'])->name('profile.delete.order')->middleware('auth');
+Route::get('/perfil/eliminar-direccion/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.delete.address')->middleware('auth');
+Route::get('/perfil/eliminar-tarjeta-credito/{id}', [ProfileController::class, 'deleteCreditCard'])->name('profile.credit_card')->middleware('auth');
