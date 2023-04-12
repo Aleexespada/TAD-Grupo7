@@ -38,7 +38,7 @@ class ProfileController extends Controller
             $address = Address::where('user_id', $user_id)->where('id', $address_id);
             if ($address) $address->delete();
 
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.profile');
 
         } else {
             return view('profile.profile');
@@ -53,7 +53,7 @@ class ProfileController extends Controller
             $credit_cart = CreditCard::where('user_id', $user_id)->where('id', $credit_card_id);
             if ($credit_cart) $credit_cart->delete();
 
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.profile');
 
         } else {
             return view('profile.profile');
@@ -68,7 +68,7 @@ class ProfileController extends Controller
             $order = Order::where('user_id', $user_id)->where('id', $order_id);
             if ($order) $order->delete();
 
-            return redirect()->route('profile.index');
+            return redirect()->route('profile.profile');
 
         } else {
             return view('profile.profile');
