@@ -226,7 +226,6 @@ class CartController extends Controller
 
     public function decreaseProduct($id, Request $request)
     {
-        $product = Product::findOrFail($id);
         $user = auth()->user();
         $size = $request->size;
         $cart_item = CartItem::where('user_id', $user->id)->where('product_id', $id)->where('size', $size)->first();
@@ -234,7 +233,7 @@ class CartController extends Controller
         if ($cart_item) {
             if ($cart_item->quantity > 1) {
                 $cart_item->quantity--;
-                $cart_item->subtotal = $cart_item->quantity * $product->price;
+                $cart_item->subtotal = $cart_item->quantity * $cart_item->unity_price;
                 $cart_item->save();
             } else {
                 $cart_item->delete();
@@ -257,7 +256,7 @@ class CartController extends Controller
 
             if ($cart_item->quantity + 1 <= $product_size_stock) {
                 $cart_item->quantity++;
-                $cart_item->subtotal = $cart_item->quantity * $product->price;
+                $cart_item->subtotal = $cart_item->quantity * $cart_item->unity_price;
                 $cart_item->save();
             } else {
                 return back()->withErrors(['No hay stock suficiente del producto']);            }
@@ -320,13 +319,18 @@ class CartController extends Controller
                 ]);
             } else {
                 // Si el producto no está en el carrito, crea un nuevo CartItem
+                $price = $product->price;
+                if ($product->discount) {
+                    $price = $product->discount;
+                    
+                }
                 CartItem::create([
                     'user_id' => $user->id,
                     'product_id' => $product->id,
                     'quantity' => $quantity,
                     'size' => $size,
-                    'unity_price' => $product->price,
-                    'subtotal' => $product->price * $request->quantity,
+                    'unity_price' => $price,
+                    'subtotal' => $price * $request->quantity,
                 ]);
             }
 

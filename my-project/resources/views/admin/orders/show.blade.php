@@ -187,9 +187,9 @@ Pedido ID - {{ $order->id }}
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->pivot->product_size }}</td>
-                    <td>{{ $product->price }} €</td>
+                    <td>@if ($product->discount){{ $product->discount }} €@else{{ $product->price }} €@endif</td>
                     <td>{{ $product->pivot->product_quantity }}</td>
-                    <td>{{ $product->price * $product->pivot->product_quantity }} €</td>
+                    <td>@if ($product->discount){{ $product->discount * $product->pivot->product_quantity }} €@else{{ $product->price * $product->pivot->product_quantity }} €@endif</td>
                 </tr>
                 @endforeach
                 <tr>
