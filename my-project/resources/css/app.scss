@@ -1,8 +1,19 @@
 @import 'bootstrap/scss/bootstrap';
 
+@font-face {
+    font-family: SquadaOne;
+    src: url('/public/fonts/Squada_One/SquadaOne-Regular.ttf');
+    font-style: normal;
+}
+
 /*
 * ESTILOS GENERALES
 */
+.navbar-brand {
+    font-family: SquadaOne;
+    font-size: 24pt;
+}
+
 .navbar-toggler {
     border: none;
 }

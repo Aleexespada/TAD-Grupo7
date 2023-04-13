@@ -17,8 +17,8 @@
 
             <!-- CENTER ELEMENTS -->
             <div class="flex-row d-none d-md-flex">
-                <a class="navbar-brand" href="/">
-                    NAVBAR
+                <a class="navbar-brand" href="{{ route('index') }}">
+                    MR PENGUIN
                 </a>
             </div>
 

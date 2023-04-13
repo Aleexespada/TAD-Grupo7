@@ -1,5 +1,16 @@
 @import 'bootstrap/scss/bootstrap';
 
+@font-face {
+    font-family: SquadaOne;
+    src: url('/public/fonts/Squada_One/SquadaOne-Regular.ttf');
+    font-style: normal;
+}
+
+.brand-name {
+    font-family: SquadaOne;
+    font-size: 28pt;
+}
+
 .principal-container {
     min-height: 100vh;
 }
