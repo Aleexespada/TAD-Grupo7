@@ -20,14 +20,26 @@ class ProfileController extends Controller
     {
         if (auth()->user()) {
             $user = auth()->user();
-            $orders = $user->orders;
-            $addresses = $user->addresses;
-            $credit_cards = $user->creditCards;
 
-            return view('profile.profile', compact(['user', 'orders', 'addresses', 'credit_cards']));
+            return view('profile.profile', compact(['user']));
         } else {
             return view('profile.profile');
         }
+    }
+
+    public function indexCreditCards()
+    {
+        return view('profile.credit-cards');
+    }
+
+    public function indexAddresses()
+    {
+        return view('profile.addresses');
+    }
+
+    public function indexOrders()
+    {
+        return view('profile.orders');
     }
 
     public function deleteAddress($address_id)
@@ -39,7 +51,6 @@ class ProfileController extends Controller
             if ($address) $address->delete();
 
             return redirect()->route('profile.profile');
-
         } else {
             return view('profile.profile');
         }
@@ -54,24 +65,26 @@ class ProfileController extends Controller
             if ($credit_cart) $credit_cart->delete();
 
             return redirect()->route('profile.profile');
-
         } else {
             return view('profile.profile');
         }
     }
 
-    public function deleteOrder($order_id)
+    public function cancelOrder($order_id)
     {
-        if (auth()->user()) {
-            $user_id = auth()->user()->id;
+        try {
+            DB::beginTransaction();
 
-            $order = Order::where('user_id', $user_id)->where('id', $order_id);
-            if ($order) $order->delete();
+            Order::where('id', $order_id)->update([
+                'status' => 'cancelado'
+            ]);
 
-            return redirect()->route('profile.profile');
-
-        } else {
-            return view('profile.profile');
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Error al cambiar estado del pedido');
         }
+
+        return back()->with('message', 'Pedido con ID: ' . $order_id . ' cancelado con exito');
     }
 }
