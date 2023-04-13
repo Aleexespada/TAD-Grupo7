@@ -84,9 +84,9 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Mis datos</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Opiniones</a>
+                                        <a href="{{ route('profile.profile') }}" class="list-group-item list-group-item-action border-0">Mis datos</a>
+                                        <a href="{{ route('profile.addresses') }}" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
+                                        <!-- <a href="#" class="list-group-item list-group-item-action border-0">Opiniones</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -99,8 +99,8 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Pedidos</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a>
+                                        <a href="{{ route('profile.orders') }}" class="list-group-item list-group-item-action border-0">Pedidos</a>
+                                        <!-- <a href="#" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a> -->
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                                     <div class="accordion-body list-group">
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Tarjetas vinculadas</a>
+                                        <a href="{{ route('profile.creditcards') }}" class="list-group-item list-group-item-action border-0">Tarjetas vinculadas</a>
                                     </div>
                                 </div>
                             </div>

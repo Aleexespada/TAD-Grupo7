@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +51,13 @@ Route::post('/cesta/incrementar/{id}', [CartController::class, 'increaseProduct'
 Route::post('/cesta', [CartController::class, 'createItemCart'])->name('cart.add')->middleware('auth');
 Route::delete('/cesta/eliminar/{id}', [CartController::class, 'deleteItemCart'])->name('cart.delete')->middleware('auth');
 Route::post('/cesta/discount', [CartController::class, 'applyDiscount'])->name('cart.apply_discount')->middleware('auth');
+
+
+// Profile
+Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.profile')->middleware('auth');
+Route::get('/perfil/tarjetas-bancarias', [ProfileController::class, 'indexCreditCards'])->name('profile.creditcards')->middleware('auth');
+Route::get('/perfil/direcciones', [ProfileController::class, 'indexAddresses'])->name('profile.addresses')->middleware('auth');
+Route::get('/perfil/pedidos', [ProfileController::class, 'indexOrders'])->name('profile.orders')->middleware('auth');
+Route::put('/perfil/cancelar-pedido/{id}', [ProfileController::class, 'cancelOrder'])->name('profile.cancel.order')->middleware('auth');
+Route::delete('/perfil/eliminar-direccion/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.delete.address')->middleware('auth');
+Route::delete('/perfil/eliminar-tarjeta-credito/{id}', [ProfileController::class, 'deleteCreditCard'])->name('profile.delete.credit_card')->middleware('auth');
