@@ -28,8 +28,11 @@ Route::get('/admin/productos/crear', [AdminProductController::class, 'create'])-
 Route::post('/admin/productos/crear', [AdminProductController::class, 'store'])->name('dashboard.products.create')->middleware('auth', 'admin');
 Route::get('/admin/productos/{id}', [AdminProductController::class, 'show'])->name('dashboard.products.show')->middleware('auth', 'admin');
 Route::get('/admin/productos/edit/{id}', [AdminProductController::class, 'edit'])->name('dashboard.products.edit')->middleware('auth', 'admin');
+Route::put('/admin/productos/edit/{id}', [AdminProductController::class, 'update'])->name('dashboard.products.edit')->middleware('auth', 'admin');
 Route::delete('/admin/productos/delete/{id}', [AdminProductController::class, 'destroy'])->name('dashboard.products.delete')->middleware('auth', 'admin');
 Route::get('/admin/pedidos', [AdminOrderController::class, 'index'])->name('dashboard.orders')->middleware('auth', 'admin');
+Route::get('/admin/pedidos/{id}', [AdminOrderController::class, 'show'])->name('dashboard.orders.show')->middleware('auth', 'admin');
+Route::put('/admin/pedidos/estado/{id}', [AdminOrderController::class, 'changeStatus'])->name('dashboard.orders.changestatus')->middleware('auth', 'admin');
 
 // Products
 Route::get('/productos/{id}', [ProductsController::class, 'show'])->name('products.show');

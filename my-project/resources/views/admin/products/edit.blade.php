@@ -10,7 +10,7 @@ Editar producto ID - {{ $product->id }}
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li>
+    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
     <li class="breadcrumb-item"><a href="{{ route('dashboard.products') }}" class="text-black">Productos</a></li>
     <li class="breadcrumb-item active">Editar producto ID - {{ $product->id }}</li>
 </ol>
@@ -31,7 +31,8 @@ Editar producto ID - {{ $product->id }}
 </div>
 @endif
 <!-- Formulario -->
-<form method="POST" action="{{ route('dashboard.products.create') }}" enctype="multipart/form-data" id="updateProductForm" class="row g-3">
+<form method="POST" action="{{ route('dashboard.products.edit', $product->id) }}" enctype="multipart/form-data" id="updateProductForm" class="row g-3">
+    @method('PUT')
     @csrf
 
     <div class="col-12">

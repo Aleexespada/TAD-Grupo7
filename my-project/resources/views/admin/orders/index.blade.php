@@ -8,12 +8,25 @@ Pedidos
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li>
+    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
     <li class="breadcrumb-item active">Pedidos</li>
 </ol>
 @endsection
 
 @section('card-body')
+@if(session('message'))
+<div class="alert alert-success alert-dismissible fade show px-5">
+    <span class="m-0">{{ session('message') }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show px-5">
+    <span class="m-0">{{ session('error') }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <div class="table-responsive">
     <table class="table align-translate-middle">
         <thead class="table-light">
@@ -44,17 +57,18 @@ Pedidos
                 @endif
                 <td>
                     <div class="d-flex gap-3">
-                        <a href="" class="btn">
+                        <a href="{{ route('dashboard.orders.show', $order->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver pedido">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="" class="btn">
+                        <!-- <a href="" class="btn">
                             <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <form action="">
-                            @method('DELETE')
+                        </a> -->
+                        <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
+                            @method('PUT')
                             @csrf
-                            <button type="submit" class="btn">
-                                <i class="fa-solid fa-trash"></i>
+                            <input type="hidden" name="status" value="cancelado">
+                            <button type="submit" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar pedido">
+                                <i class="fa-solid fa-ban"></i>
                             </button>
                         </form>
                     </div>

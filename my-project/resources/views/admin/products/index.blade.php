@@ -8,7 +8,7 @@ Productos
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li>
+    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
     <li class="breadcrumb-item active">Productos</li>
 </ol>
 @endsection
@@ -37,12 +37,13 @@ Productos
         </div>
     </div>
     <div class="col-sm-4">
-        <div class="search-box text-sm-end">
+        <!-- TODO: Hacer barra búsqueda -->
+        <!-- <div class="search-box text-sm-end">
             <div class="position-relative">
                 <input type="text" class="form-control" placeholder="Buscar...">
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -72,16 +73,16 @@ Productos
                 <td>{{ $product->created_at }}</td>
                 <td>
                     <div class="d-flex gap-3">
-                        <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn">
+                        <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver producto">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn">
+                        <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar producto">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         <form action="{{ route('dashboard.products.delete', $product->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn">
+                            <button type="submit" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar producto">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </form>

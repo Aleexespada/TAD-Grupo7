@@ -8,7 +8,7 @@ Producto ID - {{ $product->id }}
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li>
+    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
     <li class="breadcrumb-item"><a href="{{ route('dashboard.products') }}" class="text-black">Productos</a></li>
     <li class="breadcrumb-item active">Producto ID - {{ $product->id }}</li>
 </ol>
@@ -62,6 +62,25 @@ Producto ID - {{ $product->id }}
         <label for="brand" class="form-label">Marca</label>
         <input type="text" class="form-control" id="brand" name="brand" value="{{ $product->brand->name }}" readonly>
     </div>
+
+    @if ($product->images->count() > 0)
+    <div class="col-12 mt-5">
+        <h5>Imágenes</h5>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="col-12">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-4">
+            @foreach ($product->images as $image)
+            <div class="col">
+                <div class="card text-center" style="height: 300px;">
+                    <img src="{{ asset($image->url) }}" class="h-100 card-img-top" alt="" style="object-fit: contain;">
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
 
     <div class="col-12 mt-5">
         <h5>Descripción</h5>

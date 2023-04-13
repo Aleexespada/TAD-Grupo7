@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminOrderController extends Controller
 {
@@ -20,27 +21,6 @@ class AdminOrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -48,30 +28,9 @@ class AdminOrderController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $order = Order::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
@@ -80,8 +39,28 @@ class AdminOrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function changeStatus($id, Request $request)
     {
-        //
+        if (
+            $request->status == 'pendiente' || $request->status == 'en proceso'
+            || $request->status == 'entregado' || $request->status == 'cancelado'
+        )
+            try {
+                DB::beginTransaction();
+
+                Order::where('id', $id)->update([
+                    'status' => $request->status
+                ]);
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return back()->with('error', 'Error al cambiar estado del pedido');
+            }
+        else {
+            return back()->with('error', 'Error al cambiar estado del pedido');
+        }
+
+        return back()->with('message', 'Estado del pedido con ID: ' . $id . ' cambiado con exito');
     }
 }

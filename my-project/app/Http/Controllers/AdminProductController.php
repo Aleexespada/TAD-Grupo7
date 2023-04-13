@@ -62,7 +62,7 @@ class AdminProductController extends Controller
             'sizes' => 'required|array|min:1',
             'sizes.*' => 'exists:sizes,id',
             'stocks' => 'required|array|min:1',
-            'stocks.*' => 'integer|min:1'
+            'stocks.*' => 'integer|min:0'
         ]);
 
         try {
@@ -154,7 +154,69 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'discount' => 'nullable|numeric|min:0',
+            'categories' => 'required|array|min:1',
+            'categories.*' => 'exists:categories,id',
+            'brand' => 'required|exists:brands,id',
+            'images' => 'nullable|array|max:4',
+            'images.*' => 'image|max:2048',
+            'description' => 'required|string',
+            'details' => 'required|string',
+            'color' => 'required|string',
+            'sizes' => 'required|array|min:1',
+            'sizes.*' => 'exists:sizes,id',
+            'stocks' => 'required|array|min:1',
+            'stocks.*' => 'integer|min:0'
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        try {
+            DB::beginTransaction();
+
+            // Actualización producto
+            Product::where('id', $product->id)->update([
+                'name' => $request->name,
+                'price' => $request->price,
+                'discount' => $request->discount,
+                'brand_id' => $request->brand
+            ]);
+
+            // Actualización descripción
+            Description::where('id', $product->description->id)->update([
+                'description' => $request->description,
+                'details' => $request->details,
+                'color' => $request->color
+            ]);
+
+            // Actualización categorías producto
+            $categories = collect($request->categories)->mapWithKeys(function ($categoryId) {
+                return [$categoryId => ['created_at' => now(), 'updated_at' => now()]];
+            });
+            $product->categories()->sync($categories->all());
+
+            // Actualización tallas con stocks productos
+            $sizes = $request->sizes;
+            $stocks = $request->stocks;
+            $sizeStocks = collect($sizes)->mapWithKeys(function ($size, $index) use ($stocks) {
+                return [ $size => [
+                    'stock' => $stocks[$index],
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]];
+            });
+            $product->description->sizes()->sync($sizeStocks->all());
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Error al editar el producto');
+        }
+
+        return back()->with('message', 'Empleado actualizado con exito');
     }
 
     /**
