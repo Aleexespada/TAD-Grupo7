@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "product_id": 1,
+        "rating": 5,
+        "comment": "Bastante elegante"
+    },
+    {
+        "id": 2,
+        "user_id": 3,
+        "product_id": 1,
+        "rating": 3,
+        "comment": "Ta bien"
+    },
+    {
+        "id": 3,
+        "user_id": 4,
+        "product_id": 1,
+        "rating": 2,
+        "comment": "Parece más bonito en la foto"
+    },
+    {
+        "id": 4,
+        "user_id": 5,
+        "product_id": 2,
+        "rating": 3,
+        "comment": "Der tiri socio"
+    },
+    {
+        "id": 5,
+        "user_id": 6,
+        "product_id": 2,
+        "rating": 4,
+        "comment": "Increible el pantalón"
+    }
+]

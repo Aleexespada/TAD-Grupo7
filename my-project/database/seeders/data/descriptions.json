@@ -12,6 +12,40 @@
         "description": "Tejido de procedencia italiana\nConfeccionado en tejido 100% lana\nCierre mediante cremallera oculta por tapeta, corchete y tira abotonada\nDos bolsillos laterales\nDos bolsillos de ojal abotonado en la parte posterior\nTrabillas para el cinturón\n100% lana. Este material se produce mediante prácticas que garantizan la mejora del bienestar animal conforme a los principios de las 'Cinco Libertades' y con métodos de gestión de los cultivos que ayuda a conservar la biodiversidad.",
         "details": "NO LAVAR\nNO USAR LEJÍA / BLANQUEADOR\nPLANCHAR MAXIMO 150 º C\nNO USAR SECADORA\nLIM.SECO TETRACLOROETILENO",
         "color": "#262835"
+    },
+    {
+        "id": 3,
+        "product_id": 3,
+        "description": "Zapato acordonado de piel napa cepillada, con su toque urbano y pulido diseño se convertirán en un imprescindible en tu armario.\nRealizado en piel de vacuno cepillada\nForro interior y planta de piel\nIncluye planta especial almohadillada para mayor confort\nHecho en Portugal\nPara poder tramitar la devolución o cambio de este artículo, es indispensable conservar el embalaje original.",
+        "details": "Comp. / cuidados\nCorte\npiel vacuno 100%\n\nForro\npiel vacuno 90%, poliamida 10%\n\nPiso/Suela\npoliuretano termoplástico 100%\n\nNO LAVAR\nNO USAR LEJÍA / BLANQUEADOR\nNO PLANCHAR\nNO LIMPIEZA EN SECO\nNO USAR SECADORA\nNO SUMERGIR EN AGUA\nCUERO/CHAROL/ANTIC. Limpiar con trapo de algodón seco.\nANTE/NOBUCK/SERRAJE. Limpiar con cepillo suave o esponja dura.\nCUERO. Se pueden aplicar ceras incoloras o al tono de la piel.\nANTE/NOBUCK/SERRAJE. Pueden protegerse con sprays tratantes o repelentes de polvo (hidrofugante para mopas).",
+        "color": "#231A1A"
+    },
+    {
+        "id": 4,
+        "product_id": 4,
+        "description": "Tejido de espiga\nConfeccionado en tejido 100% algodón\nCorte regular fit\nCuello italiano\nCierre mediante botones\nEasy iron: planchado fácil",
+        "details": "Exterior\nalgodón 100%\nLAVAR A MAQUINA MAX. 30ºC. CENTRIFUGADO CORTO\nNO USAR LEJÍA / BLANQUEADOR\nPLANCHAR MAXIMO 150 º C\nNO USAR SECADORA\nLIM.SECO TETRACLOROETILENO",
+        "color": "#E1E3E7"
+    },
+    {
+        "id": 5,
+        "product_id": 5,
+        "description": "Confeccionado en tejido 100% lino\nCorte slim fit\nCuello italiano\nCierre mediante botones\nPuño abotonado",
+        "details": "Exterior\nlino 100%\nLAVAR A MAQUINA MAX. 30ºC. CENTRIFUGADO CORTO\nNO USAR LEJÍA / BLANQUEADOR\nPLANCHAR MAXIMO 110 º C\nNO USAR SECADORA\nLIM.SECO TETRACLOROETILENO",
+        "color": "#CCD0DF"
+    },
+    {
+        "id": 6,
+        "product_id": 6,
+        "description": "Confeccionado en algodón\nCorte slim fit\nCierre mediante cremallera oculta por tapeta y botón\nDos bolsillos laterales\nDos bolsillos de ojal abotonado en la parte posterior\nTrabillas para el cinturón",
+        "details": "Comp. / cuidados\nExterior\nalgodón 97%, elastano 3%\nForro\nalgodón 100%\nLAVAR A MAQUINA MAX. 30ºC. CENTRIFUGADO CORTO\nNO USAR LEJÍA / BLANQUEADOR\nPLANCHAR MAXIMO 110 º C\nNO USAR SECADORA\nLIM.SECO TETRACLOROETILENO",
+        "color": "#444436"
+    },
+    {
+        "id": 7,
+        "product_id": 7,
+        "description": "Un reloj atemporal con el motivo de Greca y la inscripción de Versace en el anillo superior. El diseño de La Greca adorna la esfera con la Medusa en las 12 h. El accesorio se completa con una correa metálica. Todos los relojes Versace están garantizados por la marca «Swiss Made».",
+        "details": "Caja: de acero inoxidable con logotipo de Versace en el anillo superior\nEsfera: en verde con diseño de Greca, logotipo de Versace y Medusa en las 12 h\nPulsera: correa de acero inoxidable con cierre desplegable\nMecanismo: de cuarzo suizo RONDA 515.1 de 3 manecillas con fecha en las 3 h\nSumergible: 5 ATM",
+        "color": "#2F5951"
     }
-
 ]

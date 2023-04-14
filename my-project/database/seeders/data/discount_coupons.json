@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "code": "SUMMER-23",
+        "percentage": 20.0,
+        "uses_limit": 1
+    },
+    {
+        "id": 2,
+        "code": "BOMBA-LOKO",
+        "percentage": 10.5,
+        "uses_limit": 1
+    },
+    {
+        "id": 3,
+        "code": "NEW-USER",
+        "percentage": 5.0,
+        "uses_limit": 2
+    }
+]

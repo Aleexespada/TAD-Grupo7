@@ -5,42 +5,26 @@
     },
     {
         "id": 2,
-        "name": "Jerséis"
-    },
-    {
-        "id": 3,
-        "name": "Polos"
-    },
-    {
-        "id": 4,
-        "name": "Camisetas"
-    },
-    {
-        "id": 5,
         "name": "Americanas"
     },
     {
-        "id": 6,
+        "id": 3,
         "name": "Pantalones"
     },
     {
-        "id": 7,
+        "id": 4,
         "name": "Chinos"
     },
     {
-        "id": 8,
+        "id": 5,
         "name": "Trajes"
     },
     {
-        "id": 9,
+        "id": 6,
         "name": "Zapatos"
     },
     {
-        "id": 10,
+        "id": 7,
         "name": "Relojes"
-    },
-    {
-        "id": 11,
-        "name": "Bolsos"
     }
 ]

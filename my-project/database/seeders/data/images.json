@@ -38,5 +38,105 @@
         "id": 8,
         "url": "storage/images/2_4.jpg",
         "product_id": 2
+    },
+    {
+        "id": 9,
+        "url": "storage/images/3_1.jpg",
+        "product_id": 3
+    },
+    {
+        "id": 10,
+        "url": "storage/images/3_2.jpg",
+        "product_id": 3
+    },
+    {
+        "id": 11,
+        "url": "storage/images/3_3.jpg",
+        "product_id": 3
+    },
+    {
+        "id": 12,
+        "url": "storage/images/3_4.jpg",
+        "product_id": 3
+    },
+    {
+        "id": 13,
+        "url": "storage/images/4_1.jpg",
+        "product_id": 4
+    },
+    {
+        "id": 14,
+        "url": "storage/images/4_2.jpg",
+        "product_id": 4
+    },
+    {
+        "id": 15,
+        "url": "storage/images/4_3.jpg",
+        "product_id": 4
+    },
+    {
+        "id": 16,
+        "url": "storage/images/4_4.jpg",
+        "product_id": 4
+    },
+    {
+        "id": 17,
+        "url": "storage/images/5_1.jpg",
+        "product_id": 5
+    },
+    {
+        "id": 18,
+        "url": "storage/images/5_2.jpg",
+        "product_id": 5
+    },
+    {
+        "id": 19,
+        "url": "storage/images/5_3.jpg",
+        "product_id": 5
+    },
+    {
+        "id": 20,
+        "url": "storage/images/5_4.jpg",
+        "product_id": 5
+    },
+    {
+        "id": 21,
+        "url": "storage/images/6_1.jpg",
+        "product_id": 6
+    },
+    {
+        "id": 22,
+        "url": "storage/images/6_2.jpg",
+        "product_id": 6
+    },
+    {
+        "id": 23,
+        "url": "storage/images/6_3.jpg",
+        "product_id": 6
+    },
+    {
+        "id": 24,
+        "url": "storage/images/6_4.jpg",
+        "product_id": 6
+    },
+    {
+        "id": 25,
+        "url": "storage/images/7_1.jpg",
+        "product_id": 7
+    },
+    {
+        "id": 26,
+        "url": "storage/images/7_2.jpg",
+        "product_id": 7
+    },
+    {
+        "id": 27,
+        "url": "storage/images/7_3.jpg",
+        "product_id": 7
+    },
+    {
+        "id": 28,
+        "url": "storage/images/7_4.jpg",
+        "product_id": 7
     }
 ]

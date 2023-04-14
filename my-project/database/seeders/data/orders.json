@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "address_id": 1,
+        "credit_card_id": 1,
+        "status": "pendiente",
+        "total_price": 676.95,
+        "comments": null
+    },
+    {
+        "id": 2,
+        "user_id": 3,
+        "address_id": 3,
+        "credit_card_id": 2,
+        "status": "en proceso",
+        "total_price": 199.00,
+        "comments": null
+    },
+    {
+        "id": 3,
+        "user_id": 2,
+        "address_id": 1,
+        "credit_card_id": 1,
+        "status": "cancelado",
+        "total_price": 79.95,
+        "comments": null
+    },
+    {
+        "id": 4,
+        "user_id": 7,
+        "address_id": 2,
+        "credit_card_id": 6,
+        "status": "entregado",
+        "total_price": 79.95,
+        "comments": null
+    }
+]
