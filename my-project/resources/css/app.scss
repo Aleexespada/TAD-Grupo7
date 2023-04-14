@@ -9,6 +9,25 @@
 /*
 * ESTILOS GENERALES
 */
+
+#goUpButton {
+    bottom: 55px;
+    right: 40px;
+    display: none;
+    padding: 15px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 50%;
+}
+
+#goUpButton:hover {
+    background-color: white;
+    color: black;
+}
+
 .navbar-brand {
     font-family: SquadaOne;
     font-size: 24pt;
