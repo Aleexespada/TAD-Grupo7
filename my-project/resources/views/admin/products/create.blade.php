@@ -39,7 +39,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- NAME -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="name" class="form-label">Nombre*</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
         <!-- Errores name -->
@@ -51,7 +51,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- PRICE -->
-    <div class="col-3">
+    <div class="col-md-3">
         <label for="price" class="form-label">Precio*</label>
         <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price') }}">
         <!-- Errores price -->
@@ -63,7 +63,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- DISCOUNT -->
-    <div class="col-3">
+    <div class="col-md-3">
         <label for="discount" class="form-label">Descuento</label>
         <input type="text" class="form-control @error('discount') is-invalid @enderror" id="discount" name="discount" value="{{ old('discount') }}">
         <!-- Errores discount -->
@@ -75,7 +75,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- CATEGORY -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label class="form-label">Categorías*</label>
         <div class="border rounded-3 p-2" style="height: 85px; overflow-y: scroll;">
             @foreach ($categories as $category)
@@ -96,7 +96,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- BRAND -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="brand" class="form-label">Marca*</label>
         <select class="form-select @error('brand') is-invalid @enderror" id="brand" name="brand">
             <option selected disabled>--</option>
@@ -117,7 +117,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- IMAGES -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="image" class="form-label">Imagen o Imágenes</label>
         <input type="file" class="form-control" id="image" name="images[]" multiple>
     </div>
@@ -127,7 +127,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- DESCRIPTION -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="description" class="form-label">Descripción*</label>
         <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description') }}</textarea>
         <!-- Errores description -->
@@ -139,7 +139,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- DETAILS -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="details" class="form-label">Detalles*</label>
         <textarea type="text" class="form-control @error('details') is-invalid @enderror" id="details" name="details">{{ old('details') }}</textarea>
         <!-- Errores details -->
@@ -151,7 +151,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- COLOR -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label for="color" class="form-label">Color*</label>
         <input type="color" class="form-control form-control-color @error('color') is-invalid @enderror" id="color" name="color" value="{{ old('color') }}">
         <!-- Errores color -->
@@ -197,21 +197,23 @@ Crear Nuevo Producto
         </div>
         @enderror
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
         <button type="button" class="btn btn-dark w-100" id="addVariant">Añadir</button>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
         <button type="button" class="btn btn-light border w-100" id="removeVariant">Quitar</button>
     </div>
 
     <!-- BUTTON -->
-    <div class="col-12 mt-5 text-end">
-        <button name="btnClear" type="reset" class="btn btn-outline-dark py-3 px-5 me-3">
-            Cancelar
-        </button>
-        <button name="btnRegister" type="submit" class="btn btn-dark py-3 px-5">
-            Crear producto
-        </button>
+    <div class="col-12 mt-5">
+        <div class="row justify-content-end">
+            <button name="btnClear" type="reset" class="col-12 col-md-4 col-xxl-2 btn btn-outline-dark py-3 px-5">
+                Cancelar
+            </button>
+            <button name="btnRegister" type="submit" class="col-12 col-md-6 col-xxl-3 btn btn-dark py-3 px-5 mt-2 mt-md-0 ms-md-2">
+                Crear producto
+            </button>
+        </div>
     </div>
 </form>
 @endsection

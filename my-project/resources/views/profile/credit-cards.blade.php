@@ -24,12 +24,13 @@
                                 </div>
 
                                 <!-- BOTÓN PARA ELIMINAR TARJETA DE CRÉDITO -->
-                                <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-delete-credit-card-{{$credit_card->id}}">
+                                <!-- TODO: Modificar eliminación tarjeta crédito -->
+                                <!-- <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-delete-credit-card-{{$credit_card->id}}">
                                 <i class="fa-solid fa-trash" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar tarjeta" data-bs-offset="0, 10"></i>
-                                </div>
+                                </div> -->
 
                                 <!-- MODAL PARA ELIMINAR TARJETA DE CRÉDITO  -->
-                                <div class="modal fade" id="modal-delete-credit-card-{{$credit_card->id}}" tabindex="-1" aria-labelledby="modal-delete-credit-card-label" aria-hidden="true">
+                                <!-- <div class="modal fade" id="modal-delete-credit-card-{{$credit_card->id}}" tabindex="-1" aria-labelledby="modal-delete-credit-card-label" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -50,7 +51,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </li>
                         @endforeach

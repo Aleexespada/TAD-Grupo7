@@ -22,43 +22,43 @@ Producto ID - {{ $product->id }}
     </div>
 
     <!-- NAME -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="name" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" readonly>
     </div>
 
     <!-- PRICE -->
-    <div class="col-3">
+    <div class="col-md-3">
         <label for="price" class="form-label">Precio*</label>
         <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }} €" readonly>
     </div>
 
     <!-- DISCOUNT -->
-    <div class="col-3">
+    <div class="col-md-3">
         <label for="discount" class="form-label">Descuento</label>
         <input type="text" class="form-control" id="discount" name="discount" value="@if ($product->discount){{ $product->discount }} €@else -- @endif" readonly>
     </div>
 
     <!-- CREATED AT -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="created_at" class="form-label">Creado</label>
         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $product->created_at }}" readonly>
     </div>
 
     <!-- UPDATED AT -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="updated_at" class="form-label">Actualizado</label>
         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $product->updated_at }}" readonly>
     </div>
 
     <!-- CATEGORY -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="category" class="form-label">Categorías</label>
         <input type="text" class="form-control" id="category" name="category" value="@foreach ($product->categories as $category){{ $category->name }}     @endforeach" readonly>
     </div>
 
     <!-- BRAND -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="brand" class="form-label">Marca</label>
         <input type="text" class="form-control" id="brand" name="brand" value="{{ $product->brand->name }}" readonly>
     </div>
@@ -70,7 +70,7 @@ Producto ID - {{ $product->id }}
 
     <!-- IMAGES -->
     <div class="col-12">
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 g-4">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-4">
             @foreach ($product->images as $image)
             <div class="col">
                 <div class="card text-center" style="height: 300px;">
@@ -87,19 +87,19 @@ Producto ID - {{ $product->id }}
     </div>
 
     <!-- DESCRIPTION -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="description" class="form-label">Descripción</label>
         <textarea type="text" class="form-control" id="description" name="description" readonly>{{ $product->description->description }}</textarea>
     </div>
 
     <!-- DETAILS -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="details" class="form-label">Detalles</label>
         <textarea type="text" class="form-control" id="details" name="details" readonly>{{ $product->description->details }}</textarea>
     </div>
 
     <!-- COLOR -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label for="color" class="form-label">Color</label>
         <input type="color" class="form-control form-control-color" id="color" name="color" value="{{ $product->description->color }}" disabled>
     </div>

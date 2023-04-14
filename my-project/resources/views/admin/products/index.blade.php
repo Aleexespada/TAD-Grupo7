@@ -48,7 +48,7 @@ Productos
 </div>
 
 <div class="table-responsive">
-    <table class="table align-translate-middle">
+    <table class="table table-striped align-translate-middle">
         <thead class="table-light">
             <tr>
                 <th class="align-middle">ID</th>

@@ -75,7 +75,7 @@
 
             & span {
                 transition-delay: .25s;
-                transform: translateX(-280px)
+                transform: translateX(-280px);
             }
 
             & i {
@@ -300,4 +300,34 @@
 /**/
 #accordionProductInfo .accordion-button {
     font-weight: 700;
+}
+
+/*
+* RESPONSIVE
+*/
+@media only screen and (max-width: 768px) {
+
+    /*
+    * SOCIAL MEDIA
+    */
+    .product-social-media {
+
+        .btn_wrap {
+            width: 100%;
+
+            & span {
+                width: 100%;
+            }
+
+            &:hover {
+                transition-delay: .4s;
+                transform: scale(1.1);
+    
+                & span {
+                    transition-delay: .25s;
+                    transform: translateX(-530px);
+                }
+            }
+        }
+    }
 }

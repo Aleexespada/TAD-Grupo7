@@ -60,9 +60,6 @@ Pedidos
                         <a href="{{ route('dashboard.orders.show', $order->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver pedido">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <!-- <a href="" class="btn">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                        </a> -->
                         <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
                             @method('PUT')
                             @csrf

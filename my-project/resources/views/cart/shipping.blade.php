@@ -51,8 +51,8 @@
 
                                 <!-- STREET -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="shippingStreet">Calle*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="shippingStreet">Calle*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('street') is-invalid @enderror" name="street" id="shippingStreet" value="{{ old('street') }}">
                                         <!-- Errores street -->
                                         @error('street')
@@ -64,8 +64,8 @@
                                 </div>
                                 <!-- NUMBER -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="shippingNumber">Número*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="shippingNumber">Número*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('number') is-invalid @enderror" name="number" id="shippingNumber" value="{{ old('number') }}">
                                         <!-- Errores number -->
                                         @error('number')
@@ -77,8 +77,8 @@
                                 </div>
                                 <!-- FLOOR -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="shippingFloor">Piso</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="shippingFloor">Piso</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('floor') is-invalid @enderror" name="floor" id="shippingFloor" value="{{ old('floor') }}" placeholder="Piso, Apartamento, Bloque, etc">
                                         <!-- Errores floor -->
                                         @error('floor')
@@ -90,8 +90,8 @@
                                 </div>
                                 <!-- POSTAL CODE -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="shippingPostalCode">Código Postal*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="shippingPostalCode">Código Postal*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" id="shippingPostalCode" value="{{ old('postal_code') }}">
                                         <!-- Errores postal code -->
                                         @error('postal_code')
@@ -103,8 +103,8 @@
                                 </div>
                                 <!-- PROVINCE -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="shippingProvince">Provincia*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="shippingProvince">Provincia*</label>
+                                    <div class="col-md-10">
                                         <select class="form-select @error('province') is-invalid @enderror" id="shippingProvince" name="province" aria-label="Seleccionar provincia">
                                             <option selected disabled>--</option>
                                             @foreach (config('provinces') as $province)
@@ -121,8 +121,8 @@
                                 </div>
                                 <!-- COUNTRY -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="shippingCountry">País*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="shippingCountry">País*</label>
+                                    <div class="col-md-10">
                                         <select class="form-select @error('country') is-invalid @enderror" id="shippingCountry" name="country" aria-label="Seleccionar país">
                                             <option selected disabled>--</option>
                                             @foreach (config('countries') as $country)

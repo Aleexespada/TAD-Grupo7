@@ -10,7 +10,7 @@
 <div class="row product-container pt-5">
     <!-- LEFT COLUMN -->
     <div class="col-12 col-md-7 order-last order-md-first">
-        <!-- IMAGENES -->
+        <!-- IMAGES -->
         <div class="row row-cols-1 row-cols-md-2 g-2 d-none d-md-flex">
             @foreach($product->images as $image)
             <div class="col">
@@ -76,6 +76,7 @@
         <div class="row mt-5 px-3">
             <!-- DESCRIPTIONS -->
             <div class="accordion" id="accordionProductInfo">
+                <!-- DESCRIPTION -->
                 <div class="accordion-item border-0">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsDescription" aria-expanded="false" aria-controls="panelsDescription">
@@ -116,7 +117,8 @@
                             </div>
                             @else
                             <!-- REVIEW FORM -->
-                            <form id="review-product-form" class="row justify-content-center" action="#" method="POST">
+                            <!-- TODO: Implementar formulario valoraciones -->
+                            <!-- <form id="review-product-form" class="row justify-content-center" action="#" method="POST">
                                 <div class="col-12 mb-2">
                                     <label class="form-label">Valoración</label>
                                     INPUT ESTRELLAS
@@ -138,7 +140,7 @@
                                         Limpiar
                                     </button>
                                 </div>
-                            </form>
+                            </form> -->
                             @endguest
 
                             <!-- REVIEWS LIST -->
@@ -213,9 +215,10 @@
         <!-- RAITING AND SHARE -->
         <div class="row mt-4">
             <!-- PRODUCT STARS -->
-            <div class="col-12 col-lg-8 product-stars text-center text-md-start">
-                ESTRELLAS VALORACIONES
-            </div>
+            <!-- <div class="col-12 col-lg-8 product-stars text-center text-md-start"> -->
+                <!-- TODO: Estrellas valoración media -->
+                <!-- ESTRELLAS VALORACIONES -->
+            <!-- </div> -->
 
             <!-- SOCIAL MEDIA -->
             <div class="col-12 col-lg-4 mt-3 mt-lg-0 product-social-media">
@@ -237,15 +240,15 @@
 
         <!-- PRODUCT BRAND -->
         <div class="row mt-4">
-            <p class="col-sm-2">Marca: </p>
-            <p class="col-sm-10">{{ $product->brand->name }}</p>
+            <p class="col-6 col-md-3 col-lg-2 text-end text-md-start">Marca: </p>
+            <p class="col-6 col-md-9 col-lg-10">{{ $product->brand->name }}</p>
         </div>
 
         <!-- PRODUCT COLOR -->
         @if ($product->description->color)
         <div class="row mt-2">
-            <label for="productColor" class="form-label col-sm-2 col-form-label">Color: </label>
-            <div class="col-sm-3">
+            <label for="productColor" class="form-label col-6 col-md-3 col-lg-2 col-form-label text-end text-md-start">Color: </label>
+            <div class="col-6 col-md-9 col-lg-10">
                 <input type="color" class="form-control form-control-color" id="productColor" value="{{ $product->description->color }}" disabled>
             </div>
         </div>
@@ -257,9 +260,9 @@
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <!-- PRODUCT SIZE -->
             <div class="row mt-3">
-                <label for="productSize" class="form-label col-sm-2 col-form-label">Talla: </label>
-                <div class="col-sm-8 col-md-5 col-lg-3">
-                    <select id="productSize" class="form-select" name="size">
+                <label for="productSize" class="form-label col-6 col-md-3 col-lg-2 col-form-label text-end text-md-start">Talla: </label>
+                <div class="col-6 col-md-9 col-lg-10">
+                    <select id="productSize" class="form-select w-50" name="size">
                         <option selected disabled>--</option>
                         @foreach ($product->description->sizes as $size)
                         <option value="{{ $size->size }}" @if($size->pivot->stock <= 0) disabled @endif>{{ $size->size }}</option>
@@ -268,19 +271,6 @@
 
                 </div>
             </div>
-
-
-            <!-- PRODUCT STOCK -->
-            <!-- <div class="row mt-5">
-                <div class="col-12 col-lg-6 text-center product-stock">
-                    @if ($product->stock == 0)
-                    <p id="out-of-stock-alert" class="alert alert-danger w-100" role="alert">¡Agotado!</p>
-                    @elseif ($product->stock <= 8) <p id="low-stock-alert" class="alert alert-warning w-100" role="alert">¡Quedan pocas unidades!</p>
-                        @else
-                        <p id="stock-alert" class="alert alert-success w-100" role="alert">¡En stock! ¡Recibelo mañana!</p>
-                        @endif
-                </div>
-            </div> -->
 
             <!-- QUANTITY -->
             <div class="row mt-5">
@@ -299,7 +289,7 @@
 
             <!-- BUY AND FAVORITE BUTTONS -->
             <div class="row justify-content-between mt-5">
-                <div class="col-12 col-lg-8 product-buy-button">
+                <div class="col-8 col-lg-8 product-buy-button">
                     <button type="submit" id="add-cart" class="btn btn-dark w-100">
                         Añadir a la cesta
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
@@ -307,7 +297,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="col-12 col-lg-4 mt-3 mt-lg-0 text-center text-md-start text-lg-end product-favorite-button">
+                <div class="col-4 col-lg-4 mt-lg-0 text-center text-lg-end product-favorite-button">
                     <button type="button" id="add-favorite" class="btn h-100 px-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Añadir favorito" data-bs-offset="0, 6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
@@ -352,9 +342,7 @@
             </div>
         </div>
         @endif
-
     </div>
-
 </div>
 
 <!-- Modals -->

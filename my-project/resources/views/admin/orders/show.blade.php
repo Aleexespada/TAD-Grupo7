@@ -18,7 +18,7 @@ Pedido ID - {{ $order->id }}
 
 <!-- CHANGE STATUS -->
 <div class="row">
-    <div class="col-3">
+    <div class="col-md-3 mt-1">
         <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
             @method('PUT')
             @csrf
@@ -26,7 +26,7 @@ Pedido ID - {{ $order->id }}
             <button type="submit" class="btn btn-outline-dark w-100">Pendiente</button>
         </form>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 mt-1">
         <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
             @method('PUT')
             @csrf
@@ -34,7 +34,7 @@ Pedido ID - {{ $order->id }}
             <button type="submit" class="btn btn-outline-dark w-100">En proceso</button>
         </form>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 mt-1">
         <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
             @method('PUT')
             @csrf
@@ -42,7 +42,7 @@ Pedido ID - {{ $order->id }}
             <button type="submit" class="btn btn-outline-dark w-100">Entregado</button>
         </form>
     </div>
-    <div class="col-3">
+    <div class="col-md-3 mt-1">
         <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
             @method('PUT')
             @csrf
@@ -74,13 +74,13 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <!-- NAME USER -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label class="form-label">Nombre</label>
         <input type="text" class="form-control" value="{{ $order->user->name }} {{ $order->user->last_name }}" readonly>
     </div>
 
     <!-- EMAIL USER -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label class="form-label">Email</label>
         <input type="text" class="form-control" value="{{ $order->user->email }}" readonly>
     </div>
@@ -90,7 +90,7 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <!-- STATUS -->
-    <div class="col-2">
+    <div class="col-md-2">
         <p class="form-label">Estado</p>
         @if ($order->status == 'pendiente')
         <p class="badge text-bg-info">{{ $order->status }}</p>
@@ -104,13 +104,13 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <!-- DATE -->
-    <div class="col-5">
+    <div class="col-md-5">
         <label class="form-label">Fecha pedido</label>
         <input type="text" class="form-control" value="{{ $order->created_at }}" readonly>
     </div>
 
     <!-- TOTAL PRICE -->
-    <div class="col-5">
+    <div class="col-md-5">
         <label class="form-label">Precio total</label>
         <input type="text" class="form-control" value="{{ $order->total_price }} €" readonly>
     </div>
@@ -120,25 +120,25 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <!-- DIRECCIÓN -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label class="form-label">Dirección</label>
         <input type="text" class="form-control" value="{{ $order->address->street }}, {{ $order->address->number }} {{ $order->address->floor }}" readonly>
     </div>
 
     <!-- POSTAL CODE -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label class="form-label">Código Postal</label>
         <input type="text" class="form-control" value="{{ $order->address->postal_code }}" readonly>
     </div>
 
     <!-- PROVINCE -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label class="form-label">Provincia</label>
         <input type="text" class="form-control" value="{{ $order->address->province }}" readonly>
     </div>
 
     <!-- COUNTRY -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label class="form-label">País</label>
         <input type="text" class="form-control" value="{{ $order->address->country }}" readonly>
     </div>
@@ -148,19 +148,19 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <!-- CARDHOLDER -->
-    <div class="col-5">
+    <div class="col-md-5">
         <label class="form-label">Titular</label>
         <input type="text" class="form-control" value="{{ $order->creditCard->cardholder_name }}" readonly>
     </div>
 
     <!-- NÚMERO -->
-    <div class="col-5">
+    <div class="col-md-5">
         <label class="form-label">Número Tarjeta</label>
         <input type="text" class="form-control" value="{{ $order->creditCard->card_number }}" readonly>
     </div>
 
     <!-- EXPIRATION DATE -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label class="form-label">Fecha de expiración</label>
         <input type="text" class="form-control" value="{{ $order->creditCard->expiration_month }} / {{ $order->creditCard->expiration_year }}" readonly>
     </div>

@@ -9,7 +9,7 @@
             <div class="card-body p-0">
                 <div class="row g-0">
                     <!-- LEFT COLUMN -->
-                    <div class="col-lg-8">
+                    <div class="col-xl-8">
                         <div id="cart-content" class="p-5">
                             <div id="cart-header" class="d-flex justify-content-between align-items-center mb-5">
                                 <h1 class="fw-bold mb-0 text-black text-uppercase">Mi cesta</h1>
@@ -32,83 +32,63 @@
                             @else
                             @isset($cart_items)
                             @if (count($cart_items) > 0)
-
-                            <div class="item row mb-4 d-flex justify-content-between align-items-center">
-                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                    Nombre
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                    Cantidad
-                                </div>
-                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-size">
-                                    Talla
-                                </div>
-                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-price">
-                                    Precio
-                                </div>
-                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm align-middle">
+                                    <thead class="">
+                                        <tr>
+                                            <th class="text-center d-none d-md-table-cell"></th>
+                                            <th class="text-center">Nombre</th>
+                                            <th class="text-center">Cantidad</th>
+                                            <th class="text-center">Talla</th>
+                                            <th class="text-center">Precio</th>
+                                            <th class="text-center"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($cart_items as $item)
+                                        <tr class="align-middle">
+                                            <td class="d-none d-md-table-cell">
+                                                <img @if($item->product->images->count() > 0) src="{{ asset($item->product->images->first()->url) }}" @endif class="img-fluid rounded-3" alt="{{ $item->product->name }}" style="width: 100px;">
+                                            </td>
+                                            <td class=""><a href="{{ route('products.show', $item->product->id) }}" class="link-dark">{{ $item->product->name }}</a></td>
+                                            <td class="w-25">
+                                                <div class="row">
+                                                    <div class="col-auto">
+                                                        <form action="{{ route('cart.decrease', $item->product->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <input type="hidden" name="size" value="{{ $item->size }}">
+                                                            <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-minus"></i></button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col-auto col-lg-4">
+                                                        <input value="{{ $item->quantity }}" type="text" class="form-control form-control-sm text-center" readonly>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <form action="{{ route('cart.increase', $item->product->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <input type="hidden" name="size" value="{{ $item->size }}">
+                                                            <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-plus"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">{{ $item->size }}</td>
+                                            <td class="text-center">{{ $item->unity_price }} €</td>
+                                            <td>
+                                                <form action="{{ route('cart.delete', $item->product->id) }}" method="POST" class="text-muted" style="cursor: pointer;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input type="hidden" name="size" value="{{ $item->size }}">
+                                                    <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-times"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <hr class="my-4">
-
-                            @foreach($cart_items as $item)
-
-                            <div class="item row mb-4 d-flex justify-content-between align-items-center">
-                                <!-- IMAGE -->
-                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <img @if($item->product->images->count() > 0) src="{{ asset($item->product->images->first()->url) }}" @endif class="img-fluid rounded-3" alt="{{ $item->product->name }}">
-                                </div>
-                                <!-- NAME -->
-                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                    <h6 class="text-muted">
-                                        <a href="{{ route('products.show', $item->product->id) }}" class="link-dark">{{ $item->product->name }}</a>
-                                    </h6>
-                                </div>
-                                <!-- QUANTITY -->
-                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                    <form action="{{ route('cart.decrease', $item->product->id) }}" method="POST">
-                                        @csrf
-                                        @method('POST')
-                                        <input type="hidden" name="size" value="{{ $item->size }}">
-                                        <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-minus"></i></button>
-                                    </form>
-                                    <input value="{{ $item->quantity }}" type="text" class="form-control form-control-sm text-center" readonly>
-                                    <form action="{{ route('cart.increase', $item->product->id) }}" method="POST">
-                                        @csrf
-                                        @method('POST')
-                                        <input type="hidden" name="size" value="{{ $item->size }}">
-                                        <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-plus"></i></button>
-                                    </form>
-                                </div>
-                                <!-- SIZE -->
-                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-size">
-                                    <h6 class="mb-0">
-                                        {{ $item->size }}
-                                    </h6>
-                                </div>
-                                <!-- PRICE -->
-                                <div class="col-md-3 col-lg-2 col-xl-2 text-center item-price">
-                                    <h6 class="mb-0">
-                                        {{ $item->unity_price }} €
-                                    </h6>
-                                </div>
-                                <!-- DELETE -->
-                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                    <form action="{{ route('cart.delete', $item->product->id) }}" method="POST" class="text-muted" style="cursor: pointer;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="hidden" name="size" value="{{ $item->size }}">
-                                        <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-times"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <hr class="my-4">
-
-                            @endforeach
                             @else
                             <p>No tiene artículos en la cesta.</p>
                             @endif
@@ -131,7 +111,7 @@
                     <!-- RIGHT COLUMN -->
                     @guest
                     @else
-                    <div class="col-right col-lg-4 bg-grey">
+                    <div class="col-right col-xl-4 bg-grey">
 
                         <div class="p-5">
                             <h3 class="fw-bold mb-5 mt-2 pt-1">Resumen</h3>

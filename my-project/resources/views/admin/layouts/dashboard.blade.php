@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div class="row container-fluid p-0 m-0">
+    <div class="container-fluid row p-0 m-0">
         <div class="col-2 p-0">
             <!-- SIDEBAR -->
             @include('admin.partials.sidebar')

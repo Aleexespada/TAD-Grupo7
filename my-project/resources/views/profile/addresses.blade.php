@@ -16,22 +16,25 @@
                             <li class="list-group-item p-3">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p class="mb-0">{{ $address->country }}</p>
-                                        <p class="mb-0">{{ $address->province }}</p>
-                                        <p class="mb-0">{{ $address->postal_code }}</p>
+                                        <p class="mb-0"><b>País:</b> {{ $address->country }}</p>
+                                        <p class="mb-0"><b>Provincia:</b> {{ $address->province }}</p>
+                                        <p class="mb-0"><b>Código Postal:</b> {{ $address->postal_code }}</p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="mb-0">{{ $address->street }}, {{ $address->number }}</p>
-                                        <p class="mb-0">{{ $address->floor }}</p>
+                                        <p class="mb-0"><b>Dirección:</b> {{ $address->street }}, {{ $address->number }}</p>
+                                        @if ($address->floor)
+                                        <p class="mb-0"><b>Piso:</b> {{ $address->floor }}</p>
+                                        @endif
                                     </div>
 
                                     <!-- BOTÓN PARA ELIMINAR DIRECCIÓN -->
-                                    <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-delete-address-{{$address->id}}">
+                                    <!-- TODO: Modificar eliminación dirección -->
+                                    <!-- <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-delete-address-{{$address->id}}">
                                         <i class="fa-solid fa-trash" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar dirección" data-bs-offset="0, 10"></i>
-                                    </div>
+                                    </div> -->
 
                                     <!-- MODAL PARA ELIMINAR DIRECCIÓN -->
-                                    <div class="modal fade" id="modal-delete-address-{{$address->id}}" tabindex="-1" aria-labelledby="modal-delete-address-label" aria-hidden="true">
+                                    <!-- <div class="modal fade" id="modal-delete-address-{{$address->id}}" tabindex="-1" aria-labelledby="modal-delete-address-label" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -52,7 +55,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </li>
                             @endforeach

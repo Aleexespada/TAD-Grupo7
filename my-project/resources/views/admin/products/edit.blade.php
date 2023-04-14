@@ -40,7 +40,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- NAME -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="name" class="form-label">Nombre*</label>
         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $product->name }}">
         <!-- Errores name -->
@@ -52,7 +52,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- PRICE -->
-    <div class="col-3">
+    <div class="col-md-3">
         <label for="price" class="form-label">Precio*</label>
         <input type="text" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ $product->price }}">
         <!-- Errores price -->
@@ -64,7 +64,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- DISCOUNT -->
-    <div class="col-3">
+    <div class="col-md-3">
         <label for="discount" class="form-label">Descuento</label>
         <input type="text" class="form-control @error('discount') is-invalid @enderror" id="discount" name="discount" value="{{ $product->discount }}">
         <!-- Errores discount -->
@@ -76,7 +76,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- CATEGORY -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label class="form-label">Categorías*</label>
         <div class="border rounded-3 p-2" style="height: 85px; overflow-y: scroll;">
             @foreach ($categories as $category)
@@ -97,7 +97,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- BRAND -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="brand" class="form-label">Marca*</label>
         <select class="form-select @error('brand') is-invalid @enderror" id="brand" name="brand">
             <option selected disabled>--</option>
@@ -128,7 +128,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- DESCRIPTION -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="description" class="form-label">Descripción*</label>
         <textarea type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ $product->description->description }}</textarea>
         <!-- Errores description -->
@@ -140,7 +140,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- DETAILS -->
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="details" class="form-label">Detalles*</label>
         <textarea type="text" class="form-control @error('details') is-invalid @enderror" id="details" name="details">{{ $product->description->details }}</textarea>
         <!-- Errores details -->
@@ -152,7 +152,7 @@ Editar producto ID - {{ $product->id }}
     </div>
 
     <!-- COLOR -->
-    <div class="col-2">
+    <div class="col-md-2">
         <label for="color" class="form-label">Color*</label>
         <input type="color" class="form-control form-control-color @error('color') is-invalid @enderror" id="color" name="color" value="{{ $product->description->color }}">
         <!-- Errores color -->
@@ -202,10 +202,10 @@ Editar producto ID - {{ $product->id }}
         </div>
         @enderror
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
         <button type="button" class="btn btn-dark w-100" id="addVariant">Añadir</button>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
         <button type="button" class="btn btn-light border w-100" id="removeVariant">Quitar</button>
     </div>
 

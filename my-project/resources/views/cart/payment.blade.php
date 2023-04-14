@@ -49,8 +49,8 @@
 
                                 <!-- CARDHOLDER -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="cardholder">Titular*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="cardholder">Titular*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('cardholder') is-invalid @enderror" name="cardholder" id="cardholder" value="{{ old('cardholder') }}">
                                         <!-- Errores cardholder -->
                                         @error('cardholder')
@@ -62,8 +62,8 @@
                                 </div>
                                 <!-- NUMBER -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="cardNumber">Número*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="cardNumber">Número*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('card_number') is-invalid @enderror" name="card_number" id="cardNumber" value="{{ old('card_number') }}" placeholder="XXXXXXXXXXXXXXXX">
                                         <!-- Errores card_number -->
                                         @error('card_number')
@@ -75,8 +75,8 @@
                                 </div>
                                 <!-- EXPIRATION DATE -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="expirationDate">Fecha de expiración*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="expirationDate">Fecha de expiración*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('expiration_date') is-invalid @enderror" name="expiration_date" id="expirationDate" value="{{ old('expiration_date') }}" placeholder="XX/XXXX">
                                         <!-- Errores expiration_date -->
                                         @error('expiration_date')
@@ -88,8 +88,8 @@
                                 </div>
                                 <!-- CVV -->
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="cvv">CVV*</label>
-                                    <div class="col-sm-10">
+                                    <label class="col-md-2 col-form-label" for="cvv">CVV*</label>
+                                    <div class="col-md-10">
                                         <input type="text" class="form-control @error('cvv') is-invalid @enderror" name="cvv" id="cvv" value="{{ old('cvv') }}" placeholder="XXX">
                                         <!-- Errores cvv -->
                                         @error('cvv')
