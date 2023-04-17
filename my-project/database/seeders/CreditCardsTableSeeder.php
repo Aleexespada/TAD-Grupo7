@@ -23,9 +23,9 @@ class CreditCardsTableSeeder extends Seeder
             DB::table('credit_cards')->insert([
                 'id' => $credit_card->id,
                 'user_id' => $credit_card->user_id,
-                'card_number' => Hash::make($credit_card->card_number),
+                'card_number' => $credit_card->card_number,
                 'cardholder_name' => $credit_card->cardholder_name,
-                'cvv' => Hash::make($credit_card->cvv),
+                'cvv' => $credit_card->cvv,
                 'expiration_month' => $credit_card->expiration_month,
                 'expiration_year' => $credit_card->expiration_year,
                 'created_at' => now(),

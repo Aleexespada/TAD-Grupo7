@@ -133,33 +133,43 @@ class CartController extends Controller
                 DB::beginTransaction();
 
                 $parts = explode('/', $validatedData['expiration_date']);
-                $month = $parts[0]; 
-                $year = $parts[1]; 
+                $month = $parts[0];
+                $year = $parts[1];
 
                 $credit_card = CreditCard::create([
                     'user_id' => auth()->user()->id,
-                    'card_number' => Hash::make($validatedData['card_number']),
+                    'card_number' => $validatedData['card_number'],
                     'cardholder_name' => $validatedData['cardholder'],
-                    'cvv' => Hash::make($validatedData['cvv']),
+                    'cvv' => $validatedData['cvv'],
                     'expiration_month' => $month,
                     'expiration_year' => $year,
                 ]);
 
                 DB::commit();
-
-                $pay_method = $credit_card->id;
             } catch (\Exception $e) {
                 DB::rollBack();
                 return back()->with('error', 'Error al crear la tarjeta de crédito');
             }
+        } else {
+            $credit_card = CreditCard::findOrFail($pay_method);
         }
 
         // Obtenemos los datos necesarios
         $user = auth()->user();
-        $address_id = session('address');
-        $credit_card_id = $pay_method;
-        $total_price_cart = session('total_price_cart');
 
+        $address = Address::findOrFail(session('address'));
+        $addressString = $address->street . ", " . $address->number;
+        if ($address->floor) {
+            $addressString .= ", " . $address->floor;
+        }
+        $addressString .= ", " . $address->postal_code . ", " . $address->province . ", " . $address->country;
+
+        $maskedCreditCardNumber = substr($credit_card->card_number, 0, 2) // obtenemos los dos primeros dígitos
+            . str_repeat('*', strlen($credit_card->card_number) - 4) // reemplazamos los dígitos restantes con asteriscos
+            . substr($credit_card->card_number, -2); // obtenemos los dos últimos dígitos
+        $credit_cardString = $maskedCreditCardNumber . ", " . $credit_card->expiration_month . "/" . $credit_card->expiration_year;
+
+        $total_price_cart = session('total_price_cart');
 
         // Comienza transaccion
         try {
@@ -168,8 +178,8 @@ class CartController extends Controller
             // Creamos el pedido
             $order = new Order;
             $order->user_id = $user->id;
-            $order->address_id = $address_id;
-            $order->credit_card_id = $credit_card_id;
+            $order->address = $addressString;
+            $order->credit_card = $credit_cardString;
             $order->status = 'pendiente';
             // Comprobamos si se suman los gastos de envío
             if ($total_price_cart < 24.90) {
@@ -191,7 +201,7 @@ class CartController extends Controller
 
                 // Se actualiza el stock del producto
                 $product_size_stock = $product->description->sizes->firstWhere('size', $item->size)->pivot->stock;
-                
+
                 $product->description->sizes->firstWhere('size', $item->size)->pivot->stock = $product_size_stock - $item->quantity;
                 $product->description->sizes->firstWhere('size', $item->size)->pivot->save();
             }
@@ -209,7 +219,7 @@ class CartController extends Controller
             session(['order' => $order->id]);
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Error al realizar pedido');
+            return back()->with('error', 'Error al realizar pedido' . $e);
         }
 
         // Redirección a la vista que confirma la compra
@@ -259,7 +269,8 @@ class CartController extends Controller
                 $cart_item->subtotal = $cart_item->quantity * $cart_item->unity_price;
                 $cart_item->save();
             } else {
-                return back()->withErrors(['No hay stock suficiente del producto']);            }
+                return back()->withErrors(['No hay stock suficiente del producto']);
+            }
         }
 
         return redirect()->route('cart.index');
@@ -322,7 +333,6 @@ class CartController extends Controller
                 $price = $product->price;
                 if ($product->discount) {
                     $price = $product->discount;
-                    
                 }
                 CartItem::create([
                     'user_id' => $user->id,

@@ -54,6 +54,7 @@ class AdminProductController extends Controller
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:categories,id',
             'brand' => 'required|exists:brands,id',
+            'status' => 'required|string|in:disponible,no disponible',
             'images' => 'nullable|array|max:4',
             'images.*' => 'image|max:2048',
             'description' => 'required|string',
@@ -73,7 +74,8 @@ class AdminProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'discount' => $request->discount,
-                'brand_id' => $request->brand
+                'brand_id' => $request->brand,
+                'status' => $request->status
             ]);
 
             // Relaciona el producto con las categorías
@@ -161,6 +163,7 @@ class AdminProductController extends Controller
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:categories,id',
             'brand' => 'required|exists:brands,id',
+            'status' => 'required|string|in:disponible,no disponible',
             'images' => 'nullable|array|max:4',
             'images.*' => 'image|max:2048',
             'description' => 'required|string',
@@ -182,7 +185,8 @@ class AdminProductController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
                 'discount' => $request->discount,
-                'brand_id' => $request->brand
+                'brand_id' => $request->brand,
+                'status' => $request->status
             ]);
 
             // Actualización descripción
@@ -230,26 +234,17 @@ class AdminProductController extends Controller
         try {
             DB::beginTransaction();
 
-            $description = Description::where('product_id', $id)->first();
-            $product = Product::findOrFail($id);
-            $images = $product->images;
-
-            if ($description && $product) {
-                if ($images->count() > 0) {
-                    foreach ($images as $image) {
-                        $image->delete();
-                    }
-                }
-                $description->delete();
-                $product->delete();
-            }
+            // Actualización estado producto
+            Product::where('id', $id)->update([
+                'status' => 'no disponible'
+            ]);
 
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Error al eliminar producto con id: ' . $id);
+            return back()->with('error', 'Error al cambiar estado del producto con id: ' . $id);
         }
 
-        return back()->with('message', 'Producto con id [' . $id . '] eliminado correctamente');
+        return back()->with('message', 'Producto con id [' . $id . '] no disponible correctamente');
     }
 }

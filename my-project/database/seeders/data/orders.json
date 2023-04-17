@@ -2,8 +2,8 @@
     {
         "id": 1,
         "user_id": 2,
-        "address_id": 1,
-        "credit_card_id": 1,
+        "address": "Avenida de Andalucía, 12, 2, 41870, Sevilla, España",
+        "credit_card": "49************92, 06/2023",
         "status": "pendiente",
         "total_price": 676.95,
         "comments": null
@@ -11,8 +11,8 @@
     {
         "id": 2,
         "user_id": 3,
-        "address_id": 3,
-        "credit_card_id": 2,
+        "address": "La Rambla, 1, 4C, 08001, Barcelona, España",
+        "credit_card": "45************78, 09/2024",
         "status": "en proceso",
         "total_price": 199.00,
         "comments": null
@@ -20,8 +20,8 @@
     {
         "id": 3,
         "user_id": 2,
-        "address_id": 1,
-        "credit_card_id": 1,
+        "address": "Avenida de Andalucía, 12, 2, 41870, Sevilla, España",
+        "credit_card": "49************92, 06/2023",
         "status": "cancelado",
         "total_price": 79.95,
         "comments": null
@@ -29,8 +29,8 @@
     {
         "id": 4,
         "user_id": 7,
-        "address_id": 2,
-        "credit_card_id": 6,
+        "address": "Calle de Alcalá, 100, 28001, Madrid, España",
+        "credit_card": "40************92, 02/2026",
         "status": "entregado",
         "total_price": 79.95,
         "comments": null

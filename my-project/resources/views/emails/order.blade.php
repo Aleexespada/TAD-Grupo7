@@ -15,8 +15,8 @@
     <ul>
         <li>Fecha del pedido: {{ $order->created_at }}</li>
         <li>Total del pedido: {{ $order->total_price }} €</li>
-        <li>Dirección de envío: {{ $order->address->street }}, {{ $order->address->number }}, {{ $order->address->postal_code }}, {{ $order->address->province }}, {{ $order->address->country }}</li>
-        <li>Tarjeta de crédito utilizada: {{ $order->creditCard->cardholder_name }} | {{ $order->creditCard->expiration_month }}/{{ $order->creditCard->expiration_year }} </li>
+        <li>Dirección de envío: {{ $order->address }}</li>
+        <li>Tarjeta de crédito utilizada: {{ $order->credit_card }} </li>
     </ul>
 
     <table style="width: 600px; text-align:right">

@@ -75,7 +75,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- CATEGORY -->
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label class="form-label">Categorías*</label>
         <div class="border rounded-3 p-2" style="height: 85px; overflow-y: scroll;">
             @foreach ($categories as $category)
@@ -96,7 +96,7 @@ Crear Nuevo Producto
     </div>
 
     <!-- BRAND -->
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label for="brand" class="form-label">Marca*</label>
         <select class="form-select @error('brand') is-invalid @enderror" id="brand" name="brand">
             <option selected disabled>--</option>
@@ -106,6 +106,22 @@ Crear Nuevo Producto
         </select>
         <!-- Errores brand -->
         @error('brand')
+        <div class="invalid-feedback d-block" role="alert">
+            {{ $message }}
+        </div>
+        @enderror
+    </div>
+
+    <!-- STATUS -->
+    <div class="col-md-4">
+        <label for="status" class="form-label">Estado*</label>
+        <select class="form-select @error('status') is-invalid @enderror" id="status" name="status">
+            <option selected disabled>--</option>
+            <option value="disponible" {{ old('status') == 'disponible' ? 'selected' : '' }}>Disponible</option>
+            <option value="no disponible" {{ old('status') == 'no disponible' ? 'selected' : '' }}>No disponible</option>
+        </select>
+        <!-- Errores status -->
+        @error('status')
         <div class="invalid-feedback d-block" role="alert">
             {{ $message }}
         </div>

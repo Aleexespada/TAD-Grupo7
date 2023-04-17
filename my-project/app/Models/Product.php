@@ -19,6 +19,7 @@ class Product extends Model
         'price',
         'discount',
         'brand_id',
+        'status',
     ];
 
     public function description()

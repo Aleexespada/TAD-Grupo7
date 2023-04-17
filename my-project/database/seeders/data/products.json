@@ -4,48 +4,55 @@
         "name": "Americana Traje Cuadro Ventana Azul Lana",
         "price": 199.00,
         "discount": null,
-        "brand_id": 6
+        "brand_id": 6,
+        "status": "disponible"
     },
     {
         "id": 2,
         "name": "Pantalón Traje Cuadro Ventana Azul Lana",
         "price": 79.95,
         "discount": null,
-        "brand_id": 6
+        "brand_id": 6,
+        "status": "disponible"
     },
     {
         "id": 3,
         "name": "Zapato Piel Napa Marrón - Studio",
         "price": 129.00,
         "discount": 99.00,
-        "brand_id": 6
+        "brand_id": 6,
+        "status": "disponible"
     },
     {
         "id": 4,
         "name": "Camisa Espiga Regular Fit Doble Puño",
         "price": 59.95,
         "discount": null,
-        "brand_id": 6
+        "brand_id": 6,
+        "status": "disponible"
     },
     {
         "id": 5,
         "name": "Camisa 100% Lino Slim Fit",
         "price": 59.95,
         "discount": null,
-        "brand_id": 6
+        "brand_id": 6,
+        "status": "disponible"
     },
     {
         "id": 6,
         "name": "Pantalón Chino Mezcla Algodón Slim Fit",
         "price": 45.95,
         "discount": null,
-        "brand_id": 6
+        "brand_id": 6,
+        "status": "disponible"
     },
     {
         "id": 7,
         "name": "Reloj V-Code",
         "price": 910,
         "discount": null,
-        "brand_id": 5
+        "brand_id": 5,
+        "status": "disponible"
     }
 ]

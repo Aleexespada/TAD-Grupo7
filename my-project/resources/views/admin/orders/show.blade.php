@@ -119,50 +119,20 @@ Pedido ID - {{ $order->id }}
         <h5>Dirección de envío</h5>
     </div>
 
-    <!-- DIRECCIÓN -->
+    <!-- ADDRESS -->
     <div class="col-md-6">
         <label class="form-label">Dirección</label>
-        <input type="text" class="form-control" value="{{ $order->address->street }}, {{ $order->address->number }} {{ $order->address->floor }}" readonly>
-    </div>
-
-    <!-- POSTAL CODE -->
-    <div class="col-md-2">
-        <label class="form-label">Código Postal</label>
-        <input type="text" class="form-control" value="{{ $order->address->postal_code }}" readonly>
-    </div>
-
-    <!-- PROVINCE -->
-    <div class="col-md-2">
-        <label class="form-label">Provincia</label>
-        <input type="text" class="form-control" value="{{ $order->address->province }}" readonly>
-    </div>
-
-    <!-- COUNTRY -->
-    <div class="col-md-2">
-        <label class="form-label">País</label>
-        <input type="text" class="form-control" value="{{ $order->address->country }}" readonly>
+        <input type="text" class="form-control" value="{{ $order->address }}" readonly>
     </div>
 
     <div class="col-12">
         <h5>Método de pago</h5>
     </div>
 
-    <!-- CARDHOLDER -->
-    <div class="col-md-5">
-        <label class="form-label">Titular</label>
-        <input type="text" class="form-control" value="{{ $order->creditCard->cardholder_name }}" readonly>
-    </div>
-
-    <!-- NÚMERO -->
-    <div class="col-md-5">
-        <label class="form-label">Número Tarjeta</label>
-        <input type="text" class="form-control" value="{{ $order->creditCard->card_number }}" readonly>
-    </div>
-
-    <!-- EXPIRATION DATE -->
-    <div class="col-md-2">
-        <label class="form-label">Fecha de expiración</label>
-        <input type="text" class="form-control" value="{{ $order->creditCard->expiration_month }} / {{ $order->creditCard->expiration_year }}" readonly>
+    <!-- CREDIT CARD -->
+    <div class="col-md-6">
+        <label class="form-label">Tarjeta bancaria</label>
+        <input type="text" class="form-control" value="{{ $order->credit_card }}" readonly>
     </div>
 
     <div class="col-12">

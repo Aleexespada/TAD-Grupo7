@@ -40,15 +40,25 @@ Producto ID - {{ $product->id }}
     </div>
 
     <!-- CREATED AT -->
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label for="created_at" class="form-label">Creado</label>
         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $product->created_at }}" readonly>
     </div>
 
     <!-- UPDATED AT -->
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label for="updated_at" class="form-label">Actualizado</label>
         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $product->updated_at }}" readonly>
+    </div>
+
+    <!-- STATUS -->
+    <div class="col-md-4">
+        <p class="form-label">Estado</p>
+        @if ($product->status == 'disponible')
+        <p class="badge text-bg-success">{{ $product->status }}</p>
+        @elseif ($product->status == 'no disponible')
+        <p class="badge text-bg-danger">{{ $product->status }}</p>
+        @endif
     </div>
 
     <!-- CATEGORY -->

@@ -22,8 +22,8 @@ class OrdersTableSeeder extends Seeder
             DB::table('orders')->insert([
                 'id' => $order->id,
                 'user_id' => $order->user_id,
-                'address_id' => $order->address_id,
-                'credit_card_id' => $order->credit_card_id,
+                'address' => $order->address,
+                'credit_card' => $order->credit_card,
                 'status' => $order->status,
                 'total_price' => $order->total_price,
                 'order_date' => now(),

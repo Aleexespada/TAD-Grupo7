@@ -54,8 +54,8 @@ Productos
                 <th class="align-middle">ID</th>
                 <th class="align-middle">Nombre</th>
                 <th class="align-middle">Precio</th>
-                <th class="align-middle">Marca</th>
                 <th class="align-middle">Fecha creación</th>
+                <th class="align-middle">Estado</th>
                 <th class="align-middle">Acciones</th>
             </tr>
         </thead>
@@ -69,8 +69,14 @@ Productos
                 @else
                 <td>{{ $product->price }} €</td>
                 @endif
-                <td>{{ $product->brand->name }}</td>
                 <td>{{ $product->created_at }}</td>
+                <td>
+                    @if ($product->status == 'disponible')
+                    <p class="badge text-bg-success">{{ $product->status }}</p>
+                    @elseif ($product->status == 'no disponible')
+                    <p class="badge text-bg-danger">{{ $product->status }}</p>
+                    @endif
+                </td>
                 <td>
                     <div class="d-flex gap-3">
                         <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver producto">
@@ -82,7 +88,7 @@ Productos
                         <form action="{{ route('dashboard.products.delete', $product->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar producto">
+                            <button type="submit" class="btn border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar producto" @if ($product->status == 'no disponible') disabled @endif>
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </form>

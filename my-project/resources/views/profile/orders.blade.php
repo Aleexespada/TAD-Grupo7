@@ -88,59 +88,22 @@
                                                     <div class="">
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <p class="mb-0">Lugar</p>
-                                                            </div>
-                                                            <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->address->postal_code }}, {{ $order->address->province }}, {{ $order->address->country }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
                                                                 <p class="mb-0">Direcci&oacute;n</p>
                                                             </div>
                                                             <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->address->street }}, {{ $order->address->number }} {{ $order->address->floor }}</p>
+                                                                <p class="text-muted mb-0">{{ $order->address }}</p>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                     <hr>
 
                                                     <!-- TARJETA DE CRÉDITO DEL PEDIDO -->
                                                     <div class="">
                                                         <div class="row">
                                                             <div class="col-sm-3">
-                                                                <p class="mb-0">Titular</p>
+                                                                <p class="mb-0">Tarjeta bancaria</p>
                                                             </div>
                                                             <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->creditCard->cardholder_name }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <p class="mb-0">Número</p>
-                                                            </div>
-                                                            <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->creditCard->card_number }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <p class="mb-0">CVV</p>
-                                                            </div>
-                                                            <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->creditCard->cvv }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <hr>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <p class="mb-0">Caducidad</p>
-                                                            </div>
-                                                            <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->creditCard->expiration_month }} / {{ $order->creditCard->expiration_year }}</p>
+                                                                <p class="text-muted mb-0">{{ $order->credit_card }}</p>
                                                             </div>
                                                         </div>
                                                     </div>

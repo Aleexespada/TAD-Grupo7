@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedDecimal('price');
             $table->unsignedSmallInteger('discount')->nullable();
             $table->foreignId('brand_id')->constrained();
+            $table->enum('status', ['disponible', 'no disponible']);
             $table->timestamps();
         });
     }

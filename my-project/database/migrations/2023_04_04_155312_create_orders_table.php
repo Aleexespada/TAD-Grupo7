@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('address_id')->constrained();
-            $table->foreignId('credit_card_id')->constrained();
+            $table->string('address');
+            $table->string('credit_card');
             $table->enum('status', ['pendiente', 'en proceso', 'entregado', 'cancelado']);
             $table->unsignedDouble('total_price');
             $table->date('order_date');
