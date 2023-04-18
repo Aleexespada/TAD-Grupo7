@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WishListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,3 +61,11 @@ Route::get('/perfil/pedidos', [ProfileController::class, 'indexOrders'])->name('
 Route::put('/perfil/cancelar-pedido/{id}', [ProfileController::class, 'cancelOrder'])->name('profile.cancel.order')->middleware('auth');
 Route::delete('/perfil/eliminar-direccion/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.delete.address')->middleware('auth');
 Route::delete('/perfil/eliminar-tarjeta-credito/{id}', [ProfileController::class, 'deleteCreditCard'])->name('profile.delete.credit_card')->middleware('auth');
+
+
+// WishList or Favorites
+Route::get('/lista-deseos', [WishListController::class, 'index'])->name('favorites.wish-list')->middleware('auth');
+Route::post('/lista-deseos/añadir', [WishListController::class, 'addItem'])->name('favorites.add')->middleware('auth');
+Route::post('/lista-deseos/move/{id}', [WishListController::class, 'moveToCart'])->name('favorites.move')->middleware('auth');
+Route::delete('/lista-deseos/remove/product-view/{id}', [WishListController::class, 'removeItemFromProductView'])->name('favorites.remove.fromProductView')->middleware('auth');
+Route::delete('/lista-deseos/remove/wish-list-view/{id}', [WishListController::class, 'removeItemFromWishList'])->name('favorites.remove.fromWishListView')->middleware('auth');

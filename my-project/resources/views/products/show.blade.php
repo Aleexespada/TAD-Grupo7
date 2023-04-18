@@ -287,7 +287,7 @@
                 </div>
             </div>
 
-            <!-- BUY AND FAVORITE BUTTONS -->
+            <!-- BUY BUTTONS -->
             <div class="row justify-content-between mt-5">
                 <div class="col-8 col-lg-8 product-buy-button">
                     <button type="submit" id="add-cart" class="btn btn-dark w-100">
@@ -297,13 +297,21 @@
                         </svg>
                     </button>
                 </div>
-                <div class="col-4 col-lg-4 mt-lg-0 text-center text-lg-end product-favorite-button">
-                    <button type="button" id="add-favorite" class="btn h-100 px-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Añadir favorito" data-bs-offset="0, 6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                        </svg>
-                    </button>
-                </div>
+            </div>
+        </form>
+
+        <!-- FAVORITE BUTTONS -->
+        <form action="{{ route('favorites.add') }}" method="POST">
+            @csrf
+            @method('POST')
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+            <div class="col-4 col-lg-4 mt-lg-0 text-center text-lg-end product-favorite-button">
+                <button type="submit" id="add-favorite" class="btn h-100 px-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Añadir favorito" data-bs-offset="0, 6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                    </svg>
+                </button>
             </div>
         </form>
 

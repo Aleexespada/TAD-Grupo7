@@ -26,7 +26,7 @@
             <ul class="navbar-nav flex-row">
                 <!-- FAVORITOS -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Lista de deseos">
+                    <a class="nav-link" href="{{ route('favorites.wish-list') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Lista de deseos">
                         <span class="me-2">
                             <i class="fa-solid fa-heart" style="font-size: 16pt;"></i>
                         </span>
