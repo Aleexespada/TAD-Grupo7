@@ -1,15 +1,15 @@
 @extends('admin.layouts.index')
 
-@section('title', 'Productos | Admin - Mr Penguin')
+@section('title', 'Categorías | Admin - Mr Penguin')
 
 @section('section-title')
-Productos
+Categorías
 @endsection
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-black">Panel administrador</a></li>
-    <li class="breadcrumb-item active">Productos</li>
+    <li class="breadcrumb-item active">Categorías</li>
 </ol>
 @endsection
 
@@ -30,9 +30,9 @@ Productos
 <div class="row mb-2">
     <div class="col-sm-8">
         <div class=" me-2 mb-2 d-inline-block">
-            <a href="{{ route('dashboard.products.create') }}" type="button" class="btn btn-dark btn-rounded mb-2 me-2">
+            <a href="{{ route('dashboard.categories.create') }}" type="button" class="btn btn-dark btn-rounded mb-2 me-2">
                 <i class="fa-solid fa-plus me-1"></i>
-                Añadir nuevo producto
+                Añadir nueva categoría
             </a>
         </div>
     </div>
@@ -46,49 +46,36 @@ Productos
         </div> -->
     </div>
 </div>
-
 <div class="table-responsive">
     <table class="table table-striped align-translate-middle">
         <thead class="table-light">
             <tr>
                 <th class="align-middle">ID</th>
                 <th class="align-middle">Nombre</th>
-                <th class="align-middle">Precio</th>
+                <th class="align-middle">Número de productos</th>
                 <th class="align-middle">Fecha creación</th>
-                <th class="align-middle">Estado</th>
                 <th class="align-middle">Acciones</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
+            @foreach ($categories as $category)
             <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->name }}</td>
-                @if($product->discount)
-                <td><span class="text-danger">{{ $product->discount }} €</span> <span class="text-decoration-line-through">{{ $product->price }} €</span></td>
-                @else
-                <td>{{ $product->price }} €</td>
-                @endif
-                <td>{{ $product->created_at }}</td>
-                <td>
-                    @if ($product->status == 'disponible')
-                    <p class="badge text-bg-success">{{ $product->status }}</p>
-                    @elseif ($product->status == 'no disponible')
-                    <p class="badge text-bg-danger">{{ $product->status }}</p>
-                    @endif
-                </td>
+                <td>{{ $category->id }}</td>
+                <td>{{ $category->name }}</td>
+                <td>{{ $category->products->count() }}</td>
+                <td>{{ $category->created_at }}</td>
                 <td>
                     <div class="d-flex gap-3">
-                        <a href="{{ route('dashboard.products.show', $product->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver producto">
+                        <a href="{{ route('dashboard.categories.show', $category->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver categoría">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar producto">
+                        <a href="{{ route('dashboard.categories.edit', $category->id) }}" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar categoría">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <form action="{{ route('dashboard.products.delete', $product->id) }}" method="POST">
+                        <form action="{{ route('dashboard.categories.delete', $category->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar producto" @if ($product->status == 'no disponible') disabled @endif>
+                            <button type="submit" class="btn border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar categoría">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </form>

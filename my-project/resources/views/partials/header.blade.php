@@ -121,7 +121,7 @@
                             @if (Auth::user()->roles->contains('name', 'admin'))
                             <div class="accordion-item border-0 mt-3">
                                 <h2 class="accordion-header">
-                                    <a href="{{ route('dashboard.products') }}" class="accordion-button collapsed text-decoration-none text-dark" id="admin-link" type="button">
+                                    <a href="{{ route('dashboard') }}" class="accordion-button collapsed text-decoration-none text-dark" id="admin-link" type="button">
                                     <i class="fa-solid fa-gear me-2"></i>
                                         Panel de administrador
                                     </a>

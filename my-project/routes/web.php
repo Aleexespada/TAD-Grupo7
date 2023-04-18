@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AddressesController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
@@ -23,6 +25,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
 // Admin
+Route::get('/admin', [AdminController::class, 'index'])->name('dashboard')->middleware('auth', 'admin');
+Route::get('/admin/categorias', [AdminCategoryController::class, 'index'])->name('dashboard.categories')->middleware('auth', 'admin');
+Route::get('/admin/categorias/crear', [AdminCategoryController::class, 'create'])->name('dashboard.categories.create')->middleware('auth', 'admin');
+Route::post('/admin/categorias/crear', [AdminCategoryController::class, 'store'])->name('dashboard.categories.create')->middleware('auth', 'admin');
+Route::get('/admin/categorias/{id}', [AdminCategoryController::class, 'show'])->name('dashboard.categories.show')->middleware('auth', 'admin');
+Route::get('/admin/categorias/edit/{id}', [AdminCategoryController::class, 'edit'])->name('dashboard.categories.edit')->middleware('auth', 'admin');
+Route::put('/admin/categorias/edit/{id}', [AdminCategoryController::class, 'update'])->name('dashboard.categories.edit')->middleware('auth', 'admin');
+Route::delete('/admin/categorias/delete/{id}', [AdminCategoryController::class, 'destroy'])->name('dashboard.categories.delete')->middleware('auth', 'admin');
 Route::get('/admin/productos', [AdminProductController::class, 'index'])->name('dashboard.products')->middleware('auth', 'admin');
 Route::get('/admin/productos/crear', [AdminProductController::class, 'create'])->name('dashboard.products.create')->middleware('auth', 'admin');
 Route::post('/admin/productos/crear', [AdminProductController::class, 'store'])->name('dashboard.products.create')->middleware('auth', 'admin');

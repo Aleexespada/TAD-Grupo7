@@ -8,7 +8,7 @@ Pedido ID - {{ $order->id }}
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-black">Panel administrador</a></li>
     <li class="breadcrumb-item"><a href="{{ route('dashboard.orders') }}" class="text-black">Pedidos</a></li>
     <li class="breadcrumb-item active">Pedido ID - {{ $order->id }}</li>
 </ol>

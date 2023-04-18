@@ -1,4 +1,4 @@
-@import 'bootstrap/scss/bootstrap';
+// @import 'bootstrap/scss/bootstrap';
 
 @font-face {
     font-family: SquadaOne;
@@ -48,4 +48,10 @@
 .search-box .form-control {
     border-radius: 30px;
     padding-left: 40px;
+}
+
+#ordersPerDayChart,
+#ordersPerCategoryChart {
+    height: 350px !important;
+    margin: 0 auto;
 }

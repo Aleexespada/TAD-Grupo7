@@ -10,7 +10,7 @@ Crear Nuevo Producto
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-black">Panel administrador</a></li>
     <li class="breadcrumb-item"><a href="{{ route('dashboard.products') }}" class="text-black">Productos</a></li>
     <li class="breadcrumb-item active">Crear nuevo producto</li>
 </ol>
@@ -226,7 +226,7 @@ Crear Nuevo Producto
             <button name="btnClear" type="reset" class="col-12 col-md-4 col-xxl-2 btn btn-outline-dark py-3 px-5">
                 Cancelar
             </button>
-            <button name="btnRegister" type="submit" class="col-12 col-md-6 col-xxl-3 btn btn-dark py-3 px-5 mt-2 mt-md-0 ms-md-2">
+            <button name="btnRegister" type="submit" class="col-12 col-md-6 col-xxl-3 btn btn-dark py-3 px-5 mt-2 mt-md-0 ms-md-2 me-md-3">
                 Crear producto
             </button>
         </div>

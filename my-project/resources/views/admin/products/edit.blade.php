@@ -10,7 +10,7 @@ Editar producto ID - {{ $product->id }}
 
 @section('breadcrumb')
 <ol class="breadcrumb m-0">
-    <!-- <li class="breadcrumb-item"><a href="" class="text-black">Panel administrador</a></li> -->
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-black">Panel administrador</a></li>
     <li class="breadcrumb-item"><a href="{{ route('dashboard.products') }}" class="text-black">Productos</a></li>
     <li class="breadcrumb-item active">Editar producto ID - {{ $product->id }}</li>
 </ol>
