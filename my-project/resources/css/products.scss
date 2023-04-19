@@ -1,0 +1,11 @@
+.product {
+    transition: transform 0.5s;
+}
+
+.product:hover {
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+}

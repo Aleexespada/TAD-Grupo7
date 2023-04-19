@@ -19,7 +19,7 @@
     @include('partials.header')
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="principal-container container">
+    <main class="principal-container container-fluid">
         @yield('content')
     </main>
 

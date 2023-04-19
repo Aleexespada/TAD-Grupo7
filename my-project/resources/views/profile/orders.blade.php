@@ -94,63 +94,63 @@
                                                                 <p class="text-muted mb-0">{{ $order->address }}</p>
                                                             </div>
                                                         </div>
-                                                    <hr>
+                                                        <hr>
 
-                                                    <!-- TARJETA DE CRÉDITO DEL PEDIDO -->
-                                                    <div class="">
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <p class="mb-0">Tarjeta bancaria</p>
-                                                            </div>
-                                                            <div class="col-sm-9">
-                                                                <p class="text-muted mb-0">{{ $order->credit_card }}</p>
+                                                        <!-- TARJETA DE CRÉDITO DEL PEDIDO -->
+                                                        <div class="">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <p class="mb-0">Tarjeta bancaria</p>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <p class="text-muted mb-0">{{ $order->credit_card }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <hr>
+                                                        <hr>
 
-                                                    <!-- LISTA DE PRODUCTOS DEL PEDIDO -->
-                                                    <div class="table-responsive">
-                                                        <table class="table align-translate-middle">
-                                                            <thead class="table-light">
-                                                                <tr>
-                                                                    <th class="align-middle">ID</th>
-                                                                    <th class="align-middle">Nombre</th>
-                                                                    <th class="align-middle">Talla</th>
-                                                                    <th class="align-middle">Precio unitario</th>
-                                                                    <th class="align-middle">Cantidad</th>
-                                                                    <th class="align-middle">Precio Total</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($order->products as $product)
-                                                                <tr>
-                                                                    <td>{{ $product->id }}</td>
-                                                                    <td>{{ $product->name }}</td>
-                                                                    <td>{{ $product->pivot->product_size }}</td>
-                                                                    <td>@if ($product->discount){{ $product->discount }} €@else{{ $product->price }} €@endif</td>
-                                                                    <td>{{ $product->pivot->product_quantity }}</td>
-                                                                    <td>@if ($product->discount){{ $product->discount * $product->pivot->product_quantity }} €@else{{ $product->price * $product->pivot->product_quantity }} €@endif</td>
-                                                                </tr>
-                                                                @endforeach
-                                                                <tr>
-                                                                    <td colspan="4">
-                                                                    </td>
-                                                                    <th>
-                                                                        Total Pedido:
-                                                                    </th>
-                                                                    <th>
-                                                                        {{ $order->total_price }} €
-                                                                    </th>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                        <!-- LISTA DE PRODUCTOS DEL PEDIDO -->
+                                                        <div class="table-responsive">
+                                                            <table class="table align-translate-middle">
+                                                                <thead class="table-light">
+                                                                    <tr>
+                                                                        <th class="align-middle">ID</th>
+                                                                        <th class="align-middle">Nombre</th>
+                                                                        <th class="align-middle">Talla</th>
+                                                                        <th class="align-middle">Precio unitario</th>
+                                                                        <th class="align-middle">Cantidad</th>
+                                                                        <th class="align-middle">Precio Total</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @foreach ($order->products as $product)
+                                                                    <tr>
+                                                                        <td>{{ $product->id }}</td>
+                                                                        <td>{{ $product->name }}</td>
+                                                                        <td>{{ $product->pivot->product_size }}</td>
+                                                                        <td>@if ($product->discount){{ $product->discount }} €@else{{ $product->price }} €@endif</td>
+                                                                        <td>{{ $product->pivot->product_quantity }}</td>
+                                                                        <td>@if ($product->discount){{ $product->discount * $product->pivot->product_quantity }} €@else{{ $product->price * $product->pivot->product_quantity }} €@endif</td>
+                                                                    </tr>
+                                                                    @endforeach
+                                                                    <tr>
+                                                                        <td colspan="4">
+                                                                        </td>
+                                                                        <th>
+                                                                            Total Pedido:
+                                                                        </th>
+                                                                        <th>
+                                                                            {{ $order->total_price }} €
+                                                                        </th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                     @if ($order->status != 'cancelado')
                                     <!-- BOTÓN PARA CANCELAR PEDIDO -->
                                     <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-cancel-order-{{$order->id}}">
@@ -181,7 +181,6 @@
                                         </div>
                                     </div>
                                     @endif
-                                </div>
                             </li>
                             @endforeach
                         </ul>

@@ -7,11 +7,23 @@
             </button>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Categorías</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    cuerpo offcanvas
+                    <div class="list-group">
+                        <a href="{{ route('index') }}" class="list-group-item list-group-item-action border-0" aria-current="true">
+                            Todos los productos
+                        </a>
+                        @foreach ($categories as $category)
+                        <form class="m-0" action="{{ route('index') }}" method="GET">
+                            <input type="hidden" name="categories[]" value="{{ $category->id }}">
+                            <button type="submit" class="list-group-item list-group-item-action border-0">
+                                {{ $category->name }}
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
@@ -122,7 +134,7 @@
                             <div class="accordion-item border-0 mt-3">
                                 <h2 class="accordion-header">
                                     <a href="{{ route('dashboard') }}" class="accordion-button collapsed text-decoration-none text-dark" id="admin-link" type="button">
-                                    <i class="fa-solid fa-gear me-2"></i>
+                                        <i class="fa-solid fa-gear me-2"></i>
                                         Panel de administrador
                                     </a>
                                 </h2>
