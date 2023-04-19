@@ -288,6 +288,19 @@
     }
 }
 
+.product-favorite-button-activate {
+    & button {
+        border-color: black !important;
+        border-radius: 0.25rem;
+        overflow: hidden;
+    }
+
+    & button#add-favorite {
+        padding: 10px 15px;
+        color: red !important;
+    }
+}
+
 @keyframes fromDown {
     from {
         transform: translateY(200%);

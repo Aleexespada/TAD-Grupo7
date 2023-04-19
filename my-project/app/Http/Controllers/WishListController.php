@@ -61,23 +61,30 @@ class WishListController extends Controller
     /** Mueve un producto desde la lista de deseos a la cesta del usuario */
     public function moveToCart($product_id, Request $request) 
     {
-        $this->remoteItem($product_id);
+        $size = $request->size;
 
-        // Instanciar el controlador CartController
-        $cartController = new CartController();
+        // Si se ha selecionado una talla podremos mover el producto al carrito
+        if(isset($size) && $size != null && $size != '') {
+            $this->remoteItem($product_id);
+        
 
-        // Crear una instancia de Request
-        $cartRequest = new Request();
-        $cartRequest->merge([
-            'product_id' => $product_id,
-            'size' => $request->size,
-            'quantity' => 1
-        ]);
+            // Instanciar el controlador CartController
+            $cartController = new CartController();
 
-    // Llamar a la función createItemCart del controlador CartController con la instancia de Request creada
-    $cartController->createItemCart($cartRequest);
+            // Crear una instancia de Request
+            $cartRequest = new Request();
+            $cartRequest->merge([
+                'product_id' => $product_id,
+                'size' => $size,
+                'quantity' => 1
+            ]);
 
-        // LLamar a la función CartController.createItemCart
+            // Llamar a la función createItemCart del controlador CartController con la instancia de Request creada
+            $cartController->createItemCart($cartRequest);
+
+        }
+
+        // Recargar
         return redirect()->route('favorites.wish-list');
     }
 
@@ -98,11 +105,8 @@ class WishListController extends Controller
     {
         if (auth()->user()) {
             $this->remoteItem($product_id);
-
-            return redirect()->route('favorites.wish-list');
-        } else {
-            return view('favorites.wish-list');
         }
+        return redirect()->back();
     }
 
     /** Elimina un producto de la lista de deseos del usuario */

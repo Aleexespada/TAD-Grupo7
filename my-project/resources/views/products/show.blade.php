@@ -299,21 +299,43 @@
                 </div>
             </div>
         </form>
-
+        
         <!-- FAVORITE BUTTONS -->
-        <form action="{{ route('favorites.add') }}" method="POST">
-            @csrf
-            @method('POST')
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <div>
+            @isset($isFavorite)
+            @if(!$isFavorite)
+            <!-- BUTTON DESACTIVADO -->
+            <form action="{{ route('favorites.add') }}" method="POST">
+                @csrf
+                @method('POST')
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-            <div class="col-4 col-lg-4 mt-lg-0 text-center text-lg-end product-favorite-button">
-                <button type="submit" id="add-favorite" class="btn h-100 px-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Añadir favorito" data-bs-offset="0, 6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                    </svg>
-                </button>
-            </div>
-        </form>
+                <div class="col-4 col-lg-4 mt-lg-0 text-center text-lg-end product-favorite-button">
+                    <button type="submit" id="add-favorite" class="btn h-100 px-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Añadir favorito" data-bs-offset="0, 6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <!-- BUTTON ACTIVADO -->
+            @else
+            <form action="{{ route('favorites.remove.fromProductView', $product->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="col-4 col-lg-4 mt-lg-0 text-center text-lg-end product-favorite-button-activate">
+                    <button type="submit" id="add-favorite" class="btn h-100 px-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Añadir favorito" data-bs-offset="0, 6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+            @endif
+            @endisset
+
+        </div>
 
         @error('size')
         <div class="row">

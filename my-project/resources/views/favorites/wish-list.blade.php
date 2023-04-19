@@ -129,7 +129,7 @@
                                             </td>
                                             <!-- BOTON PARA ELIMINAR DE LA LISTA DE DESEOS -->
                                             <td>
-                                                <form action="{{ route('favorites.remove.fromWishListView', $product->id) }}" method="POST" class="text-muted" style="cursor: pointer;">
+                                                <form action="{{ route('favorites.remove.fromWishListView', $product->id) }}" method="POST" class="text-muted" style="cursor: pointer; margin: 0;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-link text-black px-2"><i class="fa fa-times"></i></button>
