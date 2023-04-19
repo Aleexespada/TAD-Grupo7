@@ -1,0 +1,57 @@
+/* Carousel */
+.carousel-height {
+    height: calc(100vh - 90px);
+}
+
+.carousel-height .carousel-inner,
+.carousel-height .carousel-item,
+.carousel-height img.d-block {
+    height: 100%;
+}
+
+.carousel-height img.d-block {
+    object-fit: cover;
+    object-position: top;
+}
+
+.carousel-indicators {
+    text-align: center !important;
+    right: -13% !important;
+    left: inherit !important;
+    flex-direction: column;
+    top: 0;
+}
+
+.carousel-indicators button {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 100%;
+}
+
+.brand-name {
+    font-family: SquadaOne;
+}
+
+.message-container {
+    // border: 1px solid red;
+    position: absolute;
+    right: 62%;
+    bottom: 1.25rem;
+    left: 2%;
+    top: 100;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
+
+.message-container p {
+    font-size: 16pt;
+    font-family: Quicksand;
+}
+
+.message-container a {
+    font-family: Oswald;
+    letter-spacing: 2px;
+}

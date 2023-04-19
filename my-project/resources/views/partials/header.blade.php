@@ -12,11 +12,11 @@
                 </div>
                 <div class="offcanvas-body">
                     <div class="list-group">
-                        <a href="{{ route('index') }}" class="list-group-item list-group-item-action border-0" aria-current="true">
+                        <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action border-0" aria-current="true">
                             Todos los productos
                         </a>
                         @foreach ($categories as $category)
-                        <form class="m-0" action="{{ route('index') }}" method="GET">
+                        <form class="m-0" action="{{ route('products.index') }}" method="GET">
                             <input type="hidden" name="categories[]" value="{{ $category->id }}">
                             <button type="submit" class="list-group-item list-group-item-action border-0">
                                 {{ $category->name }}

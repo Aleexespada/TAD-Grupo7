@@ -6,9 +6,26 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: Oswald;
+    src: url('/public/fonts/oswald/Oswald-Regular.ttf'), url('/public/fonts/oswald/Oswald-Bold.ttf'),
+        url('/public/fonts/oswald/Oswald-ExtraLight.ttf'), url('/public/fonts/oswald/Oswald-Light.ttf'),
+        url('/public/fonts/oswald/Oswald-Medium.ttf'), url('/public/fonts/oswald/Oswald-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url('/public/fonts/quicksand/Quicksand-Regular.ttf'), url('/public/fonts/quicksand/Quicksand-Bold.ttf'),
+        url('/public/fonts/quicksand/Quicksand-Light.ttf'), url('/public/fonts/quicksand/Quicksand-Medium.ttf'),
+        url('/public/fonts/quicksand/Quicksand-SemiBold.ttf');
+}
+
 /*
 * ESTILOS GENERALES
 */
+body {
+    font-family: Quicksand;
+}
 
 #goUpButton {
     bottom: 55px;

@@ -45,6 +45,7 @@ Route::get('/admin/pedidos/{id}', [AdminOrderController::class, 'show'])->name('
 Route::put('/admin/pedidos/estado/{id}', [AdminOrderController::class, 'changeStatus'])->name('dashboard.orders.changestatus')->middleware('auth', 'admin');
 
 // Products
+Route::get('/productos', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/productos/{id}', [ProductsController::class, 'show'])->name('products.show');
 
 // Cart
