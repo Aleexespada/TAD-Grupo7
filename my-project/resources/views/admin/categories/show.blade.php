@@ -18,7 +18,7 @@ Categoría ID - {{ $category->id }}
 <form id="showCategoryForm" class="row g-3">
 
     <div class="col-12">
-        <h5>Información</h5>
+        <h5 class="info-section">Información</h5>
     </div>
 
     <!-- NAME -->
@@ -40,7 +40,7 @@ Categoría ID - {{ $category->id }}
     </div>
 
     <div class="col-12">
-        <h5>Productos</h5>
+        <h5 class="info-section">Productos</h5>
     </div>
 
     @if ($category->products->count() > 0)

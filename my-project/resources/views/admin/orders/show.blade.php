@@ -70,7 +70,7 @@ Pedido ID - {{ $order->id }}
 <!-- INFORMATION -->
 <form id="showOrderForm" class="row g-3 mt-4">
     <div class="col-12">
-        <h5>Usuario</h5>
+        <h5 class="info-section">Usuario</h5>
     </div>
 
     <!-- NAME USER -->
@@ -86,7 +86,7 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <div class="col-12">
-        <h5>Información pedido</h5>
+        <h5 class="info-section">Información pedido</h5>
     </div>
 
     <!-- STATUS -->
@@ -116,7 +116,7 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <div class="col-12">
-        <h5>Dirección de envío</h5>
+        <h5 class="info-section">Dirección de envío</h5>
     </div>
 
     <!-- ADDRESS -->
@@ -126,7 +126,7 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <div class="col-12">
-        <h5>Método de pago</h5>
+        <h5 class="info-section">Método de pago</h5>
     </div>
 
     <!-- CREDIT CARD -->
@@ -136,7 +136,7 @@ Pedido ID - {{ $order->id }}
     </div>
 
     <div class="col-12">
-        <h5>Productos</h5>
+        <h5 class="info-section">Productos</h5>
     </div>
 
     <div class="table-responsive">

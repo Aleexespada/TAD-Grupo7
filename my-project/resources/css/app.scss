@@ -54,13 +54,16 @@ body {
     border: none;
 }
 
-// Buttons, Inputs
+/*
+* Buttons, Inputs
+*/
 .btn:focus,
 a,
 input,
 textarea,
 button:focus,
-select {
+select,
+.page-link:focus {
     outline: none !important;
     box-shadow: none !important;
 }
@@ -71,8 +74,67 @@ textarea:focus {
     border-color: black !important;
 }
 
+/*
+* Badges
+*/
+.badge.text-bg-success {
+    background-color: tint-color($success, 80%) !important;
+    color: $success !important;
+    border: 1px solid $success !important;
+}
+.badge.text-bg-warning {
+    background-color: tint-color($warning, 80%) !important;
+    color: $warning !important;
+    border: 1px solid $warning !important;
+}
+.badge.text-bg-danger {
+    background-color: tint-color($danger, 80%) !important;
+    color: $danger !important;
+    border: 1px solid $danger !important;
+}
+.badge.text-bg-info {
+    background-color: tint-color($info, 80%) !important;
+    color: $info !important;
+    border: 1px solid $info !important;
+}
+
+/*
+* Principal container
+*/
 .principal-container {
     min-height: calc(100vh - 100px);
+}
+
+/*
+* Pagination
+*/
+.pagination {
+    .page-item {
+        padding-left: 2px;
+        padding-right: 2px;
+        border: none;
+
+        &.active {
+            .page-link {
+                padding: 5px 10px;
+                background-color: black !important;
+                border-color: black;
+                color: white;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+            }
+        }
+
+        .page-link {
+            // padding: 8px;
+            background-color: transparent;
+            border-color: transparent;
+            color: black;
+        }
+    }
 }
 
 /*

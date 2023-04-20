@@ -2,6 +2,8 @@
 
 @section('title', 'Mis Tarjetas de crédito - Mr Penguin')
 
+@vite(['resources/css/profile.scss'])
+
 @section('content')
 <section>
     <div class="container py-5">
@@ -11,6 +13,7 @@
                 <div class="card-body">
                     <h4 class="mb-4">Tarjetas de Crédito</h4>
                     <ul class="list-group list-group-flush rounded-3">
+                        @if (Auth::user()->creditCards->count() > 0)
                         @foreach (Auth::user()->creditCards as $credit_card)
                         <li class="list-group-item p-3">
                             <div class="row">
@@ -55,6 +58,9 @@
                             </div>
                         </li>
                         @endforeach
+                        @else
+                        No hay tarjetas guardadas
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -33,7 +33,7 @@ Editar categoría ID - {{ $category->id }}
     @method('PUT')
     @csrf
     <div class="col-12">
-        <h5>Información</h5>
+        <h5 class="info-section">Información</h5>
     </div>
     <!-- NAME -->
     <div class="col-md-6">

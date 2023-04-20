@@ -18,7 +18,7 @@ Producto ID - {{ $product->id }}
 <form id="showProductForm" class="row g-3">
 
     <div class="col-12">
-        <h5>Información</h5>
+        <h5 class="info-section">Información</h5>
     </div>
 
     <!-- NAME -->
@@ -75,7 +75,7 @@ Producto ID - {{ $product->id }}
 
     @if ($product->images->count() > 0)
     <div class="col-12 mt-5">
-        <h5>Imágenes</h5>
+        <h5 class="info-section">Imágenes</h5>
     </div>
 
     <!-- IMAGES -->
@@ -93,7 +93,7 @@ Producto ID - {{ $product->id }}
     @endif
 
     <div class="col-12 mt-5">
-        <h5>Descripción</h5>
+        <h5 class="info-section">Descripción</h5>
     </div>
 
     <!-- DESCRIPTION -->
@@ -115,7 +115,7 @@ Producto ID - {{ $product->id }}
     </div>
 
     <div class="col-12 mt-5">
-        <h5>Variantes</h5>
+        <h5 class="info-section">Variantes</h5>
     </div>
 
     <!-- SIZE -->

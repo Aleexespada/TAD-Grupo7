@@ -29,7 +29,8 @@
                         @endif
                         <hr>
                         <ul class="list-group list-group-flush rounded-3">
-                            @foreach (Auth::user()->orders as $order)
+                            @if (Auth::user()->orders->count() > 0)
+                            @foreach (Auth::user()->orders()->orderBy('created_at', 'desc')->get() as $order)
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <p class="mb-0">
                                     <span class="me-3">Pedido con id <b>#{{$order->id}}</b> - {{ $order->created_at }}</span>
@@ -56,8 +57,9 @@
                                         <div class="modal-dialog modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="modal-cancel-order-label">
-                                                        Pedido con id #{{$order->id}}</h1>
+                                                    <h1 class="modal-title text-center w-100 fs-4 fw-bold" id="modal-cancel-order-label">
+                                                        Pedido con id #{{$order->id}}
+                                                    </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -183,6 +185,9 @@
                                     @endif
                             </li>
                             @endforeach
+                            @else
+                            No has realizado pedidos todavía
+                            @endif
                         </ul>
                     </div>
                 </div>

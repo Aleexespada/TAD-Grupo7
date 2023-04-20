@@ -86,4 +86,9 @@ Categorías
         </tbody>
     </table>
 </div>
+<div class="row justify-content-center text-center">
+    <div class="col-auto">
+        {{ $categories->links() }}
+    </div>
+</div>
 @endsection

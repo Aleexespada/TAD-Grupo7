@@ -35,7 +35,7 @@ Crear Nuevo Producto
     @csrf
 
     <div class="col-12">
-        <h5>Información</h5>
+        <h5 class="info-section">Información</h5>
     </div>
 
     <!-- NAME -->
@@ -129,7 +129,7 @@ Crear Nuevo Producto
     </div>
 
     <div class="col-12 mt-5">
-        <h5>Imágenes</h5>
+        <h5 class="info-section">Imágenes</h5>
     </div>
 
     <!-- IMAGES -->
@@ -139,7 +139,7 @@ Crear Nuevo Producto
     </div>
 
     <div class="col-12 mt-5">
-        <h5>Descripción</h5>
+        <h5 class="info-section">Descripción</h5>
     </div>
 
     <!-- DESCRIPTION -->
@@ -179,7 +179,7 @@ Crear Nuevo Producto
     </div>
 
     <div class="col-12 mt-5">
-        <h5>Variantes</h5>
+        <h5 class="info-section">Variantes</h5>
         <p>Se debe añadir al menos una variante del producto.</p>
     </div>
 

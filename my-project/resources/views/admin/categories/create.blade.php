@@ -32,7 +32,7 @@ Crear Nuevo Categoría
 <form method="POST" action="{{ route('dashboard.categories.create') }}" id="createCategoryForm" class="row g-3">
     @csrf
     <div class="col-12">
-        <h5>Información</h5>
+        <h5 class="info-section">Información</h5>
     </div>
     <!-- NAME -->
     <div class="col-md-6">

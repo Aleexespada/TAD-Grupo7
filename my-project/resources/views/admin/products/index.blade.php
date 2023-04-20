@@ -99,4 +99,9 @@ Productos
         </tbody>
     </table>
 </div>
+<div class="row justify-content-center text-center">
+    <div class="col-auto">
+        {{ $products->links() }}
+    </div>
+</div>
 @endsection

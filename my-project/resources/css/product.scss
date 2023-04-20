@@ -35,6 +35,11 @@
     }
 }
 
+/* PRODUCT NAME */
+.product-name {
+    font-family: Oswald;
+}
+
 /* PRODUCT PRICE */
 .product-price #product-iva-target {
     font-size: 14px;
@@ -49,6 +54,11 @@
 .product-price #product-discount-price {
     font-size: 26px;
     color: rgb(199, 10, 10);
+}
+
+#product-iva-target {
+    font-family: Oswald;
+    letter-spacing: 1px;
 }
 
 /* SOCIAL MEDIA */
@@ -217,6 +227,7 @@
 
     & button#add-cart {
         padding: 10px 45px;
+        // font-weight: 800;
 
         &:hover {
             background-color: white;
@@ -313,6 +324,13 @@
 /**/
 #accordionProductInfo .accordion-button {
     font-weight: 700;
+}
+
+/* MODALS */
+.modal-title {
+    font-family: Oswald;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /*

@@ -9,3 +9,17 @@
     -ms-transform: scale(0.9);
     -o-transform: scale(0.9);
 }
+
+.filter-button span,
+.product-price,
+.form-label,
+.apply-filter-button {
+    font-family: Oswald;
+    letter-spacing: 1px;
+}
+
+.apply-filter-button,
+.filter-button span {
+    font-size: 10pt !important;
+    font-weight: 800 !important;
+}

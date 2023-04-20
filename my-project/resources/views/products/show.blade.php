@@ -387,8 +387,6 @@
                 <div class="modal-body">
                     ¿No te convence? ¡A veces pasa! Si quieres deshacerte de un artículo y el período de devolución de 15 días ya ha pasado, puedes intercambiarlo por crédito.
                 </div>
-                <div class="modal-footer">
-                </div>
             </div>
         </div>
     </div>
@@ -402,8 +400,6 @@
                 </div>
                 <div class="modal-body">
                     *Envío gratuito en gran parte de nuestra selección en pedidos a partir de 24,90 €. En compras de valor inferior se aplica una tarifa de envío de 2,90 €.
-                </div>
-                <div class="modal-footer">
                 </div>
             </div>
         </div>

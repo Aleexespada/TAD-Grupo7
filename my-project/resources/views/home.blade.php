@@ -46,7 +46,7 @@
                 @foreach ($topProducts as $product)
                 <div class="carousel-item @if ($loop->first) active @endif">
                     <a href="{{ route('products.show', $product->id) }}">
-                        <img src="{{ asset($product->image_url) }}" class="d-block w-100" alt="Imagen de {{ $product->name }}" style="height: 600px; object-fit: contain;">
+                        <img src="{{ asset($product->image_url) }}" class="d-block w-100" alt="Imagen de {{ $product->name }}" style="height: 450px; object-fit: contain;">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="bg-dark py-2">{{ $product->name }}</h5>
                         </div>
@@ -69,7 +69,7 @@
                 @foreach ($recentlyAddedProducts as $product)
                 <div class="carousel-item @if ($loop->first) active @endif">
                     <a href="{{ route('products.show', $product->id) }}">
-                        <img src="{{ asset($product->image_url) }}" class="d-block w-100" alt="Imagen de {{ $product->name }}" style="height: 600px; object-fit: contain;">
+                        <img src="{{ asset($product->image_url) }}" class="d-block w-100" alt="Imagen de {{ $product->name }}" style="height: 450px; object-fit: contain;">
                         <div class="carousel-caption d-none d-md-block">
                             <h5 class="bg-dark py-2">{{ $product->name }}</h5>
                         </div>

@@ -2,6 +2,8 @@
 
 @section('title', 'Confirmación Pedido - Mr Penguin')
 
+@vite(['resources/css/cart.scss'])
+
 @section('content')
 <div class="container">
     <div class="row cart-container pt-5">

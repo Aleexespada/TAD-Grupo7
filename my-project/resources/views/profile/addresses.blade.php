@@ -2,6 +2,8 @@
 
 @section('title', 'Mis Direcciones - Mr Penguin')
 
+@vite(['resources/css/profile.scss'])
+
 @section('content')
 <section>
     <div class="container py-5">
@@ -12,6 +14,7 @@
                     <div class="card-body">
                         <h4 class="mb-4">Direcciones</h4>
                         <ul class="list-group list-group-flush rounded-3">
+                            @if (Auth::user()->addresses->count() > 0)
                             @foreach (Auth::user()->addresses as $address)
                             <li class="list-group-item p-3">
                                 <div class="row">
@@ -59,6 +62,9 @@
                                 </div>
                             </li>
                             @endforeach
+                            @else
+                            No hay direcciones guardadas
+                            @endif
                         </ul>
                     </div>
                 </div>

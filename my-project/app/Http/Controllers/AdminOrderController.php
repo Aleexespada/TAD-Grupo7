@@ -15,7 +15,7 @@ class AdminOrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::orderBy('created_at', 'desc')->paginate(6);
 
         return view('admin.orders.index', compact('orders'));
     }

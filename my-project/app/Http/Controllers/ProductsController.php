@@ -22,7 +22,7 @@ class ProductsController extends Controller
                 $query->whereIn('category_id', $filter_categories);
             });
         }
-        $products = $query->get();
+        $products = $query->paginate(6);
 
         // Necesario para saber que categorías están seleccionadas en el filtro
         $filter_categories = collect($filter_categories);
