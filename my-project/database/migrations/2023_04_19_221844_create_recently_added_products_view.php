@@ -13,7 +13,7 @@ return new class extends Migration
     public function up()
     {
         DB::statement('CREATE VIEW recently_added_products AS 
-            SELECT p.name, MIN(i.url) as image_url
+            SELECT p.id, p.name, MIN(i.url) as image_url
             FROM products p
             LEFT JOIN (
                 SELECT product_id, MIN(url) as url

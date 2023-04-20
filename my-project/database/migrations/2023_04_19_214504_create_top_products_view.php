@@ -13,7 +13,7 @@ return new class extends Migration
     public function up()
     {
         DB::statement('CREATE VIEW top_products AS
-            SELECT p.name, COUNT(op.product_id) as num_orders, MIN(i.url) as image_url
+            SELECT p.id, p.name, COUNT(op.product_id) as num_orders, MIN(i.url) as image_url
             FROM products p
             JOIN order_product op ON p.id = op.product_id
             LEFT JOIN (
