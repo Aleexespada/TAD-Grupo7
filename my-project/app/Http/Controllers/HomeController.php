@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
+use App\Models\RecentlyAddedProduct;
+use App\Models\TopProduct;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $topProducts = TopProduct::all();
+        $recentlyAddedProducts = RecentlyAddedProduct::all();
+
+        return view('home', compact('topProducts', 'recentlyAddedProducts'));
     }
 }
