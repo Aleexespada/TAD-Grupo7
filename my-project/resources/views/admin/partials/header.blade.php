@@ -14,7 +14,7 @@
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAdmin" aria-labelledby="offcanvasProfileLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Opciones</h5>
+                        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Opciones</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
