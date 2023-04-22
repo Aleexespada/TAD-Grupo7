@@ -98,7 +98,7 @@
                                     <div class="accordion-body list-group">
                                         <a href="{{ route('profile.profile') }}" class="list-group-item list-group-item-action border-0">Mis datos</a>
                                         <a href="{{ route('profile.addresses') }}" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
-                                        <!-- <a href="#" class="list-group-item list-group-item-action border-0">Opiniones</a> -->
+                                        <a href="{{ route('profile.reviews') }}" class="list-group-item list-group-item-action border-0">Valoraciones</a>
                                     </div>
                                 </div>
                             </div>

@@ -48,6 +48,7 @@ Route::put('/admin/pedidos/estado/{id}', [AdminOrderController::class, 'changeSt
 // Products
 Route::get('/productos', [ProductsController::class, 'index'])->name('products.index');
 Route::get('/productos/{id}', [ProductsController::class, 'show'])->name('products.show');
+Route::post('/productos/valorar', [ProductsController::class, 'rate'])->name('products.rate');
 
 // Cart
 Route::get('/cesta', [CartController::class, 'index'])->name('cart.index')->middleware('auth');
@@ -68,6 +69,7 @@ Route::post('/cesta/discount', [CartController::class, 'applyDiscount'])->name('
 Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.profile')->middleware('auth');
 Route::get('/perfil/tarjetas-bancarias', [ProfileController::class, 'indexCreditCards'])->name('profile.creditcards')->middleware('auth');
 Route::get('/perfil/direcciones', [ProfileController::class, 'indexAddresses'])->name('profile.addresses')->middleware('auth');
+Route::get('/perfil/valoraciones', [ProfileController::class, 'indexReviews'])->name('profile.reviews')->middleware('auth');
 Route::get('/perfil/pedidos', [ProfileController::class, 'indexOrders'])->name('profile.orders')->middleware('auth');
 Route::put('/perfil/cancelar-pedido/{id}', [ProfileController::class, 'cancelOrder'])->name('profile.cancel.order')->middleware('auth');
 Route::delete('/perfil/eliminar-direccion/{id}', [ProfileController::class, 'deleteAddress'])->name('profile.delete.address')->middleware('auth');

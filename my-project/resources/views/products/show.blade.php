@@ -118,45 +118,92 @@
                                 </div>
                                 @else
                                 <!-- REVIEW FORM -->
-                                <!-- TODO: Implementar formulario valoraciones -->
-                                <!-- <form id="review-product-form" class="row justify-content-center" action="#" method="POST">
-                                <div class="col-12 mb-2">
-                                    <label class="form-label">Valoración</label>
-                                    INPUT ESTRELLAS
-                                </div>
-                                <div class="col-12 mb-2">
-                                    <label for="emailInput" class="form-label">Confirmar Email</label>
-                                    <input type="text" id="emailInput" class="form-control" name="email">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="commentTextArea" class="form-label">Comentario</label>
-                                    <textarea id="commentTextArea" class="form-control" name="comment" cols="30" rows="5" style="resize: none;"></textarea>
-                                </div>
-                                <div class="col-12 mb-5">
-                                    <button name="btnComment" type="submit" class="btn btn-outline-dark sendButton">
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                        Enviar
-                                    </button>
-                                    <button name="btnClear" type="reset" class="btn btn-dark clearButton">
-                                        Limpiar
-                                    </button>
-                                </div>
-                            </form> -->
+                                <form id="review-product-form" class="row justify-content-center" action="{{ route('products.rate') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product" value="{{ $product->id }}">
+                                    <div class="col-12 mb-2">
+                                        <label class="form-label">Valoración</label>
+                                        <div class="col">
+                                            <div class="rate p-0">
+                                                <input type="radio" id="star5" class="rate" name="rating" value="5" />
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" class="rate" name="rating" value="4" />
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" class="rate" name="rating" value="3" />
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" class="rate" name="rating" value="2">
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" class="rate" name="rating" value="1" />
+                                                <label for="star1" title="text">1 star</label>
+                                            </div>
+                                            <!-- Errores email -->
+                                            @error('rating')
+                                            <div class="invalid-feedback d-block" role="alert">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-2">
+                                        <label for="emailInput" class="form-label">Confirmar Email</label>
+                                        <input type="text" id="emailInput" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                                        <!-- Errores email -->
+                                        @error('email')
+                                        <div class="invalid-feedback d-block" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="commentTextArea" class="form-label">Comentario</label>
+                                        <textarea id="commentTextArea" class="form-control @error('comment') is-invalid @enderror" name="comment" cols="30" rows="5" style="resize: none;"></textarea>
+                                        <!-- Errores email -->
+                                        @error('comment')
+                                        <div class="invalid-feedback d-block" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 mb-5">
+                                        <button name="btnComment" type="submit" class="btn btn-outline-dark sendButton">
+                                            <i class="fa-solid fa-paper-plane"></i>
+                                            Enviar
+                                        </button>
+                                        <button name="btnClear" type="reset" class="btn btn-dark clearButton">
+                                            Limpiar
+                                        </button>
+                                    </div>
+                                </form>
                                 @endguest
 
                                 <!-- REVIEWS LIST -->
                                 <div class="list-group">
                                     @if (count($product->reviews) > 0)
-                                    @foreach ($product->reviews as $review)
+                                    @foreach ($product->reviews->sortByDesc('created_at') as $review)
                                     <div class="list-group-item">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">{{ $review->user->name }} {{ $review->user->last_name }}</h5>
+                                            <h5 class="user-name-rating mb-1">{{ $review->user->name }} {{ $review->user->last_name }}</h5>
                                             <small>{{ $review->date }}</small>
                                         </div>
                                         <div class="ratings-star">
-                                            Estrellas {{ $review->rating }}
+                                            <div class="col">
+                                                <div class="rate p-0">
+                                                    <input type="radio" class="rate" @if ($review->rating == 5) checked @endif/>
+                                                    <label title="text">5 stars</label>
+                                                    <input type="radio" class="rate" @if ($review->rating == 4) checked @endif/>
+                                                    <label title="text">4 stars</label>
+                                                    <input type="radio" class="rate" @if ($review->rating == 3) checked @endif/>
+                                                    <label title="text">3 stars</label>
+                                                    <input type="radio" class="rate" @if ($review->rating == 2) checked @endif/>
+                                                    <label title="text">2 stars</label>
+                                                    <input type="radio" class="rate" @if ($review->rating == 1) checked @endif/>
+                                                    <label title="text">1 star</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p class="mb-1">
+                                        <div class="clearfix">
+                                        </div>
+                                        <p class="mb-1 ">
                                             {{ $review->comment }}
                                         </p>
                                     </div>
@@ -178,7 +225,7 @@
         <div class="col-12 col-md-5 order-first order-md-last right-column sticky-md-top h-100">
             <!-- IMAGE FOR SCREENS SMALLER THAN MD -->
             <div class="row mb-4 d-md-none">
-                <figcaption class="text-center" style="height: 450px;">
+                <figcaption class="product-img text-center" data-bs-toggle="modal" data-bs-target="#product-img-modal" style="height: 450px;">
                     <img class="w-auto h-100" src="{{ asset($product->images->first()->url ) }}" alt="Imagen de {{ $product->name }}">
                 </figcaption>
             </div>
@@ -216,13 +263,27 @@
             <!-- RAITING AND SHARE -->
             <div class="row mt-4">
                 <!-- PRODUCT STARS -->
-                <!-- <div class="col-12 col-lg-8 product-stars text-center text-md-start"> -->
-                <!-- TODO: Estrellas valoración media -->
-                <!-- ESTRELLAS VALORACIONES -->
-                <!-- </div> -->
+                <div class="col-8 col-md-12 col-lg-8 product-stars text-center text-md-start">
+                    <div class="ratings-star">
+                        <div class="col">
+                            <div class="rate p-0">
+                                <input type="radio" class="rate" @if ($averageRating==5) checked @endif />
+                                <label title="text">5 stars</label>
+                                <input type="radio" class="rate" @if ($averageRating==4) checked @endif />
+                                <label title="text">4 stars</label>
+                                <input type="radio" class="rate" @if ($averageRating==3) checked @endif />
+                                <label title="text">3 stars</label>
+                                <input type="radio" class="rate" @if ($averageRating==2) checked @endif />
+                                <label title="text">2 stars</label>
+                                <input type="radio" class="rate" @if ($averageRating==1) checked @endif />
+                                <label title="text">1 star</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- SOCIAL MEDIA -->
-                <div class="col-12 col-lg-4 mt-3 mt-lg-0 product-social-media">
+                <div class="col-4 col-md-12 col-lg-4 mt-3 mt-lg-0 product-social-media">
                     <div class="btn_wrap">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
@@ -301,7 +362,7 @@
                         </div>
                     </div>
                 </form>
-                
+
                 <!-- FAVORITE BUTTONS -->
                 @isset($isFavorite)
                 @if(!$isFavorite)
@@ -412,7 +473,7 @@
                 <div class="modal-body">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <figcaption>
-                        <img id="product-img-modal-img" src="{{ asset('img/traje.png') }}" alt="Imagen {{ $product->name }}">
+                        <img id="product-img-modal-img" src="" alt="Imagen {{ $product->name }}">
                     </figcaption>
                 </div>
             </div>

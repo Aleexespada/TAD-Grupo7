@@ -42,6 +42,11 @@ class ProfileController extends Controller
         return view('profile.orders');
     }
 
+    public function indexReviews()
+    {
+        return view('profile.reviews');
+    }
+
     public function deleteAddress($address_id)
     {
         if (auth()->user()) {
