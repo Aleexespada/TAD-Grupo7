@@ -61,6 +61,6 @@ class AdminOrderController extends Controller
             return back()->with('error', 'Error al cambiar estado del pedido');
         }
 
-        return back()->with('message', 'Estado del pedido con ID: ' . $id . ' cambiado con exito');
+        return back()->with('message', 'Estado del pedido con ID: ' . $id . ' cambiado con éxito');
     }
 }

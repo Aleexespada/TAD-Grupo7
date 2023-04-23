@@ -17,6 +17,7 @@ class CreditCard extends Model
     protected $fillable = [
         'user_id',
         'card_number',
+        'card_number_two_last_digits',
         'cardholder_name',
         'cvv',
         'expiration_month',

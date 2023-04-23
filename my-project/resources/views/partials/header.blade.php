@@ -97,6 +97,7 @@
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
                                         <a href="{{ route('profile.profile') }}" class="list-group-item list-group-item-action border-0">Mis datos</a>
+                                        <a href="{{ route('profile.changepassword') }}" class="list-group-item list-group-item-action border-0">Cambiar contraseña</a>
                                         <a href="{{ route('profile.addresses') }}" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
                                         <a href="{{ route('profile.reviews') }}" class="list-group-item list-group-item-action border-0">Valoraciones</a>
                                     </div>
@@ -112,7 +113,7 @@
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
                                         <a href="{{ route('profile.orders') }}" class="list-group-item list-group-item-action border-0">Pedidos</a>
-                                        <!-- <a href="#" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a> -->
+                                        <a href="{{ route('profile.canceledorders') }}" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a>
                                     </div>
                                 </div>
                             </div>

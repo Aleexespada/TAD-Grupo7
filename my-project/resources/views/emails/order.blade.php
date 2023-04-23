@@ -9,7 +9,7 @@
 
 <body>
     <p>Hola {{ $order->user->name }} {{$order->user->last_name}}</p>
-    <p>Tu pedido se ha realizado con exito.</p>
+    <p>Tu pedido se ha realizado con éxito.</p>
     <br />
 
     <ul>

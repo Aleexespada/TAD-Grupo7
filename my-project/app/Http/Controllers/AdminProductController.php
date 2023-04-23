@@ -115,7 +115,7 @@ class AdminProductController extends Controller
             return back()->with('error', 'Error al crear producto');
         }
 
-        return back()->with('message', 'Producto creado con exito');
+        return back()->with('message', 'Producto creado con éxito');
     }
 
     /**
@@ -220,7 +220,7 @@ class AdminProductController extends Controller
             return back()->with('error', 'Error al editar el producto');
         }
 
-        return back()->with('message', 'Empleado actualizado con exito');
+        return back()->with('message', 'Empleado actualizado con éxito');
     }
 
     /**

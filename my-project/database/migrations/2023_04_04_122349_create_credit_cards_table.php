@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('credit_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('card_number')->unique();
+            $table->string('card_number');
+            $table->string('card_number_two_last_digits');
             $table->string('cardholder_name');
             $table->string('cvv');
             $table->string('expiration_month');

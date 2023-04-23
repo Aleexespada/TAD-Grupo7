@@ -61,7 +61,7 @@ class AdminCategoryController extends Controller
             return back()->with('error', 'Error al crear categoría');
         }
 
-        return back()->with('message', 'Categoría creada con exito');
+        return back()->with('message', 'Categoría creada con éxito');
     }
 
     /**
@@ -123,7 +123,7 @@ class AdminCategoryController extends Controller
             return back()->with('error', 'Error al editar la categoría');
         }
 
-        return back()->with('message', 'Categoría actualizada con exito');
+        return back()->with('message', 'Categoría actualizada con éxito');
     }
 
     /**

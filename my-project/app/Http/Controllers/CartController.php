@@ -138,9 +138,10 @@ class CartController extends Controller
 
                 $credit_card = CreditCard::create([
                     'user_id' => auth()->user()->id,
-                    'card_number' => $validatedData['card_number'],
+                    'card_number' => Hash::make($validatedData['card_number']),
+                    'card_number_two_last_digits' => str_repeat("*", strlen($validatedData['card_number']) - 2) . substr($validatedData['card_number'], -2),
                     'cardholder_name' => $validatedData['cardholder'],
-                    'cvv' => $validatedData['cvv'],
+                    'cvv' => Hash::make($validatedData['cvv']),
                     'expiration_month' => $month,
                     'expiration_year' => $year,
                 ]);
@@ -164,10 +165,7 @@ class CartController extends Controller
         }
         $addressString .= ", " . $address->postal_code . ", " . $address->province . ", " . $address->country;
 
-        $maskedCreditCardNumber = substr($credit_card->card_number, 0, 2) // obtenemos los dos primeros dígitos
-            . str_repeat('*', strlen($credit_card->card_number) - 4) // reemplazamos los dígitos restantes con asteriscos
-            . substr($credit_card->card_number, -2); // obtenemos los dos últimos dígitos
-        $credit_cardString = $maskedCreditCardNumber . ", " . $credit_card->expiration_month . "/" . $credit_card->expiration_year;
+        $credit_cardString = $credit_card->card_number_two_last_digits . ", " . $credit_card->expiration_month . "/" . $credit_card->expiration_year;
 
         $total_price_cart = session('total_price_cart');
 

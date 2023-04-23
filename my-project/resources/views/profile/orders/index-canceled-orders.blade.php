@@ -29,8 +29,8 @@
                         @endif
                         <hr>
                         <ul class="list-group list-group-flush rounded-3">
-                            @if (Auth::user()->orders->count() > 0)
-                            @foreach (Auth::user()->orders()->orderBy('created_at', 'desc')->get() as $order)
+                            @if (Auth::user()->orders->where('status', 'cancelado')->count() > 0)
+                            @foreach (Auth::user()->orders()->where('status', 'cancelado')->orderBy('created_at', 'desc')->get() as $order)
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                 <p class="mb-0">
                                     <span class="me-3">Pedido con id <b>#{{$order->id}}</b> - {{ $order->created_at }}</span>
@@ -153,40 +153,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @if ($order->status != 'cancelado')
-                                    <!-- BOTÓN PARA CANCELAR PEDIDO -->
-                                    <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-cancel-order-{{$order->id}}">
-                                        <i class="fa-solid fa-ban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar pedido" data-bs-offset="0, 10"></i>
-                                    </div>
-
-                                    <!-- MODAL PARA CANCELAR PEDIDO  -->
-                                    <div class="modal fade" id="modal-cancel-order-{{$order->id}}" tabindex="-1" aria-labelledby="modal-cancel-order-label" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="modal-cancel-order-label">
-                                                        Cancelar pedido</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ¿Desea cancelar este pedido?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                    <form method="POST" action="{{ route('profile.cancel.order', $order->id) }}">
-                                                        @method('PUT')
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-danger">Confirmar</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
+                                </div>
                             </li>
                             @endforeach
                             @else
-                            No has realizado pedidos todavía
+                            No tienes pedidos cancelados
                             @endif
                         </ul>
                     </div>

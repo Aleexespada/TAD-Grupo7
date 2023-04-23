@@ -14,7 +14,7 @@
                         <div class="col-12">
                             <div id="cart-content" class="p-5">
                                 <div id="cart-header" class="d-flex justify-content-between align-items-center mb-5">
-                                    <h1 class="fw-bold mb-0 text-black text-uppercase">Pedido completado con exito</h1>
+                                    <h1 class="fw-bold mb-0 text-black text-uppercase">Pedido completado con éxito</h1>
                                 </div>
 
                                 <div class="pt-5">

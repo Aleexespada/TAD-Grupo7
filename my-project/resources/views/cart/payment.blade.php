@@ -43,7 +43,7 @@
                                         <select class="form-select" id="payMethod" name="pay_method" aria-label="Seleccionar método de pago">
                                             <option selected>--</option>
                                             @foreach ($creditCards as $creditCard)
-                                            <option value="{{ $creditCard->id }}">{{ $creditCard->cardholder_name }} - {{ $creditCard->expiration_month }}/{{ $creditCard->expiration_year }}</option>
+                                            <option value="{{ $creditCard->id }}">{{ $creditCard->card_number_two_last_digits }} - {{ $creditCard->expiration_month }}/{{ $creditCard->expiration_year }}</option>
                                             @endforeach
                                         </select>
                                     </div>

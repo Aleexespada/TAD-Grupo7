@@ -12,28 +12,45 @@
             <div class="card mb-4 mb-md-0">
                 <div class="card-body">
                     <h4 class="mb-4">Tarjetas de Crédito</h4>
+                    <a href="{{ route('profile.creditcards.create') }}" type="button" class="btn btn-dark btn-rounded mb-4">
+                        <i class="fa-solid fa-plus me-1"></i>
+                        Añadir nueva tarjeta de crédito
+                    </a>
+                    <!-- MENSAJES -->
+                    @if(session('message'))
+                    <div class="alert alert-success alert-dismissible fade show px-5">
+                        <span class="m-0">{{ session('message') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+
+                    @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show px-5">
+                        <span class="m-0">{{ session('error') }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+
                     <ul class="list-group list-group-flush rounded-3">
                         @if (Auth::user()->creditCards->count() > 0)
                         @foreach (Auth::user()->creditCards as $credit_card)
                         <li class="list-group-item p-3">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="mb-0"><b>Número:</b> {{ $credit_card->card_number }}</p>
+                                    <p class="mb-0"><b>Número:</b> {{ $credit_card->card_number_two_last_digits }}</p>
                                     <p class="mb-0"><b>Titular:</b> {{ $credit_card->cardholder_name }}</p>
                                 </div>
                                 <div class="col-sm-6">
-                                    <p class="mb-0"><b>CVV:</b> {{ $credit_card->cvv }}</p>
                                     <p class="mb-0"><b>Fecha caducidad:</b> {{ $credit_card->expiration_month }} / {{ $credit_card->expiration_year }}</p>
                                 </div>
 
                                 <!-- BOTÓN PARA ELIMINAR TARJETA DE CRÉDITO -->
-                                <!-- TODO: Modificar eliminación tarjeta crédito -->
-                                <!-- <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-delete-credit-card-{{$credit_card->id}}">
-                                <i class="fa-solid fa-trash" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar tarjeta" data-bs-offset="0, 10"></i>
-                                </div> -->
+                                <div class="btn ms-auto my-auto col-auto" data-bs-toggle="modal" data-bs-target="#modal-delete-credit-card-{{$credit_card->id}}">
+                                    <i class="fa-solid fa-trash" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar tarjeta" data-bs-offset="0, 10"></i>
+                                </div>
 
                                 <!-- MODAL PARA ELIMINAR TARJETA DE CRÉDITO  -->
-                                <!-- <div class="modal fade" id="modal-delete-credit-card-{{$credit_card->id}}" tabindex="-1" aria-labelledby="modal-delete-credit-card-label" aria-hidden="true">
+                                <div class="modal fade" id="modal-delete-credit-card-{{$credit_card->id}}" tabindex="-1" aria-labelledby="modal-delete-credit-card-label" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -54,7 +71,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </li>
                         @endforeach

@@ -95,6 +95,6 @@ class ProductsController extends Controller
             return back()->with('error', 'Error al publicar valoración');
         }
 
-        return back()->with('message', 'Valoración creada con exito');
+        return back()->with('message', 'Valoración creada con éxito');
     }
 }
