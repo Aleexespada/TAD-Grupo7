@@ -129,15 +129,36 @@ Editar producto ID - {{ $product->id }}
         @enderror
     </div>
 
-    <!-- <div class="col-12 mt-5">
+    
+    <div class="col-12 mt-5">
         <h5 class="info-section">Imágenes</h5>
-    </div> -->
+        <p>Puedes eliminar imagenes del producto, o añadir imagenes, las imagenes que añadas se unirán a las existentes.</p>
+    </div>
 
-    <!-- IMAGES -->
-    <!-- <div class="col-6">
+    <div class="col-md-6">
         <label for="image" class="form-label">Imagen o Imágenes</label>
         <input type="file" class="form-control" id="image" name="images[]" multiple>
-    </div> -->
+    </div>
+
+    @if ($product->images->count() > 0)
+    <!-- IMAGES -->
+    <div class="col-12">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-4">
+            @foreach ($product->images as $image)
+            <div class="col mb-2">
+                <div class="card text-center" style="height: 300px;">
+                    <img src="{{ asset($image->url) }}" class="h-100 card-img-top" alt="" style="object-fit: contain;">
+
+                    <!-- BOTÓN PARA CANCELAR PEDIDO -->
+                    <div class="btn" data-bs-toggle="modal" data-bs-target="#modal-delete-image-{{ $image->id }}">
+                        <i class="fa-solid fa-xmark" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar imagen" data-bs-offset="0, 10"></i>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
 
     <div class="col-12 mt-5">
         <h5 class="info-section">Descripción</h5>
@@ -232,4 +253,32 @@ Editar producto ID - {{ $product->id }}
         </button>
     </div>
 </form>
+
+@if ($product->images->count() > 0)
+@foreach ($product->images as $image)
+<!-- MODAL PARA CANCELAR PEDIDO  -->
+<div class="modal fade" id="modal-delete-image-{{ $image->id }}" tabindex="-1" aria-labelledby="modal-delete-image-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modal-delete-image-label">
+                    Eliminar imagen</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Desea eliminar esta imagen?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="POST" action="{{ route('dashboard.products.image.delete', $image->id) }}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@endif
 @endsection

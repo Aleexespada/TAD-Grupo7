@@ -52,6 +52,7 @@ Route::get('/admin/productos/{id}', [AdminProductController::class, 'show'])->na
 Route::get('/admin/productos/editar/{id}', [AdminProductController::class, 'edit'])->name('dashboard.products.edit')->middleware('auth', 'verified', 'admin');
 Route::put('/admin/productos/editar/{id}', [AdminProductController::class, 'update'])->name('dashboard.products.edit')->middleware('auth', 'verified', 'admin');
 Route::delete('/admin/productos/eliminar/{id}', [AdminProductController::class, 'destroy'])->name('dashboard.products.delete')->middleware('auth', 'verified', 'admin');
+Route::delete('/admin/productos/eliminar-imagen/{id}', [AdminProductController::class, 'destroyImage'])->name('dashboard.products.image.delete')->middleware('auth', 'verified', 'admin');
 // Orders
 Route::get('/admin/pedidos', [AdminOrderController::class, 'index'])->name('dashboard.orders')->middleware('auth', 'verified', 'admin');
 Route::get('/admin/pedidos/{id}', [AdminOrderController::class, 'show'])->name('dashboard.orders.show')->middleware('auth', 'verified', 'admin');

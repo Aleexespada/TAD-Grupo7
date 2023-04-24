@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
@@ -206,13 +207,23 @@ class AdminProductController extends Controller
             $sizes = $request->sizes;
             $stocks = $request->stocks;
             $sizeStocks = collect($sizes)->mapWithKeys(function ($size, $index) use ($stocks) {
-                return [ $size => [
+                return [$size => [
                     'stock' => $stocks[$index],
                     'created_at' => now(),
                     'updated_at' => now()
                 ]];
             });
             $product->description->sizes()->sync($sizeStocks->all());
+
+            // Guarda la imagen en la bd y en la carpeta storage/app/public/images
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $file) {
+                    Image::create([
+                        'url' => 'storage/' . str_replace('public/', '', $file->store('public/images')),
+                        'product_id' => $product->id
+                    ]);
+                }
+            }
 
             DB::commit();
         } catch (\Exception $e) {
@@ -246,5 +257,28 @@ class AdminProductController extends Controller
         }
 
         return back()->with('message', 'Producto con id [' . $id . '] no disponible correctamente');
+    }
+
+    public function destroyImage($id)
+    {
+        try {
+            DB::beginTransaction();
+
+            $image = Image::findOrFail($id);
+
+            // Eliminar la imagen del sistema de archivos
+            if (Storage::delete('public/images/' . basename($image->url))) {
+                $image->delete();
+                DB::commit();
+
+                return back()->with('message', 'Imagen con id [' . $id . '] eliminada con éxito');
+            } else {
+                DB::rollBack();
+                return back()->with('error', 'Error al eliminar la imagen con id: ' . $id);
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->with('error', 'Error al eliminar la imagen con id: ' . $id);
+        }
     }
 }
