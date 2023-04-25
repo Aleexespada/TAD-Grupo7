@@ -17,9 +17,9 @@ class Product extends Model
     protected $fillable = [
         'name',
         'price',
-        'stock',
         'discount',
         'brand_id',
+        'status',
     ];
 
     public function description()
@@ -44,7 +44,7 @@ class Product extends Model
 
     public function userFavorites()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'favorites');
     }
 
     public function categories()

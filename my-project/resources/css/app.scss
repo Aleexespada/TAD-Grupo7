@@ -1,19 +1,69 @@
 @import 'bootstrap/scss/bootstrap';
 
+@font-face {
+    font-family: SquadaOne;
+    src: url('/public/fonts/Squada_One/SquadaOne-Regular.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Oswald;
+    src: url('/public/fonts/oswald/Oswald-Regular.ttf'), url('/public/fonts/oswald/Oswald-Bold.ttf'),
+        url('/public/fonts/oswald/Oswald-ExtraLight.ttf'), url('/public/fonts/oswald/Oswald-Light.ttf'),
+        url('/public/fonts/oswald/Oswald-Medium.ttf'), url('/public/fonts/oswald/Oswald-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url('/public/fonts/quicksand/Quicksand-Regular.ttf'), url('/public/fonts/quicksand/Quicksand-Bold.ttf'),
+        url('/public/fonts/quicksand/Quicksand-Light.ttf'), url('/public/fonts/quicksand/Quicksand-Medium.ttf'),
+        url('/public/fonts/quicksand/Quicksand-SemiBold.ttf');
+}
+
 /*
 * ESTILOS GENERALES
 */
+body {
+    font-family: Quicksand;
+}
+
+#goUpButton {
+    bottom: 55px;
+    right: 40px;
+    display: none;
+    padding: 15px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 50%;
+}
+
+#goUpButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.navbar-brand {
+    font-family: SquadaOne;
+    font-size: 24pt;
+}
+
 .navbar-toggler {
     border: none;
 }
 
-// Buttons, Inputs
+/*
+* Buttons, Inputs
+*/
 .btn:focus,
 a,
 input,
 textarea,
 button:focus,
-select {
+select,
+.page-link:focus {
     outline: none !important;
     box-shadow: none !important;
 }
@@ -24,8 +74,67 @@ textarea:focus {
     border-color: black !important;
 }
 
+/*
+* Badges
+*/
+.badge.text-bg-success {
+    background-color: tint-color($success, 80%) !important;
+    color: $success !important;
+    border: 1px solid $success !important;
+}
+.badge.text-bg-warning {
+    background-color: tint-color($warning, 80%) !important;
+    color: $warning !important;
+    border: 1px solid $warning !important;
+}
+.badge.text-bg-danger {
+    background-color: tint-color($danger, 80%) !important;
+    color: $danger !important;
+    border: 1px solid $danger !important;
+}
+.badge.text-bg-info {
+    background-color: tint-color($info, 80%) !important;
+    color: $info !important;
+    border: 1px solid $info !important;
+}
+
+/*
+* Principal container
+*/
 .principal-container {
     min-height: calc(100vh - 100px);
+}
+
+/*
+* Pagination
+*/
+.pagination {
+    .page-item {
+        padding-left: 2px;
+        padding-right: 2px;
+        border: none;
+
+        &.active {
+            .page-link {
+                padding: 5px 10px;
+                background-color: black !important;
+                border-color: black;
+                color: white;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+            }
+        }
+
+        .page-link {
+            // padding: 8px;
+            background-color: transparent;
+            border-color: transparent;
+            color: black;
+        }
+    }
 }
 
 /*
@@ -36,7 +145,8 @@ textarea:focus {
     font-size: var(--bs-nav-link-font-size);
 }
 
-#signout-link.accordion-button::after {
+#signout-link.accordion-button::after,
+#admin-link.accordion-button::after {
     background-image: none;
     background-color: transparent;
 }

@@ -24,6 +24,7 @@ class CreditCardsTableSeeder extends Seeder
                 'id' => $credit_card->id,
                 'user_id' => $credit_card->user_id,
                 'card_number' => Hash::make($credit_card->card_number),
+                'card_number_two_last_digits' => str_repeat("*", strlen($credit_card->card_number) - 2) . substr($credit_card->card_number, -2),
                 'cardholder_name' => $credit_card->cardholder_name,
                 'cvv' => Hash::make($credit_card->cvv),
                 'expiration_month' => $credit_card->expiration_month,

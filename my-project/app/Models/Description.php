@@ -9,6 +9,18 @@ class Description extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'product_id',
+        'description',
+        'details',
+        'color',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class);

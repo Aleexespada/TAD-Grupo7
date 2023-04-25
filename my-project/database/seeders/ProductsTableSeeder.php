@@ -25,6 +25,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => $product->price,
                 'discount' => $product->discount,
                 'brand_id' => $product->brand_id,
+                'status' => $product->status,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

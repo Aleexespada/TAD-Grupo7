@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "product_id": 1,
+        "quantity": 2,
+        "size": "48",
+        "unity_price": 199.00,
+        "subtotal": 398.00
+    },
+    {
+        "id": 2,
+        "user_id": 2,
+        "product_id": 1,
+        "quantity": 1,
+        "size": "52",
+        "unity_price": 199.00,
+        "subtotal": 199.00
+    },
+    {
+        "id": 3,
+        "user_id": 2,
+        "product_id": 2,
+        "quantity": 1,
+        "size": "40",
+        "unity_price": 79.95,
+        "subtotal": 79.95
+    }
+]

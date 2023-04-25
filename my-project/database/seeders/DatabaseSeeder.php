@@ -27,7 +27,14 @@ class DatabaseSeeder extends Seeder
             DescriptionsTableSeeder::class,
             ImagesTableSeeder::class,
             SizesTableSeeder::class,
-            DescriptionSizeTableSeeder::class
+            DescriptionSizeTableSeeder::class,
+            CartItemsTableSeeder::class,
+            DiscountCouponsTableSeeder::class,
+            UserDiscountCouponTableSeeder::class,
+            OrdersTableSeeder::class,
+            OrderProductTableSeeder::class,
+            ReviewsTableSeeder::class,
+            FavoritesTableSeeder::class
         ]);
     }
 }

@@ -7,18 +7,30 @@
             </button>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Categorías</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    cuerpo offcanvas
+                    <div class="list-group">
+                        <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action border-0" aria-current="true">
+                            Todos los productos
+                        </a>
+                        @foreach ($categories as $category)
+                        <form class="m-0" action="{{ route('products.index') }}" method="GET">
+                            <input type="hidden" name="categories[]" value="{{ $category->id }}">
+                            <button type="submit" class="list-group-item list-group-item-action border-0">
+                                {{ $category->name }}
+                            </button>
+                        </form>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
             <!-- CENTER ELEMENTS -->
             <div class="flex-row d-none d-md-flex">
-                <a class="navbar-brand" href="/">
-                    NAVBAR
+                <a class="navbar-brand" href="{{ route('index') }}">
+                    MR PENGUIN
                 </a>
             </div>
 
@@ -26,7 +38,7 @@
             <ul class="navbar-nav flex-row">
                 <!-- FAVORITOS -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Lista de deseos">
+                    <a class="nav-link" href="{{ route('favorites.wish-list') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Lista de deseos">
                         <span class="me-2">
                             <i class="fa-solid fa-heart" style="font-size: 16pt;"></i>
                         </span>
@@ -70,7 +82,7 @@
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasProfile" aria-labelledby="offcanvasProfileLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mi cuenta</h5>
+                        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Mi cuenta</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -84,9 +96,10 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Mis datos</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Opiniones</a>
+                                        <a href="{{ route('profile.profile') }}" class="list-group-item list-group-item-action border-0">Mis datos</a>
+                                        <a href="{{ route('profile.changepassword') }}" class="list-group-item list-group-item-action border-0">Cambiar contraseña</a>
+                                        <a href="{{ route('profile.addresses') }}" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
+                                        <a href="{{ route('profile.reviews') }}" class="list-group-item list-group-item-action border-0">Valoraciones</a>
                                     </div>
                                 </div>
                             </div>
@@ -99,8 +112,8 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Pedidos</a>
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a>
+                                        <a href="{{ route('profile.orders') }}" class="list-group-item list-group-item-action border-0">Pedidos</a>
+                                        <a href="{{ route('profile.canceledorders') }}" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a>
                                     </div>
                                 </div>
                             </div>
@@ -113,11 +126,23 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                                     <div class="accordion-body list-group">
-                                        <a href="#" class="list-group-item list-group-item-action border-0">Tarjetas vinculadas</a>
+                                        <a href="{{ route('profile.creditcards') }}" class="list-group-item list-group-item-action border-0">Tarjetas vinculadas</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item border-0">
+
+                            @if (Auth::user()->roles->contains('name', 'admin'))
+                            <div class="accordion-item border-0 mt-3">
+                                <h2 class="accordion-header">
+                                    <a href="{{ route('dashboard') }}" class="accordion-button collapsed text-decoration-none text-dark" id="admin-link" type="button">
+                                        <i class="fa-solid fa-gear me-2"></i>
+                                        Panel de administrador
+                                    </a>
+                                </h2>
+                            </div>
+                            @endif
+
+                            <div class="accordion-item border-0 mt-3">
                                 <h2 class="accordion-header">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="accordion-button collapsed text-decoration-none text-dark" id="signout-link" type="button">
                                         <i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>

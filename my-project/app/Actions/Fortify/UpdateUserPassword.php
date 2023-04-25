@@ -28,5 +28,7 @@ class UpdateUserPassword implements UpdatesUserPasswords
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();
+
+        session()->flash('message', 'Contraseña cambiada con éxito');
     }
 }

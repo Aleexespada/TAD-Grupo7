@@ -2,6 +2,8 @@
 
 @section('title', 'Olvidé mi contraseña - Mr Penguin')
 
+@vite(['resources/css/auth.scss'])
+
 @section('content')
 <div class="row justify-content-center mt-5">
 

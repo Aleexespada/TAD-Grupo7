@@ -65,7 +65,7 @@ Los valores por defecto de las credenciales para la base de datos han sido cambi
 4. Buscamosla variable 'DB_PASSWORD' y le damos el valor 'laravel'
 
 
-### Generación de la key 
+### Generación de la key y link carpeta storage
 La clave de aplicación es una cadena aleatoria almacenada en la clave APP_KEY dentro del archivo .env. Notarás que también falta.
 
 Para crear la nueva clave e insertarla automáticamente en el .env:
@@ -83,7 +83,10 @@ docker exec -i -t <container id copiado> /bin/bash
 ```
 php artisan key:generate
 ```
-
+5. Lanzamos el comando para el link de la carpeta storage:
+```
+php artisan storage:link
+```
 #### Creación de ficheros PHP en Laravel con php artisan
 
 Para esto tendremos que entrar dentro del contenedor que contiene Laravel. Los pasos a seguir serán los siguientes:

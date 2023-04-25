@@ -2,6 +2,8 @@
 
 @section('title', 'Registro - Mr Penguin')
 
+@vite(['resources/css/auth.scss'])
+
 <script defer src="{{ asset('js/showPassword.js') }}"></script>    
 
 @section('content')
