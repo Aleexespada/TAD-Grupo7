@@ -37,23 +37,9 @@
     padding: 20px 30px;
 }
 
-.search-box .search-icon {
-    font-size: 16px;
-    position: absolute;
-    left: 13px;
-    top: 0;
-    line-height: 38px;
-}
-
-.search-box .form-control {
-    border-radius: 30px;
-    padding-left: 40px;
-}
-
-#ordersPerDayChart,
-#ordersPerCategoryChart {
+.canvas-container {
     height: 350px !important;
-    margin: 0 auto;
+    position: relative;
 }
 
 .section-title h4 {
@@ -65,5 +51,16 @@
 
 .info-section {
     font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.order-dropdown .dropdown-item:active {
+    background-color: black;
+}
+
+.modal-header .modal-title {
+    font-family: Oswald;
+    text-transform: uppercase;
+    font-weight: 600;
     letter-spacing: 1px;
 }

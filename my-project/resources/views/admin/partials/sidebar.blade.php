@@ -8,15 +8,15 @@
             <i class="fa-solid fa-chart-line me-2" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Panel Principal"></i>
             <span class="d-none d-lg-inline">Panel Principal</span>
         </a>
-        <a href="{{ route('dashboard.categories') }}" class="list-group-item list-group-item-action border-0 bg-black @if(Request::path() == 'admin/categorias') text-light @else text-muted @endif" aria-current="true">
+        <a href="{{ route('dashboard.categories') }}" class="list-group-item list-group-item-action border-0 bg-black @if(Str::contains(Request::path(), 'admin/categorias')) text-light @else text-muted @endif" aria-current="true">
             <i class="fa-solid fa-sitemap me-2" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Categorías"></i>
             <span class="d-none d-lg-inline">Categorías</span>
         </a>
-        <a href="{{ route('dashboard.products') }}" class="list-group-item list-group-item-action border-0 bg-black @if(Request::path() == 'admin/productos') text-light @else text-muted @endif" aria-current="true">
+        <a href="{{ route('dashboard.products') }}" class="list-group-item list-group-item-action border-0 bg-black @if(Str::contains(Request::path(), 'admin/productos')) text-light @else text-muted @endif" aria-current="true">
             <i class="fa-solid fa-truck me-2" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Productos"></i>
             <span class="d-none d-lg-inline">Productos</span>
         </a>
-        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action border-0 bg-black @if(Request::path() == 'admin/pedidos') text-light @else text-muted @endif">
+        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action border-0 bg-black @if(Str::contains(Request::path(), 'admin/pedidos')) text-light @else text-muted @endif">
             <i class="fa-solid fa-rectangle-list me-2" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Pedidos"></i>
             <span class="d-none d-lg-inline">Pedidos</span>
         </a>        

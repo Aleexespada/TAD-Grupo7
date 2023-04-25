@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
             UserDiscountCouponTableSeeder::class,
             OrdersTableSeeder::class,
             OrderProductTableSeeder::class,
-            ReviewsTableSeeder::class
+            ReviewsTableSeeder::class,
+            FavoritesTableSeeder::class
         ]);
     }
 }

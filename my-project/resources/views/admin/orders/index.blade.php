@@ -27,15 +27,42 @@ Pedidos
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
+<div class="row mb-2">
+    <div class="col-12">
+        <div class="dropdown text-md-end">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                @if ($order == 'id' && $direction == 'asc') <i class="fa-solid fa-arrow-down-1-9"></i> ID asc.
+                @elseif ($order == 'id' && $direction == 'desc') <i class="fa-solid fa-arrow-down-9-1"></i> ID desc.
+                @elseif ($order == 'status' && $direction == 'asc') <i class="fa-solid fa-arrow-down-a-z"></i> Estado asc.
+                @elseif ($order == 'status' && $direction == 'desc') <i class="fa-solid fa-arrow-down-z-a"></i> Estado desc.
+                @elseif ($order == 'total_price' && $direction == 'asc') <i class="fa-solid fa-arrow-down-1-9"></i> Precio total asc.
+                @elseif ($order == 'total_price' && $direction == 'desc') <i class="fa-solid fa-arrow-down-9-1"></i> Precio total desc.
+                @elseif ($order == 'created_at' && $direction == 'asc') <i class="fa-solid fa-arrow-down-short-wide"></i> Fecha creación asc.
+                @elseif ($order == 'created_at' && $direction == 'desc') <i class="fa-solid fa-arrow-down-wide-short"></i> Fecha creación desc.
+                @endif
+            </button>
+            <ul class="order-dropdown dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['id','asc']) }}">ID asc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['id','desc']) }}">ID desc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['created_at','asc']) }}">Fecha creación asc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['created_at','desc']) }}">Fecha creación desc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['total_price','asc']) }}">Precio total asc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['total_price','desc']) }}">Precio total desc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['status','asc']) }}">Estado asc.</a></li>
+                <li><a class="dropdown-item" href="{{ route('dashboard.orders', ['status','desc']) }}">Estado desc.</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="table-responsive">
     <table class="table table-striped align-translate-middle">
         <thead class="table-light">
             <tr>
-                <th class="align-middle">ID</th>
+                <th class="align-middle">@if($order == 'id' && $direction == 'asc') <i class="fa-solid fa-sort-up"></i> @elseif($order == 'id' && $direction == 'desc') <i class="fa-solid fa-sort-down"></i> @else <i class="fa-solid fa-sort"></i> @endif ID</th>
                 <th class="align-middle">Usuario</th>
-                <th class="align-middle">Fecha</th>
-                <th class="align-middle">Total</th>
-                <th class="align-middle">Estado</th>
+                <th class="align-middle">@if($order == 'created_at' && $direction == 'asc') <i class="fa-solid fa-sort-up"></i> @elseif($order == 'created_at' && $direction == 'desc') <i class="fa-solid fa-sort-down"></i> @else <i class="fa-solid fa-sort"></i> @endif Fecha</th>
+                <th class="align-middle">@if($order == 'total_price' && $direction == 'asc') <i class="fa-solid fa-sort-up"></i> @elseif($order == 'total_price' && $direction == 'desc') <i class="fa-solid fa-sort-down"></i> @else <i class="fa-solid fa-sort"></i> @endif Total</th>
+                <th class="align-middle">@if($order == 'status' && $direction == 'asc') <i class="fa-solid fa-sort-up"></i> @elseif($order == 'status' && $direction == 'desc') <i class="fa-solid fa-sort-down"></i> @else <i class="fa-solid fa-sort"></i> @endif Estado</th>
                 <th class="align-middle">Acciones</th>
             </tr>
         </thead>
@@ -61,14 +88,9 @@ Pedidos
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         @if ($order->status == 'pendiente')
-                        <form action="{{ route('dashboard.orders.changestatus', $order->id) }}" method="POST">
-                            @method('PUT')
-                            @csrf
-                            <input type="hidden" name="status" value="cancelado">
-                            <button type="submit" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar pedido">
-                                <i class="fa-solid fa-ban"></i>
-                            </button>
-                        </form>
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modal-cancel-order-{{ $order->id }}">
+                            <i class="fa-solid fa-ban" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar pedido"></i>
+                        </button>
                         @endif
                     </div>
                 </td>
@@ -82,4 +104,32 @@ Pedidos
         {{ $orders->links() }}
     </div>
 </div>
+<!-- MODALS PARA CANCELAR PEDIDOS  -->
+@foreach ($orders as $order)
+@if ($order->status == 'pendiente')
+<div class="modal fade" id="modal-cancel-order-{{ $order->id }}" tabindex="-1" aria-labelledby="modal-cancel-order-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modal-cancel-order-label">
+                    Cancelar Pedido</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Desea cancelar este pedido?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="POST" action="{{ route('dashboard.orders.changestatus', $order->id) }}">
+                    @method('PUT')
+                    @csrf
+                    <input type="hidden" name="status" value="cancelado">
+                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+@endforeach
 @endsection

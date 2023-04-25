@@ -56,7 +56,7 @@ Categoría ID - {{ $category->id }}
                 </tr>
             </thead>
             <tbody>
-                @foreach ($category->products as $product)
+                @foreach ($category->products()->paginate(5) as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
@@ -77,6 +77,11 @@ Categoría ID - {{ $category->id }}
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="row justify-content-center text-center">
+        <div class="col-auto">
+            {{ $category->products()->paginate(5)->links() }}
+        </div>
     </div>
     @else
     <div class="col-12">

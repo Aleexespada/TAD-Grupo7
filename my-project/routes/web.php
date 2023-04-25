@@ -37,7 +37,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 */
 Route::get('/admin', [AdminController::class, 'index'])->name('dashboard')->middleware('auth', 'verified', 'admin');
 // Categories
-Route::get('/admin/categorias', [AdminCategoryController::class, 'index'])->name('dashboard.categories')->middleware('auth', 'verified', 'admin');
+Route::get('/admin/categorias/{order?}/{direction?}', [AdminCategoryController::class, 'index'])->where('order', 'id|name|created_at')->where('direction', 'asc|desc')->name('dashboard.categories')->middleware('auth', 'verified', 'admin');
 Route::get('/admin/categorias/crear', [AdminCategoryController::class, 'create'])->name('dashboard.categories.create')->middleware('auth', 'verified', 'admin');
 Route::post('/admin/categorias/crear', [AdminCategoryController::class, 'store'])->name('dashboard.categories.create')->middleware('auth', 'verified', 'admin');
 Route::get('/admin/categorias/{id}', [AdminCategoryController::class, 'show'])->name('dashboard.categories.show')->middleware('auth', 'verified', 'admin');
@@ -45,7 +45,7 @@ Route::get('/admin/categorias/editar/{id}', [AdminCategoryController::class, 'ed
 Route::put('/admin/categorias/editar/{id}', [AdminCategoryController::class, 'update'])->name('dashboard.categories.edit')->middleware('auth', 'verified', 'admin');
 Route::delete('/admin/categorias/eliminar/{id}', [AdminCategoryController::class, 'destroy'])->name('dashboard.categories.delete')->middleware('auth', 'verified', 'admin');
 // Products
-Route::get('/admin/productos', [AdminProductController::class, 'index'])->name('dashboard.products')->middleware('auth', 'verified', 'admin');
+Route::get('/admin/productos/{order?}/{direction?}', [AdminProductController::class, 'index'])->where('order', 'id|name|price|status|created_at')->where('direction', 'asc|desc')->name('dashboard.products')->middleware('auth', 'verified', 'admin');
 Route::get('/admin/productos/crear', [AdminProductController::class, 'create'])->name('dashboard.products.create')->middleware('auth', 'verified', 'admin');
 Route::post('/admin/productos/crear', [AdminProductController::class, 'store'])->name('dashboard.products.create')->middleware('auth', 'verified', 'admin');
 Route::get('/admin/productos/{id}', [AdminProductController::class, 'show'])->name('dashboard.products.show')->middleware('auth', 'verified', 'admin');
@@ -54,7 +54,7 @@ Route::put('/admin/productos/editar/{id}', [AdminProductController::class, 'upda
 Route::delete('/admin/productos/eliminar/{id}', [AdminProductController::class, 'destroy'])->name('dashboard.products.delete')->middleware('auth', 'verified', 'admin');
 Route::delete('/admin/productos/eliminar-imagen/{id}', [AdminProductController::class, 'destroyImage'])->name('dashboard.products.image.delete')->middleware('auth', 'verified', 'admin');
 // Orders
-Route::get('/admin/pedidos', [AdminOrderController::class, 'index'])->name('dashboard.orders')->middleware('auth', 'verified', 'admin');
+Route::get('/admin/pedidos/{order?}/{direction?}', [AdminOrderController::class, 'index'])->where('order', 'id|status|total_price|created_at')->where('direction', 'asc|desc')->name('dashboard.orders')->middleware('auth', 'verified', 'admin');
 Route::get('/admin/pedidos/{id}', [AdminOrderController::class, 'show'])->name('dashboard.orders.show')->middleware('auth', 'verified', 'admin');
 Route::put('/admin/pedidos/estado/{id}', [AdminOrderController::class, 'changeStatus'])->name('dashboard.orders.changestatus')->middleware('auth', 'verified', 'admin');
 

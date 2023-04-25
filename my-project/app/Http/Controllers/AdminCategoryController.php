@@ -14,11 +14,11 @@ class AdminCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($order = 'id', $direction = 'desc')
     {
-        $categories = Category::paginate(6);
+        $categories = Category::orderBy($order, $direction)->paginate(6);
 
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index', compact('categories', 'order', 'direction'));
     }
 
     /**

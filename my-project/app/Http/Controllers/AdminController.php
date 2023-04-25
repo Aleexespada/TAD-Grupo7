@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Charts\OrdersPerDayChart;
 use App\Charts\ProductsCategoriesChart;
+use App\Models\FavoriteProduct;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,7 +33,9 @@ class AdminController extends Controller
 
         $orders_per_category = $this->createOrdersByCategoryChart();
 
-        return view('admin.home', compact('last_10_days_total', 'orders_per_day_data', 'total_orders', 'total_prices', 'total_orders_month', 'total_price_month', 'orders_per_category'));
+        $favorite_products = FavoriteProduct::all();
+
+        return view('admin.home', compact('last_10_days_total', 'orders_per_day_data', 'total_orders', 'total_prices', 'total_orders_month', 'total_price_month', 'orders_per_category', 'favorite_products'));
     }
 
     private function createOrdersPerDayChart()

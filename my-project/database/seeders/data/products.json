@@ -54,5 +54,53 @@
         "discount": null,
         "brand_id": 5,
         "status": "disponible"
+    },
+    {
+        "id": 8,
+        "name": "Mocasín Serraje Piso Traslúcido",
+        "price": 79.95,
+        "discount": null,
+        "brand_id": 6,
+        "status": "disponible"
+    },
+    {
+        "id": 9,
+        "name": "Mocasín Piel Napa Cuero - Studio",
+        "price": 99.95,
+        "discount": null,
+        "brand_id": 6,
+        "status": "disponible"
+    },
+    {
+        "id": 10,
+        "name": "Americana Traje Cruzada Half Canvas Cuadros",
+        "price": 249.00,
+        "discount": 225.95,
+        "brand_id": 6,
+        "status": "disponible"
+    },
+    {
+        "id": 11,
+        "name": "Pantalón Traje Mezcla Lana Cuadros",
+        "price": 89.95,
+        "discount": null,
+        "brand_id": 6,
+        "status": "disponible"
+    },
+    {
+        "id": 12,
+        "name": "Americana Traje Lino Limited Edition",
+        "price": 199.00,
+        "discount": null,
+        "brand_id": 6,
+        "status": "disponible"
+    },
+    {
+        "id": 13,
+        "name": "Pantalón Traje Lino Pinzas Limited Edition",
+        "price": 89.95,
+        "discount": null,
+        "brand_id": 6,
+        "status": "disponible"
     }
 ]

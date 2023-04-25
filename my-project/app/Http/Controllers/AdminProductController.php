@@ -19,11 +19,11 @@ class AdminProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($order = 'id', $direction = 'desc')
     {
-        $products = Product::paginate(6);
+        $products = Product::orderBy($order, $direction)->paginate(6);
 
-        return view('admin.products.index', compact('products'));
+        return view('admin.products.index', compact('products', 'order', 'direction'));
     }
 
     /**

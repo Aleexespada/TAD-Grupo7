@@ -112,5 +112,47 @@
         "description_id": 7,
         "size_id": 9,
         "stock": 10
+    },
+    {
+        "id": 20,
+        "description_id": 8,
+        "size_id": 9,
+        "stock": 23
+    },
+    {
+        "id": 21,
+        "description_id": 8,
+        "size_id": 10,
+        "stock": 3
+    },
+    {
+        "id": 22,
+        "description_id": 9,
+        "size_id": 10,
+        "stock": 28
+    },
+    {
+        "id": 23,
+        "description_id": 10,
+        "size_id": 12,
+        "stock": 26
+    },
+    {
+        "id": 24,
+        "description_id": 11,
+        "size_id": 12,
+        "stock": 16
+    },
+    {
+        "id": 25,
+        "description_id": 12,
+        "size_id": 12,
+        "stock": 12
+    },
+    {
+        "id": 26,
+        "description_id": 13,
+        "size_id": 12,
+        "stock": 34
     }
 ]

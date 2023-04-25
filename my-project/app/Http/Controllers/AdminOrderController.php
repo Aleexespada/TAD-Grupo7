@@ -13,11 +13,11 @@ class AdminOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($order = 'id', $direction = 'desc')
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(6);
+        $orders = Order::orderBy($order, $direction)->paginate(6);
 
-        return view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders', 'order', 'direction'));
     }
 
     /**

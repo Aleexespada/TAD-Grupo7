@@ -47,5 +47,47 @@
         "description": "Un reloj atemporal con el motivo de Greca y la inscripción de Versace en el anillo superior. El diseño de La Greca adorna la esfera con la Medusa en las 12 h. El accesorio se completa con una correa metálica. Todos los relojes Versace están garantizados por la marca «Swiss Made».",
         "details": "Caja: de acero inoxidable con logotipo de Versace en el anillo superior\nEsfera: en verde con diseño de Greca, logotipo de Versace y Medusa en las 12 h\nPulsera: correa de acero inoxidable con cierre desplegable\nMecanismo: de cuarzo suizo RONDA 515.1 de 3 manecillas con fecha en las 3 h\nSumergible: 5 ATM",
         "color": "#2F5951"
+    },
+    {
+        "id": 8,
+        "product_id": 8,
+        "description": "Confeccionadas en piel serraje\nPlanta de piel\nPiso de goma traslúcido\nIncluye planta especial almohadillada para mayor confort.",
+        "details": "Corte\npiel vacuno 100%\nForro\nalgodón 45%, poliamida 30%, piel vacuno 25%\nPiso/Suela\nestireno butadieno estireno 100%\nNO LAVAR\nNO USAR LEJÍA / BLANQUEADOR\nNO PLANCHAR\nNO LIMPIEZA EN SECO\nNO USAR SECADORA\nNO SUMERGIR EN AGUA\nCUERO/CHAROL/ANTIC. Limpiar con trapo de algodón seco.\nANTE/NOBUCK/SERRAJE. Limpiar con cepillo suave o esponja dura.\nCUERO. Se pueden aplicar ceras incoloras o al tono de la piel.\nANTE/NOBUCK/SERRAJE. Pueden protegerse con sprays tratantes o repelentes de polvo (hidrofugante para mopas).",
+        "color": "#7C5D3C"
+    },
+    {
+        "id": 9,
+        "product_id": 9,
+        "description": "Mocasín de piel napa con acabado cepillado. Su piel de calidad y su diseño atemporal, lo convierten en un esencial. Suela ligera que ofrece un máximo confort. Made in Portugal.\n\nDetalle antifaz\nRealizado en piel de vacuno cepillada\nDetalle bordón\nForro interior y planta de piel\nSuela ligera\nHecho en Portugal\n\nEl piso de este modelo es COMFORTLIGHT reconocida a nivel mundial por su ligereza y calidad\n\nPara poder tramitar la devolución o cambio de este artículo, es indispensable conservar el embalaje original",
+        "details": "Corte piel vacuno 100%\nForro piel vacuno 90%, poliamida 10%\nPiso/Suela caucho termoplástico 100%\nNO LAVAR\nNO USAR LEJÍA / BLANQUEADOR\nNO PLANCHAR\nNO LIMPIEZA EN SECO\nNO USAR SECADORA\nNO SUMERGIR EN AGUA\nCUERO/CHAROL/ANTIC. Limpiar con trapo de algodón seco.\nANTE/NOBUCK/SERRAJE. Limpiar con cepillo suave o esponja dura.\nCUERO. Se pueden aplicar ceras incoloras o al tono de la piel.\nANTE/NOBUCK/SERRAJE. Pueden protegerse con sprays tratantes o repelentes de polvo (hidrofugante para mopas).",
+        "color": "#523F37"
+    },
+    {
+        "id": 10,
+        "product_id": 10,
+        "description": "",
+        "details": "",
+        "color": "#27283C"
+    },
+    {
+        "id": 11,
+        "product_id": 11,
+        "description": "",
+        "details": "",
+        "color": "#27283C"
+    },
+    {
+        "id": 12,
+        "product_id": 12,
+        "description": "",
+        "details": "",
+        "color": "#BBB3AD"
+    },
+    {
+        "id": 13,
+        "product_id": 13,
+        "description": "",
+        "details": "",
+        "color": "#BBB3AD"
     }
 ]
