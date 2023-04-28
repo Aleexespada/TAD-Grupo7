@@ -34,7 +34,7 @@ class OrderMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Confirmación de pedido',
+            subject: 'Confirmación de pedido - Mr Penguin',
         );
     }
 
