@@ -29,6 +29,20 @@
                                 </div>
                                 @endif
 
+                                @if(session('message'))
+                                <div class="alert alert-success alert-dismissible fade show px-5">
+                                    <span class="m-0">{{ session('message') }}</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
+
+                                @if(session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show px-5">
+                                    <span class="m-0">{{ session('error') }}</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
+
                                 <!-- ITEM STRUCTURE -->
                                 @guest
                                 <p>Inicia sesión para comenzar a comprar.</p>

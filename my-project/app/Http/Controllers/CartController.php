@@ -380,12 +380,15 @@ class CartController extends Controller
             $discountCouponFound = $user->discountCoupons->where('id', $discountCoupon->id)->first();
 
             if ($discountCouponFound) {
-                return redirect()->route('cart.index')->with('discount_id', $discountCoupon->id);
+                return back()->with([
+                    'message' => 'Código de descuento aplicado con éxito.',
+                    'discount_id' => $discountCoupon->id,
+                ]);
             } else {
-                return redirect()->route('cart.index')->withErrors(['discount_code' => 'El código de descuento no está disponible.']);
+                return back()->with('error', 'El código de descuento no está disponible.');
             }
         } else {
-            return redirect()->route('cart.index')->withErrors(['discount_code' => 'El código de descuento es inválido o ha alcanzado su límite de uso.']);;
+            return back()->with('error', 'El código de descuento es inválido o ha alcanzado su límite de uso.');
         }
     }
 }
