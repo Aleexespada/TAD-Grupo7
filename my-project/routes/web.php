@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WishListController;
@@ -133,3 +134,15 @@ Route::post('/lista-deseos/añadir', [WishListController::class, 'addItem'])->na
 Route::post('/lista-deseos/move/{id}', [WishListController::class, 'moveToCart'])->name('favorites.move')->middleware('auth');
 Route::delete('/lista-deseos/remove/product-view/{id}', [WishListController::class, 'removeItemFromProductView'])->name('favorites.remove.fromProductView')->middleware('auth');
 Route::delete('/lista-deseos/remove/wish-list-view/{id}', [WishListController::class, 'removeItemFromWishList'])->name('favorites.remove.fromWishListView')->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
+| INFO
+|--------------------------------------------------------------------------
+*/
+Route::get('/sobre-nosotros', [InfoController::class, 'aboutUs'])->name('info.about-us');
+Route::get('/cookies', [InfoController::class, 'cookies'])->name('info.cookies');
+Route::get('/envio', [InfoController::class, 'shipping'])->name('info.shipping');
+Route::get('/contacto', [InfoController::class, 'contactUs'])->name('info.contact-us');
+Route::post('/contacto', [InfoController::class, 'contact'])->name('info.contact-us');

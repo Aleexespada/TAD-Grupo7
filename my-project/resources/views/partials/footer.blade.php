@@ -4,22 +4,22 @@
         <div class="container-fluid">
             <!-- SECTION: SOCIAL -->
             <section class="mt-5 py-3">
-                <a href="#" class="text-white text-decoration-none me-4">
+                <a target="_blank" href="https://www.youtube.com/watch?v=zFkiP-HpgNY" class="text-white text-decoration-none me-4">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="text-white text-decoration-none me-4">
+                <a target="_blank" href="https://www.youtube.com/watch?v=zFkiP-HpgNY" class="text-white text-decoration-none me-4">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="text-white text-decoration-none me-4">
+                <a target="_blank" href="https://www.youtube.com/watch?v=zFkiP-HpgNY" class="text-white text-decoration-none me-4">
                     <i class="fab fa-google"></i>
                 </a>
-                <a href="#" class="text-white text-decoration-none me-4">
+                <a target="_blank" href="https://www.youtube.com/watch?v=zFkiP-HpgNY" class="text-white text-decoration-none me-4">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="text-white text-decoration-none me-4">
+                <a target="_blank" href="https://www.youtube.com/watch?v=zFkiP-HpgNY" class="text-white text-decoration-none me-4">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="#" class="text-white text-decoration-none me-4">
+                <a target="_blank" href="https://github.com/Aleexespada/TAD-Grupo7" class="text-white text-decoration-none me-4">
                     <i class="fab fa-github"></i>
                 </a>
             </section>
@@ -34,7 +34,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">@lang('footer.about_us')</a>
+                            <a href="{{ route('info.about-us') }}" class="text-white text-decoration-none">@lang('footer.about_us')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -42,7 +42,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">@lang('footer.products')</a>
+                            <a href="{{ route('products.index') }}" class="text-white text-decoration-none">@lang('footer.products')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -50,7 +50,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">@lang('footer.cookies')</a>
+                            <a href="{{ route('info.cookies') }}" class="text-white text-decoration-none">@lang('footer.cookies')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -58,7 +58,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">@lang('footer.shipping')</a>
+                            <a href="{{ route('info.shipping') }}" class="text-white text-decoration-none">@lang('footer.shipping')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -66,7 +66,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">@lang('footer.contact_us')</a>
+                            <a href="{{ route('info.contact-us') }}" class="text-white text-decoration-none">@lang('footer.contact_us')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -80,7 +80,7 @@
         <!-- COPYRIGHT -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
             © 2023 Copyright:
-            <a class="text-white" href="https://github.com/Aleexespada/TAD-Grupo7">Grupo 7 - TAD</a>
+            <a class="text-white" target="_blank" href="https://github.com/Aleexespada/TAD-Grupo7">Grupo 7 - TAD</a>
         </div>
     </footer>
 </div>
