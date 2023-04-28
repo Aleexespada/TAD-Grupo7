@@ -29,9 +29,9 @@
                 <h1 class="brand-name">
                     MR PENGUIN
                 </h1>
-                <p class="text-black mt-4 fw-bold">Encuentra tu estilo único con nuestra colección de ropa, diseñada para realzar tu belleza y sofisticación en cada ocasión.</p>
+                <p class="text-black mt-4 fw-bold">@lang('home.home_message')</p>
                 <a href="{{ route('products.index') }}" class="btn btn-light mt-4 py-3 px-5 text-uppercase">
-                    Ver productos
+                    @lang('home.view_products')
                 </a>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
 <div class="row justify-content-evenly mt-5 px-2 mx-3">
     <div class="col-5">
-        <h3 class="products-carousel-title text-center text-uppercase">Productos más vendidos</h3>
+        <h3 class="products-carousel-title text-center text-uppercase">@lang('home.bestselling_products')</h3>
         <div id="carouselTopProducts" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($topProducts as $product)
@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="col-5">
-        <h3 class="products-carousel-title text-center text-uppercase">Productos nuevos</h3>
+        <h3 class="products-carousel-title text-center text-uppercase">@lang('home.new_products')</h3>
         <div id="carouselRecentlyAddedProducts" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($recentlyAddedProducts as $product)

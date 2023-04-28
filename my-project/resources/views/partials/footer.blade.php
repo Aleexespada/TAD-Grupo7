@@ -34,7 +34,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">Sobre nosotros</a>
+                            <a href="#!" class="text-white text-decoration-none">@lang('footer.about_us')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -42,7 +42,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">Productos</a>
+                            <a href="#!" class="text-white text-decoration-none">@lang('footer.products')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -50,7 +50,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">Cookies</a>
+                            <a href="#!" class="text-white text-decoration-none">@lang('footer.cookies')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -58,7 +58,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">Envío</a>
+                            <a href="#!" class="text-white text-decoration-none">@lang('footer.shipping')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->
@@ -66,7 +66,7 @@
                     <!-- GRID COLUMN -->
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold mb-0">
-                            <a href="#!" class="text-white text-decoration-none">Contacto</a>
+                            <a href="#!" class="text-white text-decoration-none">@lang('footer.contact_us')</a>
                         </h6>
                     </div>
                     <!-- GRID COLUMN -->

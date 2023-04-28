@@ -7,13 +7,13 @@
             </button>
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Categorías</h5>
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">@lang('header.categories')</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <div class="list-group">
                         <a href="{{ route('products.index') }}" class="list-group-item list-group-item-action border-0" aria-current="true">
-                            Todos los productos
+                            @lang('header.all_products')
                         </a>
                         @foreach ($categories as $category)
                         <form class="m-0" action="{{ route('products.index') }}" method="GET">
@@ -38,18 +38,18 @@
             <ul class="navbar-nav flex-row">
                 <!-- FAVORITOS -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="{{ route('favorites.wish-list') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Lista de deseos">
+                    <a class="nav-link" href="{{ route('favorites.wish-list') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@lang('header.wishlist')">
                         <span class="me-2">
                             <i class="fa-solid fa-heart" style="font-size: 16pt;"></i>
                         </span>
                         <span class="icon-text">
-                            Lista de deseos
+                            @lang('header.wishlist')
                         </span>
                     </a>
                 </li>
                 <!-- CESTA -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="{{ route('cart.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Ver cesta">
+                    <a class="nav-link" href="{{ route('cart.index') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@lang('header.view_cart')">
                         <span class="me-2">
                             <i class="fa-solid fa-cart-shopping position-relative" style="font-size: 16pt;">
                                 <span class="items-cart badge position-absolute top-0 start-100 translate-middle bg-danger border border-danger rounded-pill" style="font-size: 8pt;">
@@ -58,7 +58,7 @@
                             </i>
                         </span>
                         <span class="icon-text">
-                            Mi cesta
+                            @lang('header.cart')
                         </span>
                     </a>
                 </li>
@@ -66,12 +66,12 @@
                 @guest
                 <!-- INICIAR SESIÓN / REGISTRARSE -->
                 <li class="nav-item me-3 me-lg-4">
-                    <a class="nav-link" href="{{ route('login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Mi cuenta">
+                    <a class="nav-link" href="{{ route('login') }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="@lang('header.my_account')">
                         <span class="me-2">
                             <i class="fa-solid fa-user" style="font-size: 16pt;"></i>
                         </span>
                         <span class="icon-text">
-                            Mi cuenta
+                            @lang('header.my_account')
                         </span>
                     </a>
                 </li>
@@ -82,7 +82,7 @@
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasProfile" aria-labelledby="offcanvasProfileLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Mi cuenta</h5>
+                        <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">@lang('header.my_account')</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -91,15 +91,15 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                         <i class="fa-solid fa-user me-2"></i>
-                                        Mi cuenta
+                                        @lang('header.my_profile')
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
-                                        <a href="{{ route('profile.profile') }}" class="list-group-item list-group-item-action border-0">Mis datos</a>
-                                        <a href="{{ route('profile.changepassword') }}" class="list-group-item list-group-item-action border-0">Cambiar contraseña</a>
-                                        <a href="{{ route('profile.addresses') }}" class="list-group-item list-group-item-action border-0">Direcciones de envío</a>
-                                        <a href="{{ route('profile.reviews') }}" class="list-group-item list-group-item-action border-0">Valoraciones</a>
+                                        <a href="{{ route('profile.profile') }}" class="list-group-item list-group-item-action border-0">@lang('header.my_account')</a>
+                                        <a href="{{ route('profile.changepassword') }}" class="list-group-item list-group-item-action border-0">@lang('header.change_pass')</a>
+                                        <a href="{{ route('profile.addresses') }}" class="list-group-item list-group-item-action border-0">@lang('header.shipping_addresses')</a>
+                                        <a href="{{ route('profile.reviews') }}" class="list-group-item list-group-item-action border-0">@lang('header.reviews')</a>
                                     </div>
                                 </div>
                             </div>
@@ -107,13 +107,13 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
                                         <i class="fa-sharp fa-solid fa-box me-2"></i>
-                                        Pedidos
+                                        @lang('header.orders')
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                     <div class="accordion-body list-group">
-                                        <a href="{{ route('profile.orders') }}" class="list-group-item list-group-item-action border-0">Pedidos</a>
-                                        <a href="{{ route('profile.canceledorders') }}" class="list-group-item list-group-item-action border-0">Pedidos cancelados</a>
+                                        <a href="{{ route('profile.orders') }}" class="list-group-item list-group-item-action border-0">@lang('header.orders')</a>
+                                        <a href="{{ route('profile.canceledorders') }}" class="list-group-item list-group-item-action border-0">@lang('header.cancelled_orders')</a>
                                     </div>
                                 </div>
                             </div>
@@ -121,12 +121,12 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                                         <i class="fa-solid fa-credit-card me-2"></i>
-                                        Pago
+                                        @lang('header.payment')
                                     </button>
                                 </h2>
                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                                     <div class="accordion-body list-group">
-                                        <a href="{{ route('profile.creditcards') }}" class="list-group-item list-group-item-action border-0">Tarjetas vinculadas</a>
+                                        <a href="{{ route('profile.creditcards') }}" class="list-group-item list-group-item-action border-0">@lang('header.credit_cards')</a>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                 <h2 class="accordion-header">
                                     <a href="{{ route('dashboard') }}" class="accordion-button collapsed text-decoration-none text-dark" id="admin-link" type="button">
                                         <i class="fa-solid fa-gear me-2"></i>
-                                        Panel de administrador
+                                        @lang('header.admin_pane')
                                     </a>
                                 </h2>
                             </div>
@@ -146,7 +146,7 @@
                                 <h2 class="accordion-header">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="accordion-button collapsed text-decoration-none text-dark" id="signout-link" type="button">
                                         <i class="fa-sharp fa-solid fa-right-from-bracket me-2"></i>
-                                        Cerrar sesión
+                                        @lang('header.logout')
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -154,6 +154,10 @@
                                 </h2>
                             </div>
                         </div>
+                    </div>
+                    <div class="offcanvas-footer p-4">
+                        <a class="link-dark" href="{{ url('lang/en') }}"><img src="{{ asset('img/reino-unido.png') }}" alt="Bandera reino unido">English</a> |
+                        <a class="link-dark" href="{{ url('lang/es') }}"><img src="{{ asset('img/espana.png') }}" alt="Bandera españa">Español</a>
                     </div>
                 </div>
                 @endguest
