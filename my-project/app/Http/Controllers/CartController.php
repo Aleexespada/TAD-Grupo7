@@ -205,7 +205,6 @@ class CartController extends Controller
             }
 
             $order = Order::with('products')->find($order->id);
-            Mail::to(auth()->user()->email)->send(new OrderMail($order));
 
             // Se borra el carrito del usuario
             CartItem::where('user_id', $user->id)->delete();
@@ -219,6 +218,8 @@ class CartController extends Controller
             DB::rollBack();
             return back()->with('error', 'Error al realizar pedido' . $e);
         }
+
+        Mail::to(auth()->user()->email)->send(new OrderMail($order));
 
         // Redirección a la vista que confirma la compra
         return redirect()->route('cart.finish');
