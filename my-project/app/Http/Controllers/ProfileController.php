@@ -110,9 +110,9 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'street' => 'required|string|max:255',
-            'number' => 'required|string|max:10',
-            'floor' => 'nullable|string|max:10',
-            'postal_code' => 'required|string|max:10',
+            'number' => 'required|numeric',
+            'floor' => 'nullable|numeric',
+            'postal_code' => 'required|numeric|digits:5',
             'province' => 'required|string|max:255',
             'country' => 'required|string|max:255',
         ]);
@@ -154,9 +154,9 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'street' => 'required|string|max:255',
-            'number' => 'required|string|max:10',
-            'floor' => 'nullable|string|max:10',
-            'postal_code' => 'required|string|max:10',
+            'number' => 'required|numeric',
+            'floor' => 'nullable|numeric',
+            'postal_code' => 'required|numeric|digits:5',
             'province' => 'required|string|max:255',
             'country' => 'required|string|max:255',
         ]);
