@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
     use HasFactory;
+
+    protected $factory = ProductFactory::class;
 
     /**
      * The attributes that are mass assignable.
@@ -56,10 +59,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class, 'order_product');
     }
-    
+
     public function images()
     {
         return $this->hasMany(Image::class);
     }
-    
 }

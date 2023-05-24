@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\CartItemFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CartItem extends Model
 {
+    use HasFactory;
+
+    protected $factory = CartItemFactory::class;
 
     /**
      * The attributes that are mass assignable.
@@ -31,5 +35,4 @@ class CartItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
-    
 }

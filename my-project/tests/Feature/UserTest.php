@@ -17,7 +17,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function testUserCreation()
+    public function test_user_creation()
     {
         // Arrange
         $input = [
@@ -33,6 +33,7 @@ class UserTest extends TestCase
         $user = $createNewUserAction->create($input);
 
         // Assert
+        // Comprueba que la tabla users contiene el usuario creado
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'name' => 'John',
@@ -40,8 +41,10 @@ class UserTest extends TestCase
             'email' => 'john@example.com',
         ]);
 
+        // Comprueba que el Hash se ha realizado correctamente
         $this->assertTrue(Hash::check('password123', $user->password));
 
+        // Comprueba que el usuario tiene el rol user
         $role = Role::where('name', 'user')->first();
         $this->assertTrue($user->roles->contains($role));
     }
